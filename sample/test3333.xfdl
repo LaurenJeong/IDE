@@ -6,7 +6,7 @@
         <View id="View00" taborder="0" text="View00" viewdataset="viewdataset" left="46" top="21" width="444" height="396">
           <Layouts>
             <Layout>
-              <Grid id="grdList" left="0" top="0" right="291" bottom="107" binddataset="viewdataset">
+              <Grid id="grdList" left="0" top="0" right="170" bottom="107" binddataset="viewdataset">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -169,6 +169,6 @@
 
 //わだしわ　かんこくじんです。
 
-かはほ]]></Script>
+かはほㄴㄴㄴ]]></Script>
   </Form>
 </FDL>
