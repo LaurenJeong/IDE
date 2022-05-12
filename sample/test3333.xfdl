@@ -6,7 +6,7 @@
         <View id="View00" taborder="0" text="View00" viewdataset="viewdataset" left="46" top="21" width="444" height="396" border="2px solid darkgreen">
           <Layouts>
             <Layout>
-              <Grid id="grdList" left="0" top="0" right="170" bottom="107" binddataset="viewdataset">
+              <Grid id="grdList" left="0" top="0" right="48" bottom="107" binddataset="viewdataset">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -161,7 +161,7 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[//ははほほへへ
+    <Script type="xscript5.1"><![CDATA[しし//ははほほへへ
 //ｓｋ
 
 
