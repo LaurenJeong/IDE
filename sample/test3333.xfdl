@@ -49,31 +49,6 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Grid id="Grid00" taborder="1" left="255" top="14" width="230" height="261" binddataset="Dataset00">
-                <Formats>
-                  <Format id="default">
-                    <Columns>
-                      <Column size="80"/>
-                      <Column size="80"/>
-                      <Column size="80"/>
-                    </Columns>
-                    <Rows>
-                      <Row band="head" size="24"/>
-                      <Row size="24"/>
-                    </Rows>
-                    <Band id="head">
-                      <Cell text="Column0"/>
-                      <Cell col="1" text="Column1"/>
-                      <Cell col="2" text="Column2"/>
-                    </Band>
-                    <Band id="body">
-                      <Cell text="bind:Column0"/>
-                      <Cell col="1" text="bind:Column1"/>
-                      <Cell col="2" text="bind:Column2"/>
-                    </Band>
-                  </Format>
-                </Formats>
-              </Grid>
             </Layout>
           </Layouts>
           <Objects>
