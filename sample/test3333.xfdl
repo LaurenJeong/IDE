@@ -3,7 +3,7 @@
   <Form id="test3333" width="1280" height="1024" titletext="New Form">
     <Layouts>
       <Layout height="1024" width="1280">
-        <View id="View00" taborder="0" text="View00" viewdataset="viewdataset" left="46" top="21" width="525" height="396">
+        <View id="View00" taborder="0" text="View00" viewdataset="viewdataset" left="46" top="21" width="444" height="396">
           <Layouts>
             <Layout>
               <Grid id="grdList" left="0" top="0" right="291" bottom="107" binddataset="viewdataset">
@@ -169,6 +169,6 @@
 
 //わだしわ　かんこくじんです。
 
-]]></Script>
+かはほ]]></Script>
   </Form>
 </FDL>
