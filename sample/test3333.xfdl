@@ -3,10 +3,10 @@
   <Form id="test3333" width="1280" height="1024" titletext="New Form">
     <Layouts>
       <Layout height="1024" width="1280">
-        <View id="View00" taborder="0" text="View00" viewdataset="viewdataset" left="46" top="21" width="444" height="396" border="2px solid darkgreen">
+        <View id="View00" taborder="0" text="View00" viewdataset="viewdataset" left="46" top="21" width="444" height="339" border="2px solid darkgreen">
           <Layouts>
             <Layout>
-              <Grid id="grdList" left="0" top="0" right="68" bottom="107" binddataset="viewdataset">
+              <Grid id="grdList" left="0" top="0" right="68" bottom="58" binddataset="viewdataset">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -107,7 +107,7 @@
             <Attribute id="summbandsize" value="30"/>
           </ViewTemplateInfo>
         </View>
-        <Grid id="Grid00" taborder="1" left="57" top="360" width="489" height="202" binddataset="View00.form.viewdataset">
+        <Grid id="Grid00" taborder="1" left="570" top="168" width="489" height="202" binddataset="View00.form.viewdataset">
           <Formats>
             <Format id="default">
               <Columns>
