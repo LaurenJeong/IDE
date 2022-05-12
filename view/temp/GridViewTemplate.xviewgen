@@ -1,0 +1,1379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ViewTemplateInfo version="1.0">
+  <ViewTemplate id="GridViewTemplate" viewtype="Asset" description=""/>
+  <Script version="1.0" type="xscript5.1"><![CDATA[/**
+*  Grid View Template
+*  @FileName 	GridViewTemplate.xviewgen
+*  @Creator 	Kim Dae Won
+*  @CreateDate 	2021.04.29
+*  @Desction    그리드 생성 템플릿
+*  @version		1.0.0.0
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  2021.04.29     		Kim Dae Won       	    최초 생성
+*******************************************************************************
+*/
+/************************************************************************************************
+ * include 선언부
+ ************************************************************************************************/
+include "view_lib::util.xjs";
+include "view_lib::common.xjs";
+/************************************************************************************************
+ * 변수 선언 영역
+ ************************************************************************************************/
+//--------------------------------------------------------------------------------------------------------
+// 타이틀 객체 관련 상수
+//--------------------------------------------------------------------------------------------------------	
+//Grid 영역 top 위치(title영역에 따라 위치 변경됨)
+this.VIEW_TOP				= 0;
+//타이틀 영역 전체건수 표시여부
+this.USE_TOT_COUNT			= "true";
+//타이틀 영역 접기/펼치기 버튼 표시여부(Grid에서는 사용안함)
+this.USE_EXPAND_BUTTON		= "none";
+//--------------------------------------------------------------------------------------------------------	
+
+//--------------------------------------------------------------------------------------------------------
+// 그리드 객체 관련 상수
+//--------------------------------------------------------------------------------------------------------
+this.HEAD_BAND_SIZE			= 30;
+this.BODY_BAND_SIZE			= 30;
+this.SUMM_BAND_SIZE			= 30;
+this.COL_SIZE				= 80;
+
+this.DISPLAY_TYPE			= "normal";
+this.EDIT_TYPE				= "none";
+this.CELL_CSSCLASS			= "";
+this.USE_COMP				= "true";
+//--------------------------------------------------------------------------------------------------------
+/*============================================================================================*
+* Parameter Structure Example
+
+1. 'fieldarray' structure example
+{
+    "modelinfo":
+    {
+        "serviceid":"model_sample",                                // model service id
+        "serviceurl":"http://127.0.0.1:8983/app/addSearchApi.do?"  // model service url
+    },
+    "fieldcount" : "2",                                            // number of fields in model
+    "fields" :
+    [
+        {                                                          // About the first field
+            "id": "company",
+            "label": "Company Name",
+            "fieldtype": "SelectOne",
+            "datatype": "STRING",
+            "datasize": "80",
+            "editable": "true",
+            "uselabel": "true"
+        },
+        {                                                          // About the second field
+            "id": "department",
+            "label": "Department Name",
+            "fieldtype": "SelectOne",
+            "datatype": "STRING",
+            "datasize": "80",
+            "editable": "true",
+            "uselabel": "true"
+        }
+    ]
+}
+
+2. 'generationattr' structure example
+{                                                                  // user-entered attributes for 'view' generation
+  "attributes": {
+    "use_triggerbutton": "true"
+    "triggerbuttontext": "Search"
+  }
+}
+
+3. 'contents' structure example
+// --- design source of xfdl --- //
+//   <View id="View00" viewtype="FreeForm" taborder="2" ... >
+//     <Layouts>
+//       <Layout>
+//         <Static id="Static00" text="Company Name" left="0" .../>
+//         <Combo id="Combo00" left="85" top="0" .../>
+//         <Button id="btn_Trigger" left="617" top="5" .../>
+//         ...
+//       </Layout>
+//     </Layouts>
+//     <InitValue>
+//       <Combo id="Combo00" enable="true"/>
+//     </InitValue>
+//     <Objects>
+//       <Dataset id="Viewdataset">
+//         <ColumnInfo>
+//           <Column id="company" type="BLOB" size="80"/>
+//           <Column id="department" type="BLOB" size="80"/>
+//         </ColumnInfo>
+//         <Rows>
+//           <Row/>
+//         </Rows>
+//       </Dataset>
+//     </Objects>
+//     <Bind>
+//       <BindItem id="item0" compid="Combo00" propid="value" datasetid="viewdataset" columnid="company"/>
+//     </Bind>
+//     <Script type="xscript5.1"><![CDATA[this.btnAdd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo) {}; ] ]></Script>
+//   </View>
+
+// --- design source converted to json format --- //
+{
+    "View": {                                                     // <View id="View00" viewtype="FreeForm" taborder="2" ... />
+        "tag": "View",
+        "referenceinfo": {
+            "realwidth": "500",                                   // Real width of view component
+            "realheight": "250"                                   // Real height of view component
+        },
+        "attribute": {
+            "id": "View00",                                       // 'ID' of view component
+            "viewtype": "FreeForm",                               // 'viewtype' property value of view component
+            "taborder": "2",                                      // 'taborder' property value of view component
+            "text": "search view",                                // 'text' property value of view component
+            "left": "0",                                          // 'left' property value of view component
+            "top": "0",                                           // 'top' property value of view component
+            "width": "100%",                                      // 'width' property value of view component
+            "height": "50%"                                       // 'height' property value of view component
+        },
+        "Model": [                                                // Information of components generated by each model field information.
+            {                                                     // "fieldid" : "value" => The component generated by the field of Model
+                "fieldid": "company",                             // "fieldid" : ""      => The component generated without the field of Model
+                "Components": [                                   // The component information generated by the 'company' field.
+                    {                                             //   <Static id="Static00" text="Company Name" left="0" .../>
+                        "tag": "Static",
+                        "attribute": {
+                            "id": "Static00",
+                            "text": "Company Name",
+                            "left": "0",
+                            "top": "0",
+                            "width": "80",
+                            "height": "20",
+                        }
+                    },
+                    {                                             //   <Combo id="Combo00" left="85" top="0" .../>
+                        "tag": "Combo",
+                        "attribute": {
+                            "id": "Combo00",
+                            "left": "85",
+                            "top": "0",
+                            "width": "100",
+                            "height": "24",
+                        }
+                    }
+                ]
+            },
+            {   // with field
+                "fieldid": "department",                          // "fieldid" : "value" => The component generated by the field of Model
+                "Components": [
+                ...
+                ]
+            },
+            {
+                "fieldid": "",                                    // "fieldid" : ""      => The component generated without the field of Model
+                "Components": [
+                    {                                             //   <Button id="btn_Trigger" left="617" top="5" .../>
+                        "tag": "Button",
+                        "attribute": {
+                          "id": "btn_Trigger",
+                          "left": "617",
+                          "top": "5",
+                          "width": "70",
+                          "height": "50",
+                          "text": "Search"
+                        }
+                    }
+                ]
+            }
+        ],
+        "InitValue": [
+          {                                                       //   <InitValue>
+            "tag": "InitValue",                                   //     <Combo id="Combo00" enable="true"/>
+            "InitValue": [                                        //   </InitValue>
+              {
+                "tag": "Combo",
+                "attribute": {
+                  "id": "Combo00",
+                  "enable": "true"
+                }
+              }
+            ]
+          }
+        ],
+        "Objects": [
+          {                                                       //   <Objects>
+            "tag": "Objects",                                     //     <Dataset id="Viewdataset">
+            "Objects": [                                          //       <ColumnInfo>
+              {                                                   //         <Column id="company" type="BLOB" size="80"/>
+                "tag": "Dataset",                                 //         <Column id="department" type="BLOB" size="80"/>
+                "attribute": {                                    //       </ColumnInfo>
+                  "id": "viewdataset"                             //       <Rows>
+                },                                                //         <Row/>
+                "Dataset": [                                      //       </Rows>
+                  {                                               //     </Dataset>
+                    "tag": "ColumnInfo",                          //   </Objects>
+                    "ColumnInfo": [
+                      {
+                        "tag": "Column",
+                        "attribute": {
+                          "id": "company",
+                          "type": "BLOB",
+                          "size": "80"
+                        }
+                      },
+                      {
+                        "tag": "Column",
+                        "attribute": {
+                          "id": "department",
+                          "type": "BLOB",
+                          "size": "80"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "Rows",
+                    "Rows": [
+                      {
+                        "tag": "Row"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Bind": [
+        {                                                         //   <Bind>
+          "tag": "Bind",                                          //     <BindItem id="item0" compid="Combo00" propid="value" datasetid="viewdataset" columnid="company"/>
+          "Bind": [                                               //   </Bind>
+              {
+                "tag": "BindItem",
+                "attribute": {
+                  "id": "item0",
+                  "compid": "Combo00",
+                  "propid": "value",
+                  "datasetid": "viewdataset",
+                  "columnid": "company"
+                }
+              }
+            ]
+          }
+        ],
+        "Script": {                                               // <Script type="xscript5.1"><![CDATA[this.btnAdd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo) {}; ] ]></Script>
+            "tag": "Script",
+            "attribute": {
+                "type": "xscript5.1"
+            },
+            "value": "this.btnAdd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo) {}"
+        }
+    }
+}
+*============================================================================================*/
+/************************************************************************************************
+ * Nexacro Studio 호출 필수 FUNCTION 영역
+ ************************************************************************************************/
+/*---------------------------------------------------------------------------------------------*
+ * Function    : fn_GetViewGenerationResult
+ * Parameter   :
+ *               - fieldarray     : model field list
+ *               - contents       : old contents (include <View>)
+ *               - generationattr : attributes for view generation
+ * Return      : View contents (source + script) (JSON format)
+                 ex) {
+                        "View": {
+                            "tag": "View",
+                            "attribute": {
+                                "id": "View00",
+                                "viewtype": "FreeForm",
+                                "taborder": "2",
+                                "text": "search view",
+                                "left": "0",
+                                ...
+                            },
+                            "Model": [
+                                {   // with field
+                                    "fieldid": "department",
+                                    "Components": [
+                                    ...
+                                    ]
+                                },
+                                {   // without field
+                                    "fieldid": "",
+                                    "Components": [
+                                    ...
+                                    ]
+                                }
+                            ],
+                            "InitValue": [
+                            ],
+                            "Objects": [
+                            ],
+                            "Bind": [
+                            ],
+                            "Script": {
+                                "tag": "Script",
+                                "attribute": {
+                                },
+                                "value": ""
+                            }
+                        }
+                    }
+ * Description : Generate the view based on the model field and return the results.
+ *---------------------------------------------------------------------------------------------*
+ *                            !!! This is a required function. !!!                             *
+ *                            !!! Do not delete it. !!!                                        *
+ *---------------------------------------------------------------------------------------------*/
+fn_GetViewGenerationResult = function(fieldarray, contents, generationattr)
+{
+	//Return Value
+    var vResult = "";
+
+    //trace(">> fieldarray : " + fieldarray);
+	//trace(">> contents : " + contents);
+    //trace(">> generationattr : " + generationattr);
+	
+	trace(this.USE_TOT_COUNT + " " + this.USE_TOT_COUNT_BASE);
+	trace(this.USE_EXPAND_BUTTON + " " + this.USE_EXPAND_BUTTON_BASE);
+
+    //Make Generation Info
+	//this.oFieldArray : Model Information as JSON Object
+	//this.oContents : View Component Information as JSON Object
+	//this.oContents.View.Model : Model Information Initialization
+	//this.oGenerationAttr : Setting Information as JSON Object
+	//this.oUseFieldArray : Use Model Information as JSON Object
+	this.lfn_MakeGenerationInfo(fieldarray, contents, generationattr, true);
+	
+	//Load Model Information Production Function
+	fn_GetModel();
+
+	//Load InitValue Information Production Function
+    this.oContents.View.InitValue = fn_GetInitValue();
+
+	//Load Object Information Production Function
+    this.oContents.View.Objects = fn_GetObjects();
+
+	//Load Script Information Production Function
+    this.oContents.View.Script = fn_GetScript();
+
+	//Convert View Component Information to String
+    vResult = JSON.stringify(this.oContents, null, "\t");
+
+    //trace(">> vResult : " + vResult);
+    //Return View Component Information
+    return vResult;
+};
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetViewAttributeList
+ * Return       : View generation attribute list (JSON format)
+                  ex)   {
+                        "attributecount": "2",
+                        "attributes": [
+                           {
+                                "id": "use_triggerbutton",
+                                "edittype": "Boolean",              // edittype : Boolean/String/Number/Enum/ViewObjList
+                                "defaultvalue": "true",
+                                "description": "Specifies whether trigger button is auto-created or not"
+                            },
+                            {
+                                "id": "triggerbuttontext",
+                                "edittype": "String",               // edittype : Boolean/String/Number/Enum/ViewObjList
+                                "defaultvalue": "Search",
+                                "description": "Enter text for trigger button"
+                            }
+                        ]
+                    }
+ * Description : Obtain a list of custom attributes required for view generation
+ *---------------------------------------------------------------------------------------------*/
+fn_GetViewAttributeList = function()
+{
+    var sViewAttr = "";
+    var oViewAttr = {
+                        "attributes": [
+							this.oAttrTitleText,					// Title Text
+							this.oAttrTitleUseTotolCount,			// 전체건수 표시여부
+							{
+                                "id": "headbandsize",
+                                "edittype": "Number",
+								"defaultvalue": this.HEAD_BAND_SIZE,
+								"description": "Set Head Band Size"
+
+                            },
+							{
+                                "id": "bodybandsize",
+                                "edittype": "Number",
+								"defaultvalue": this.BODY_BAND_SIZE,
+								"description": "Set Body Band Size"
+
+                            },
+							{
+                                "id": "summbandsize",
+                                "edittype": "Number",
+								"defaultvalue": this.SUMM_BAND_SIZE,
+								"description": "Set Summ Band Size"
+
+                            },
+                            {
+                                "id": "headformat",
+                                "edittype": "layout",
+								"defaultvalue": "",
+								"userproperties" : {
+									"propertycount" : "2",
+									"properties" :
+									[
+										{
+											"id" : "text", "edittype" : "String", "defaultvalue" : ""
+											, "description" : "Enter the text to be expressed in this cell."
+										},
+										{
+											"id" : "cssclass", "edittype" : "String", "defaultvalue" : ""
+											, "description" : "Express the cell style as the class defined in XCSS."
+										}
+									]
+								},
+								"description": "Set the View Head Layout."
+
+                            },
+                            {
+                                "id": "bodyformat",
+                                "edittype": "layout",
+								"defaultvalue": "",
+								"userproperties" : {
+									"propertycount" : "2",
+									"properties" :
+									[
+										{
+											"id" : "text", "edittype" : "String", "defaultvalue" : ""
+											, "description" : "Enter the text to be expressed in this cell."
+										},
+										{
+											"id" : "cssclass", "edittype" : "String", "defaultvalue" : ""
+											, "description" : "Express the cell style as the class defined in XCSS."
+										}
+									]
+								},
+								"description": "Set the View Body Layout."
+
+                            },
+                            {
+                                "id": "summformat",
+                                "edittype": "layout",
+								"defaultvalue": "",
+								"userproperties" : {
+									"propertycount" : "2",
+									"properties" :
+									[
+										{
+											"id" : "text", "edittype" : "String", "defaultvalue" : ""
+											, "description" : "Enter the text to be expressed in this cell."
+										},
+										{
+											"id" : "cssclass", "edittype" : "String", "defaultvalue" : ""
+											, "description" : "Express the cell style as the class defined in XCSS."
+										}
+									]
+								},
+								"description": "Set the View Summ Layout."
+
+                            }
+                        ]
+                  };
+
+	oViewAttr["attributecount"] = oViewAttr["attributes"].length;
+
+	sViewAttr = JSON.stringify(oViewAttr, null, "\t");
+    return sViewAttr;
+};
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetFieldUserAttributeList
+ * Return       : user attribute list from model field(JSON format)
+                  ex)   {
+                        "attributecount": "2",
+                        "attributes": [
+                           {
+                                "id": "use_triggerbutton",
+                                "edittype": "Boolean",              // edittype : Boolean/String/Number/Enum/ViewObjList
+                                "defaultvalue": "true",
+                                "description": "Specifies whether trigger button is auto-created or not"
+                            },
+                            {
+                                "id": "triggerbuttontext",
+                                "edittype": "String",               // edittype : Boolean/String/Number/Enum/ViewObjList
+                                "defaultvalue": "Search",
+                                "description": "Enter text for trigger button"
+                            }
+                        ]
+                    }
+ * Description  : Obtain a list of user attributes to register in model field
+ *---------------------------------------------------------------------------------------------*/
+fn_GetFieldUserAttributeList = function ()
+{
+	var sFieldAttr = "";
+	var oFieldAttr = {
+                        "attributes": [
+                            {
+                                "id": "displaytype",
+                                "edittype": "Enum",
+								"enumlist" : ["normal", "none", "buttoncontrol", "calendarcontrol", "date", "checkboxcontrol", "combocontrol", "combotext", "currency", "decoratetext", "editcontrol", "imagecontrol", "mask", "maskeditcontrol", "number",  "progressbarcontrol",  "text",  "textareacontrol",  "treeitemcontrol"],
+                                "defaultvalue": this.DISPLAY_TYPE,
+                                "description": "Set the Field Expression"
+                            },
+							{
+                                "id": "edittype",
+                                "edittype" : "Enum",
+								"enumlist" : ["normal", "none", "button", "checkbox", "combo", "date", "mask", "readonly", "text", "textarea", "tree"],
+								"defaultvalue" : this.EDIT_TYPE,
+                                "description" : "Set the Field Editing Format"
+                            },
+							{
+                                "id": "fieldwidth",
+                                "edittype": "Number",
+								"defaultvalue": this.COL_SIZE,
+                                "description": "Field Width(px)"
+                            },
+							{
+                                "id": "cssclass",
+                                "edittype": "String",
+								"defaultvalue": this.CELL_CSSCLASS,
+                                "description": "Component CSS Class"
+                            },
+							{
+                                "id": "summprop",
+                                "edittype": "Enum",
+								"enumlist": ["none", "avg", "count", "max", "min", "sum"],
+								"defaultvalue": "none",
+                                "description": "Types of Values when expressing Summaries"
+                            },
+							{
+                                "id": "usecomp",
+                                "edittype": "Boolean",
+								"defaultvalue": this.USE_COMP,
+                                "description": "Use Component"
+                            }
+                        ]
+                  };
+
+	oFieldAttr["attributecount"] = oFieldAttr["attributes"].length;
+
+ 	sFieldAttr = JSON.stringify(oFieldAttr, null, "\t");
+    return sFieldAttr;
+}
+
+/************************************************************************************************
+ * 사용자 FUNCTION 영역
+ ************************************************************************************************/
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetModel
+ * Parameter    :
+ *                - this.oFieldArray : model field data
+ *                - this.oContents : view contents
+ *                - this.oGenerationAttr : attributes for view generation
+ * Return       : model contents (JSON format)
+ * Description  : Function to generate a component source based on field information of the model entered by the user
+ *---------------------------------------------------------------------------------------------*/
+fn_GetModel = function()
+{
+	//Field ID
+	var sFieldId;
+
+	//Import Model Field Quantity
+    var nFieldCount = this.oUseFieldArray.fieldcount;
+
+	//Default Layout
+	var oBaseLayout;
+
+	//Layout to use when creating Head
+	var oHeadLayout;
+
+	//Layout to use when creating Body
+	var oBodyLayout;
+
+	//Layout to use when creating Summ
+	var oSummLayout;
+	
+	// Title 영역
+	var sTitleText			= this.oGenerationAttr.attributes.titletext;			// 타이틀 Text
+	var sUseTotalCount		= this.oGenerationAttr.attributes.usetotalcount;		// 전체건수 Static 생성
+	var sUseExpandButton	= "none";												// expand 토글버튼 생성
+	
+	this.VIEW_TOP = this.lfn_MakeTitleArea(sTitleText, sUseTotalCount, sUseExpandButton);
+
+	// Grid 위치
+	var nTop = this.VIEW_TOP;
+	var nBottom	= 0;
+	var nLeft	= 0;
+	var nRight	= 0;
+	
+	//Create Model Field ID List to use in Grid
+    for(i=0;i<nFieldCount;i++)
+    {
+        oField = this.oUseFieldArray.fields[i];
+        if (sFieldId == undefined)sFieldId = oField.id;
+        else sFieldId += "," + oField.id;
+    }
+
+	//If the Head Area Layout is Set Up
+	if(this.oGenerationAttr.attributes.headformat)
+	{
+		//Set Default Layout
+		oBaseLayout = this.oGenerationAttr.attributes.headformat;
+
+		//Set Head Layout
+		oHeadLayout = this.oGenerationAttr.attributes.headformat;
+	}
+
+	//If the Body Area Layout is Set Up
+	if(this.oGenerationAttr.attributes.bodyformat)
+	{
+		//If the Default Layout is not Set Up
+		//Set the Body Layout as the Default Layout
+		if(!oBaseLayout)oBaseLayout = this.oGenerationAttr.attributes.bodyformat;
+
+		//Set Body Layout
+		oBodyLayout = this.oGenerationAttr.attributes.bodyformat;
+	}
+	//If the Body Layout is not Set Up
+	//Set the Default Layout as the Body Layout
+	else if(!this.oGenerationAttr.attributes.bodyformat&&oBaseLayout)
+	{
+		oBodyLayout = oBaseLayout;
+	}
+
+	//If the Summ Area Layout is Set Up
+	if(this.oGenerationAttr.attributes.summformat)
+	{
+		//If the Default Layout is not Set Up
+		//Set the Summ Layout as the Default Layout
+		if(!oBaseLayout)oBaseLayout = this.oGenerationAttr.attributes.summformat;
+
+		//Set the Summ Layout
+		oSummLayout = this.oGenerationAttr.attributes.summformat;
+	}
+
+	//Add Grip Component
+	var oModel = this.oContents.View.Model;
+    oModel[oModel.length] = {
+            "fieldid" : sFieldId,
+            "Components" :
+            [
+                {
+                    "tag" : "Grid",
+                    "attribute" :
+                    {
+                        "id" : "grdList", "left" : nLeft, "top" : nTop, "right" : nRight, "bottom" : nBottom, "binddataset" : "viewdataset"
+                    },
+                    "Grid" :
+                    [
+                        {
+                            "tag": "Formats",
+                            "attribute": {},
+                            "Formats":
+                            [
+                                {
+                                    "tag": "Format",
+                                    "attribute": { "id": "default" },
+                                    "Format":
+                                    [
+                                        {
+                                            "tag": "Columns",
+                                            "attribute": {},
+											//Load Grid Column Information Creation Function
+                                            "Columns": fn_GetColumns(oBaseLayout)
+                                        },
+                                        {
+                                            "tag": "Rows",
+                                            "attribute": {},
+											//Load Grid Row Information Creation Function
+                                            "Rows": fn_GetRows(oBaseLayout, oHeadLayout, oBodyLayout, oSummLayout)
+                                        },
+                                        {
+                                            "tag": "Band",
+                                            "attribute": { "id" : "head"},
+											//Load Grid Head Information Creation Function
+                                            "Band": fn_GetHeads(oBaseLayout, oHeadLayout)
+                                        },
+                                        {
+                                            "tag": "Band",
+                                            "attribute": { "id" : "body"},
+											//Load Grid Body Information Creation Function
+                                            "Band": fn_GetBodys(oBaseLayout, oBodyLayout)
+                                        },
+                                        {
+                                            "tag": "Band",
+                                            "attribute": { "id" : "summary"},
+											//Load Grid Summary Information Creation Function
+                                            "Band": fn_GetSumms(oBaseLayout, oSummLayout)
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+
+	//Return Information of Model to be Created
+    return oModel;
+};
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetColumns
+ * Parameter    :
+ *                - oBaseLayout : base layout data
+ * Return       : column(s) data of grid format
+ * Description  : Function to generate <Column> source
+ *---------------------------------------------------------------------------------------------*/
+fn_GetColumns = function(oBaseLayout)
+{
+
+	var oColumns = [];
+	var oField;
+	var nCount
+	var nFieldWidth;
+
+	//If Layout is Set Up
+	if(oBaseLayout)
+	{
+		//Create Column Tags based on number of Default Layout Columnsize
+		nCount = oBaseLayout.columnsize.length;
+		for(var i=0;i<nCount;i++)
+		{
+			nFieldWidth = oBaseLayout.columnsize[i];
+
+			oColumns[oColumns.length] =
+			{
+				"tag": "Column",
+				"attribute": {"size": nFieldWidth, "band": "body"}
+			}
+		}
+	}
+	//If Layout is not Set Up
+	else
+	{
+		//Create Column Tags based on number of Model Field
+		nCount = this.oFieldArray.fieldcount;
+		for(var i=0;i<nCount;i++)
+		{
+			oField = this.oFieldArray.fields[i];
+			nFieldWidth = oField.fieldwidth;
+
+			oColumns[oColumns.length] =
+			{
+				"tag": "Column",
+				"attribute": {"size": nFieldWidth, "band": "body"}
+			}
+		}
+	}
+
+	//Return Column Information
+    return oColumns;
+}
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetRows
+ * Parameter    :
+ *                - oBaseLayout : base layout data
+				  - oHeadLayout : head layout data
+				  - oBodyLayout : body layout data
+				  - oSummLayout : summ layout data
+ * Return       : row(s) data of grid format
+ * Description  : Function to generate <Row> source
+ *---------------------------------------------------------------------------------------------*/
+fn_GetRows = function(oBaseLayout, oHeadLayout, oBodyLayout, oSummLayout)
+{
+	var nCount;
+	var oRows = [];
+    var nHeadBandSize;
+	var nBodyBandSize;
+	var nSummBandSize;
+
+	//If Layout is Set Up
+	if(oBaseLayout)
+	{
+		//Add Row Tag for Head
+		if(oHeadLayout)
+		{
+			nCount = oHeadLayout.rowsize.length;
+			for(var i=0;i<nCount;i++)
+			{
+				nHeadBandSize = oHeadLayout.rowsize[i];
+				oRows[oRows.length] = {
+						"tag": "Row",
+						"attribute": {"size": nHeadBandSize, "band": "head"}
+					}
+			}
+		}
+
+		//Add Row Tag for Body
+		if(oBodyLayout)
+		{
+			nCount = oBodyLayout.rowsize.length;
+			for(var i=0;i<nCount;i++)
+			{
+				nBodyBandSize = oBodyLayout.rowsize[i];
+				oRows[oRows.length] = {
+						"tag": "Row",
+						"attribute": {"size": nBodyBandSize, "band": "body"}
+					}
+			}
+		}
+
+		//Add Row Tag for Summ
+		if(oSummLayout)
+		{
+			nCount = oSummLayout.rowsize.length;
+			for(var i=0;i<nCount;i++)
+			{
+				nSummBandSize = oSummLayout.rowsize[i];
+				oRows[oRows.length] = {
+						"tag": "Row",
+						"attribute": {"size": nSummBandSize, "band": "summ"}
+					}
+			}
+		}
+	}
+	//If Layout is not Set Up
+	else
+	{
+		//Import Size Information of each Band
+		nHeadBandSize = this.oGenerationAttr.attributes.headbandsize;
+		nBodyBandSize = this.oGenerationAttr.attributes.bodybandsize;
+		nSummBandSize = this.oGenerationAttr.attributes.summbandsize;
+
+		//Add Row Tag for Head if Head Size is bigger than -1
+		if(nHeadBandSize>-1)
+		{
+			oRows[oRows.length] = {
+						"tag": "Row",
+						"attribute": {"size": nHeadBandSize, "band": "head"}
+					}
+		}
+
+		//Add Row Tag for Body is Body Size is bigger than -1
+		if(nBodyBandSize>-1)
+		{
+			oRows[oRows.length] = {
+							"tag": "Row",
+							"attribute": {"size": nBodyBandSize, "band": "body"}
+						}
+		}
+
+		//Add Row Tag for Summ if Summ Size is bigger than -1
+		if(nSummBandSize>-1)
+		{
+			oRows[oRows.length] = {
+							"tag": "Row",
+							"attribute": {"size": nSummBandSize, "band": "summ"}
+						}
+		}
+	}
+
+	//Return Raw Information
+    return oRows;
+}
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetHeads
+ * Parameter    :
+ *                - oBaseLayout : base layout data
+				  - oHeadLayout : head layout data
+ * Return       : head band data of grid format
+ * Description  : Function to generate <Band id="head"> source
+ *---------------------------------------------------------------------------------------------*/
+fn_GetHeads = function(oBaseLayout, oHeadLayout)
+{
+    var nCount;
+	var nFieldCount;
+
+	var oHeads = [];
+
+	var arrCellList;
+	var oCell;
+	var nCol;
+	var nColSpan;
+	var nRow;
+	var nRowSpan;
+	var sCellText;
+
+	var oField;
+    var sFieldId = "";
+    var sLabel = "";
+    var sCssClass;
+
+	//If Layout is Set Up
+	if(oBaseLayout)
+	{
+		//If Head Layout is Set Up
+		if(oHeadLayout)
+		{
+			//Import number of Cells
+			arrCellList = oHeadLayout.celllist;
+			nCount = arrCellList.length;
+
+			for(var i=0;i<nCount;i++)
+			{
+				//Import Cell Information
+				oCell = arrCellList[i];
+				nCol = nexacro.toNumber(oCell.col);
+				nRow = nexacro.toNumber(oCell.row);
+				nColSpan = nexacro.toNumber(oCell.colspan);
+				nRowSpan = nexacro.toNumber(oCell.rowspan);
+				sCssClass = oCell.cssclass;
+
+				if(!nColSpan)nColSpan = 1;
+				if(!nRowSpan)nRowSpan = 1;
+
+				//Import Text Property Value
+				sCellText = oCell.text;
+
+				sLabel = "";
+
+				//If there is Field information included in Cell
+				if(oCell.fieldlist)
+				{
+					//Import Label Information from Field
+					//If there are multiple fields, express in label + label format
+					nFieldCount = oCell.fieldlist.length;
+					for(var j=0;j<nFieldCount;j++)
+					{
+						sFieldId = oCell.fieldlist[j];
+						oField = this.oUseFieldArray.fields.filter(fields=>fields.id==sFieldId)[0];
+						sLabel += oField.label;
+					}
+				}
+				//If there is no field information included in the cell
+				else
+				{
+					//Set text value as label if there is text property value
+					if(sCellText)sLabel = sCellText;
+				}
+
+				//Add Cell Tag on Head Band
+				oHeads[oHeads.length] =
+				{
+					"tag": "Cell",
+					"attribute":
+					{
+						"id": "cell_"+nCol+"_"+nRow+"_"+sFieldId, "col": nCol, "row": nRow, "colspan": nColSpan, "rowspan": nRowSpan, "text": sLabel, "cssclass" : sCssClass
+					}
+				};
+			}
+		}
+	}
+	//If Layout is not Set Up
+	else
+	{
+		if(this.oGenerationAttr.attributes.headbandsize>-1)
+		{
+			//Import Model Field Quantity
+			nCount = this.oFieldArray.fieldcount;
+
+			//Add Cell Tag on Head Band based on number of Fields
+			for(var i=0;i<nCount;i++)
+			{
+				oField = this.oFieldArray.fields[i];
+
+				sFieldId = oField.id;
+				sLabel = oField.label;
+
+				oHeads[oHeads.length] =
+				{
+					"tag": "Cell",
+					"attribute":
+					{
+						"id": "cell_"+sFieldId, "col": oHeads.length, "row": 0, "text": sLabel
+					}
+				};
+			}
+		}
+	}
+
+    return oHeads;
+}
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetBodys
+ * Parameter    :
+ *                - oBaseLayout : base layout data
+				  - oBodyLayout : body layout data
+ * Return       : body band data of grid format
+ * Description  : Function to generate <Band id="body"> source
+ *---------------------------------------------------------------------------------------------*/
+fn_GetBodys = function(oBaseLayout, oBodyLayout)
+{
+    var nCount;
+	var nFieldCount;
+
+	var oBodys = [];
+
+	var arrCellList;
+	var oCell;
+	var nCol;
+	var nColSpan;
+	var nRow;
+	var nRowSpan;
+
+	var oField;
+    var sFieldId = "";
+    var sLabel = "";
+	var sDisplayType;
+	var sEditType;
+	var sCssClass = "";
+	var sCellCssClass = "";
+
+	//If Layout is Set Up
+	if(oBaseLayout)
+	{
+		//If Body Layout is Set Up
+		if(oBodyLayout)
+		{
+			//Import number of Cells
+			arrCellList = oBodyLayout.celllist;
+			nCount = arrCellList.length;
+
+			for(var i=0;i<nCount;i++)
+			{
+				//Import Cell Information
+				oCell = arrCellList[i];
+				nCol = nexacro.toNumber(oCell.col);
+				nRow = nexacro.toNumber(oCell.row);
+				nColSpan = nexacro.toNumber(oCell.colspan);
+				nRowSpan = nexacro.toNumber(oCell.rowspan);
+				sCellCssClass = oCell.cssclass;
+
+				if(!nColSpan)nColSpan = 1;
+				if(!nRowSpan)nRowSpan = 1;
+
+				//Import Text Property Value
+				sCellText = oCell.text;
+
+				sLabel = "";
+
+				//If there is Field information included in Cell
+				if(oCell.fieldlist)
+				{
+					//Import number of fields included in the Cell
+					nFieldCount = oCell.fieldlist.length;
+
+					//If there is 1 Field, the Field and Bind
+					if(nFieldCount==1)
+					{
+						sFieldId = oCell.fieldlist[0];
+						oField = this.oUseFieldArray.fields.filter(fields=>fields.id==sFieldId)[0];
+						sDisplayType = oField.displaytype;
+						sEditType = oField.edittype;
+						sCssClass = oField.cssclass;
+						sLabel = "bind:"+sFieldId;
+					}
+					//If there are more than 1 Fields
+					//Use expr to express in Field+ Field Format
+					//Since it was set as expr, set as displaytype = normal, edittype = none
+					else
+					{
+						sLabel = "expr:";
+						for(var j=0;j<nFieldCount;j++)
+						{
+							sFieldId = oCell.fieldlist[j];
+							oField = this.oUseFieldArray.fields.filter(fields=>fields.id==sFieldId)[0];
+							sDisplayType = "normal";
+							sEditType = "none";
+
+							if(j==0)
+							{
+								sLabel += sFieldId;
+								sCssClass += oField.cssclass;
+							}
+							else
+							{
+								sLabel += "+"+sFieldId;
+								sCssClass += ","+oField.cssclass;
+							}
+						}
+					}
+				}
+				//If there is no field information included in the cell
+				else
+				{
+					//Set as displaytype = normal, edittype=none
+					sDisplayType = "normal";
+					sEditType = "none";
+
+					//Set text value as label if there is text property value
+					if(sCellText)sLabel = sCellText;
+				}
+
+				if(sCellCssClass)sCssClass = sCellCssClass;
+
+				//Add Cell Tag on Body Band
+				oBodys[oBodys.length] =
+				{
+					"tag": "Cell",
+					"attribute":
+					{
+						"id": "cell_"+nCol+"_"+nRow+"_"+sFieldId, "col": nCol, "row": nRow, "colspan": nColSpan, "rowspan": nRowSpan
+						, "text": sLabel, "displaytype" : sDisplayType, "edittype" : sEditType, "cssclass":sCssClass
+					}
+				};
+			}
+		}
+	}
+	//If Layout is not Set Up
+	else
+	{
+		if(this.oGenerationAttr.attributes.bodybandsize>-1)
+		{
+			//Import Model Field Quantity
+			nCount = this.oUseFieldArray.fieldcount;
+
+			//Add Cell Tag on Body Band based on number of Fields
+			for(var i=0;i<nCount;i++)
+			{
+				oField = this.oUseFieldArray.fields[i];
+
+				sFieldId = oField.id;
+				sLabel = "bind:"+sFieldId;
+				sDisplayType = oField.displaytype;
+				sEditType = oField.edittype;
+				sCssClass = oField.cssclass;
+				oBodys[oBodys.length] =
+				{
+					"tag": "Cell",
+					"attribute":
+					{
+						"id": "cell_"+sFieldId, "col": oBodys.length, "row": 0, "text": sLabel, "displaytype" : sDisplayType, "edittype" : sEditType, "cssclass":sCssClass
+					}
+				};
+			}
+		}
+	}
+
+	return oBodys;
+}
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetSums
+ * Parameter    :
+ *                - oBaseLayout : base layout data
+				  - oSummLayout : Summ layout data
+ * Return       : summ band data of grid format
+ * Description  : Function to generate <Band id="summ"> source
+ *---------------------------------------------------------------------------------------------*/
+fn_GetSumms = function(oBaseLayout, oSummLayout)
+{
+    var nCount;
+	var nFieldCount;
+
+	var oSumms = [];
+
+	var arrCellList;
+	var oCell;
+	var nCol;
+	var nColSpan;
+	var nRow;
+	var nRowSpan;
+	var sCellText;
+
+	var oField;
+    var sFieldId = "";
+    var sLabel = "";
+    var sSummProp;
+	var sCssClass = "";
+
+	//If Layout is Set Up
+	if(oBaseLayout)
+	{
+		//If Summ Layout is Set Up
+		if(oSummLayout)
+		{
+			//Import number of Cells
+			arrCellList = oSummLayout.celllist;
+			nCount = arrCellList.length;
+
+			for(var i=0;i<nCount;i++)
+			{
+				//Import Cell Information
+				oCell = arrCellList[i];
+				nCol = nexacro.toNumber(oCell.col);
+				nRow = nexacro.toNumber(oCell.row);
+				nColSpan = nexacro.toNumber(oCell.colspan);
+				nRowSpan = nexacro.toNumber(oCell.rowspan);
+				sCssClass = oCell.cssclass;
+
+				if(!nColSpan)nColSpan = 1;
+				if(!nRowSpan)nRowSpan = 1;
+
+				//Import Text Property Value
+				sCellText = oCell.text;
+
+				sLabel = "";
+
+				//If there is Field information included in Cell
+				if(oCell.fieldlist)
+				{
+					//Import number of fields included in the Cell
+					nFieldCount = oCell.fieldlist.length;
+
+					for(var j=0;j<nFieldCount;j++)
+					{
+						sFieldId = oCell.fieldlist[j];
+						oField = this.oUseFieldArray.fields.filter(fields=>fields.id==sFieldId)[0];
+
+						//Import Summ Expression Type Value (none, avg, count, max, min, sum)
+						sSummProp = oField.summprop;
+
+						//Create expr based on Summ Expression Type
+						//If there are multiple fields in one Cell
+						//Express in Formula + Formula Format
+						if(sSummProp=="avg")
+						{
+							if(sLabel=="")sLabel = "expr:dataset.getAvg('"+sFieldId+"')";
+							else sLabel += "+dataset.getAvg('"+sFieldId+"')";
+						}else if(sSummProp=="count")
+						{
+							if(sLabel=="")sLabel = "expr:dataset.getCount('"+sFieldId+"')";
+							else sLabel += "+dataset.getCount('"+sFieldId+"')";
+						}else if(sSummProp=="max")
+						{
+							if(sLabel=="")sLabel = "expr:dataset.getMax('"+sFieldId+"')";
+							else sLabel += "+dataset.getMax('"+sFieldId+"')";
+						}else if(sSummProp=="min")
+						{
+							if(sLabel=="")sLabel = "expr:dataset.getMax('"+sFieldId+"')";
+							else sLabel += "+dataset.getMax('"+sFieldId+"')";
+						}else if(sSummProp=="sum")
+						{
+							if(sLabel=="")sLabel = "expr:dataset.getSum('"+sFieldId+"')";
+							else sLabel += "+dataset.getSum('"+sFieldId+"')";
+						}
+					}
+				}
+				//If there is no field information included in the cell
+				else
+				{
+					//Set text value as label if there is text property value
+					if(sCellText)sLabel = sCellText;
+				}
+
+				//Add Cell Tag on Summ Band
+				oSumms[oSumms.length] =
+				{
+					"tag": "Cell",
+					"attribute":
+					{
+						"id": "cell_"+nCol+"_"+nRow+"_"+sFieldId, "col": nCol, "row": nRow, "colspan": nColSpan, "rowspan": nRowSpan, "text" : sLabel, "cssclass" : sCssClass
+					}
+				};
+			}
+		}
+	}
+	//If Layout is not Set Up
+	else
+	{
+		if(this.oGenerationAttr.attributes.summbandsize>-1)
+		{
+			//Import Model Field Quantity
+			nCount = this.oUseFieldArray.fieldcount;
+
+			//Add Cell Tag on Summ Band based on number of Fields
+			for(var i=0;i<nCount;i++)
+			{
+				oField = this.oUseFieldArray.fields[i];
+
+				sFieldId = oField.id;
+				sLabel = oField.label;
+
+				oSumms[oSumms.length] =
+				{
+					"tag": "Cell",
+					"attribute":
+					{
+						"id": "cell_"+sFieldId, "col": oSumms.length, "row": 0, "text" : ""
+					}
+				};
+			}
+		}
+	}
+
+    return oSumms;
+}
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetInitValue
+ * Parameter    :
+ *                - this.oFieldArray : model field data
+ *                - this.oContents : view contents
+ *                - this.oGenerationAttr : attributes for view generation
+ * Return       : initvalue contents (JSON format)
+ * Description  : Function to generate <InitValue> source
+ *---------------------------------------------------------------------------------------------*/
+fn_GetInitValue = function()
+{
+    var oInitValue = [];
+    /*
+    oInitValue =
+    [
+        {
+            "tag" : "initValue",
+            "initValue" :
+            [
+                {
+                    "tag" : "Button",
+                    "attribute" :
+                    {
+                        "id" : "btnSearch", "text" : "Search11"
+                    }
+                }
+            ]
+        }
+    ];
+    */
+    return oInitValue;
+};
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetObjects
+ * Parameter    :
+ *                - this.oFieldArray : model field data
+ *                - this.oContents : view contents
+ *                - this.oGenerationAttr : attributes for view generation
+ * Return       : objects contents (JSON format)
+ * Description  : Function to generate <Objects> source
+ *---------------------------------------------------------------------------------------------*/
+fn_GetObjects = function()
+{
+    //Initialize Object
+    var oObjects = [];
+
+    var oViewDataset = this.lfn_GetDataset("viewdataset", this.oFieldArray, 1);
+
+    //Object Information Setting
+    oObjects.push(oViewDataset);
+
+    //Return Object Information
+    return oObjects;
+};
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetScript
+ * Parameter    :
+ *                - this.oFieldArray : model field data
+ *                - this.oContents : view contents
+ *                - this.oGenerationAttr : attributes for view generation
+ * Return       : script contents (JSON format)
+ * Description  : Function to generate <Script> source
+ *---------------------------------------------------------------------------------------------*/
+fn_GetScript = function()
+{
+
+	//Initialize Script Information
+    var oScript = {};
+
+	//Return Script Information
+    return oScript;
+};]]></Script>
+</ViewTemplateInfo>

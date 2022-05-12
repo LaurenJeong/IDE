@@ -1,0 +1,29 @@
+﻿{
+	"name": "EZNGO_SampleAction",
+	"moduletype": "component",
+	"version": "1.0",
+	"minnexacroversion": "",
+	"description": "EZNGO Demo용 sample",
+	"license": "",
+	"objInfo": [	
+    "EZNGO_SampleAction/_metainfo_/CommonInfo.info",
+    "EZNGO_SampleAction/_metainfo_/TransactionAction.info"
+	],
+	"scripts": [
+    "EZNGO_SampleAction/TransactionAction.js"
+	],
+	"designscripts": [
+
+	],
+	"help": "",	
+	"xcss": "EZNGO_SampleAction/_xcss_/ActionAssetProject.xcss",
+	"images": "",	
+	"licensefiles": "",
+	"icons": "",
+	"userfolder": [
+
+	],
+	"contentseditor": [
+
+	]
+}

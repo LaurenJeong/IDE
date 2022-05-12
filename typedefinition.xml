@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TypeDefinition version="3.0">
+  <Modules>
+    <Module url="CompBase.json"/>
+    <Module url="ComComp.json"/>
+    <Module url="Grid.json"/>
+    <Module url="ListView.json"/>
+    <Module url="DeviceAPI.json"/>
+    <Module url="extlib::ActionAsset.json"/>
+    <Module url="extlib::EZNGO_SampleAction.json"/>
+  </Modules>
+  <Components>
+    <Component type="JavaScript" id="Button" classname="nexacro.Button" defaultheight="30" defaultwidth="100"/>
+    <Component type="JavaScript" id="Combo" classname="nexacro.Combo" defaultheight="30" defaultwidth="100"/>
+    <Component type="JavaScript" id="Edit" classname="nexacro.Edit" defaultheight="30" defaultwidth="100"/>
+    <Component type="JavaScript" id="MaskEdit" classname="nexacro.MaskEdit" defaultheight="30" defaultwidth="100"/>
+    <Component type="JavaScript" id="TextArea" classname="nexacro.TextArea" defaultheight="60" defaultwidth="150"/>
+    <Component type="JavaScript" id="Static" classname="nexacro.Static" defaultheight="30" defaultwidth="100"/>
+    <Component type="JavaScript" id="Div" classname="nexacro.Div"/>
+    <Component type="JavaScript" id="PopupDiv" classname="nexacro.PopupDiv"/>
+    <Component type="JavaScript" id="Radio" classname="nexacro.Radio" defaultheight="30" defaultwidth="100"/>
+    <Component type="JavaScript" id="CheckBox" classname="nexacro.CheckBox" defaultheight="30" defaultwidth="100"/>
+    <Component type="JavaScript" id="ListBox" classname="nexacro.ListBox"/>
+    <Component type="JavaScript" id="Grid" classname="nexacro.Grid"/>
+    <Component type="JavaScript" id="Spin" classname="nexacro.Spin" defaultheight="30" defaultwidth="100"/>
+    <Component type="JavaScript" id="Menu" classname="nexacro.Menu" defaultheight="30"/>
+    <Component type="JavaScript" id="PopupMenu" classname="nexacro.PopupMenu"/>
+    <Component type="JavaScript" id="Tab" classname="nexacro.Tab"/>
+    <Component type="JavaScript" id="GroupBox" classname="nexacro.GroupBox"/>
+    <Component type="JavaScript" id="Calendar" classname="nexacro.Calendar" defaultheight="30" defaultwidth="100"/>
+    <Component type="JavaScript" id="ImageViewer" classname="nexacro.ImageViewer" defaultwidth="200"/>
+    <Component type="JavaScript" id="ProgressBar" classname="nexacro.ProgressBar" defaultheight="30"/>
+    <Component type="JavaScript" id="Plugin" classname="nexacro.Plugin"/>
+    <Component type="JavaScript" id="Dataset" classname="nexacro.NormalDataset"/>
+    <Component type="JavaScript" id="ListView" classname="nexacro.ListView"/>
+    <Component type="JavaScript" id="DataObject" classname="nexacro.DataObject"/>
+    <Component type="JavaScript" id="View" classname="nexacro.View"/>
+    <Component type="JavaScript" id="TranAction" classname="nexacro.TranAction" prefixid=""/>
+    <Component type="JavaScript" id="ExcelImportAction" classname="nexacro.ExcelImportAction" prefixid=""/>
+    <Component type="JavaScript" id="ExcelExportAction" classname="nexacro.ExcelExportAction" prefixid=""/>
+    <Component type="JavaScript" id="PopupAction" classname="nexacro.PopupAction" prefixid=""/>
+    <Component type="JavaScript" id="MessageAction" classname="nexacro.MessageAction"/>
+    <Component type="JavaScript" id="DsIsUpdatedAction" classname="nexacro.DsIsUpdatedAction" prefixid=""/>
+    <Component type="JavaScript" id="DsSetFirstCdAction" classname="nexacro.DsSetFirstCdAction" prefixid=""/>
+    <Component type="JavaScript" id="PopupCloseAction" classname="nexacro.PopupCloseAction" prefixid=""/>
+    <Component type="JavaScript" id="TransactionAction" classname="nexacro.TransactionAction"/>
+  </Components>
+  <Services>
+    <Service prefixid="theme" type="resource" url="./_resource_/_theme_/" version="0" cachelevel="session" include_subdir="true"/>
+    <Service prefixid="initvalue" type="resource" url="./_resource_/_initvalue_/" version="0" cachelevel="session" include_subdir="false"/>
+    <Service prefixid="xcssrc" type="resource" url="./_resource_/_xcss_/" version="0" cachelevel="session" include_subdir="false"/>
+    <Service prefixid="imagerc" type="resource" url="./_resource_/_images_/" version="0" cachelevel="session" include_subdir="true"/>
+    <Service prefixid="font" type="resource" url="./_resource_/_font_/" version="0" cachelevel="session" include_subdir="false"/>
+    <Service prefixid="frame" type="form" url="./frame/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="svc" type="JSP" version="0" cachelevel="none" include_subdir="false" communicationversion="0" url="http://localhost:8080/DevPack/"/>
+    <Service prefixid="model" type="model" url="./model/" version="0" cachelevel="session" include_subdir="true" communicationversion="0"/>
+    <Service prefixid="view_lib" type="js" url="./view/lib/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="ActionAsset" type="file" url="./_extlib_/ActionAsset/" version="0" cachelevel="session" include_subdir="true" communicationversion="0"/>
+    <Service prefixid="sample" type="form" url="./sample/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="test" type="form" url="./test/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+  </Services>
+  <Protocols/>
+  <DeviceAdaptors/>
+  <Update/>
+</TypeDefinition>

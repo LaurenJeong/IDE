@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppVariables version="2.0">
+  <Datasets>
+    <Dataset id="gdsMenu">
+      <ColumnInfo>
+        <Column id="MENU_CD" type="STRING" size="256" description="메뉴코드"/>
+        <Column id="UP_MENU_CD" type="STRING" size="256" description="상위메뉴코드"/>
+        <Column id="MENU_NM" type="STRING" size="256" description="메뉴명"/>
+        <Column id="MENU_LVL" type="STRING" size="256" description="메뉴레벨(0부터시작)"/>
+        <Column id="PGM_PATH" type="STRING" size="256" description="화면 Services Prefix"/>
+        <Column id="PGM_ID" type="STRING" size="256" description="화면명"/>
+      </ColumnInfo>
+      <Rows>
+        <Row>
+          <Col id="MENU_CD">0</Col>
+          <Col id="UP_MENU_CD">0</Col>
+          <Col id="MENU_NM">Pivot 생성</Col>
+          <Col id="MENU_LVL">0</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">pivot_create.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">1000</Col>
+          <Col id="UP_MENU_CD">0</Col>
+          <Col id="MENU_NM">Config 설정</Col>
+          <Col id="MENU_LVL">0</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">config_intro.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="UP_MENU_CD">1000</Col>
+          <Col id="MENU_CD">1001</Col>
+          <Col id="MENU_NM">Config</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">config_config.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="UP_MENU_CD">1000</Col>
+          <Col id="MENU_CD">1002</Col>
+          <Col id="MENU_NM">Panel</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">config_panel.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">1003</Col>
+          <Col id="UP_MENU_CD">1000</Col>
+          <Col id="MENU_NM">SettingPopup</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">config_setttingPopup.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">2000</Col>
+          <Col id="UP_MENU_CD">0</Col>
+          <Col id="MENU_NM">Pivot 실행</Col>
+          <Col id="MENU_LVL">0</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">pivot_excute.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">3000</Col>
+          <Col id="UP_MENU_CD">0</Col>
+          <Col id="MENU_NM">Property</Col>
+          <Col id="MENU_LVL">0</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">property_intro.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">3001</Col>
+          <Col id="UP_MENU_CD">3000</Col>
+          <Col id="MENU_NM">grandtotal</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">property_grandtotal.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">3002</Col>
+          <Col id="UP_MENU_CD">3000</Col>
+          <Col id="MENU_NM">total</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">property_total.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">3003</Col>
+          <Col id="UP_MENU_CD">3000</Col>
+          <Col id="MENU_NM">casesensitive</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">property_casesensitive.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">3004</Col>
+          <Col id="UP_MENU_CD">3000</Col>
+          <Col id="MENU_NM">roundfractiondigit</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">property_roundfractiondisit.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">3005</Col>
+          <Col id="UP_MENU_CD">3000</Col>
+          <Col id="MENU_NM">loadingimage</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">property_loadingimage.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">3006</Col>
+          <Col id="UP_MENU_CD">3000</Col>
+          <Col id="MENU_NM">useitems</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">property_useitems.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">3007</Col>
+          <Col id="UP_MENU_CD">3000</Col>
+          <Col id="MENU_NM">usetoolbar</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">property_usetoolbar.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">5000</Col>
+          <Col id="UP_MENU_CD">0</Col>
+          <Col id="MENU_NM">Function</Col>
+          <Col id="MENU_LVL">0</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">function_intro.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">5001</Col>
+          <Col id="UP_MENU_CD">5000</Col>
+          <Col id="MENU_NM">enableToolbarButtons</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">function_enableToolbarButtons.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">5002</Col>
+          <Col id="UP_MENU_CD">5000</Col>
+          <Col id="MENU_NM">redraw</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">function_redraw.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">5003</Col>
+          <Col id="UP_MENU_CD">5000</Col>
+          <Col id="MENU_NM">render</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">function_render.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">5004</Col>
+          <Col id="UP_MENU_CD">5000</Col>
+          <Col id="MENU_NM">updateToDataset</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">function_updateToDataset.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">5005</Col>
+          <Col id="UP_MENU_CD">5000</Col>
+          <Col id="MENU_NM">get/set Config</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">function_getsetConfig.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">5006</Col>
+          <Col id="UP_MENU_CD">5000</Col>
+          <Col id="MENU_NM">get/set Panel</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">function_getsetPanel.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">5007</Col>
+          <Col id="UP_MENU_CD">5000</Col>
+          <Col id="MENU_NM">get/set SettingPopup</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">function_getsetSettingPopup.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">5008</Col>
+          <Col id="UP_MENU_CD">5000</Col>
+          <Col id="MENU_NM">getPivotGrid </Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">function_getPivotGrid.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_NM">getSelectedPivotData</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="MENU_CD">5009</Col>
+          <Col id="UP_MENU_CD">5000</Col>
+          <Col id="PGM_ID">function_getSelectedPivotData.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_NM">getSelectedPivotDetailData</Col>
+          <Col id="UP_MENU_CD">5000</Col>
+          <Col id="MENU_CD">5010</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">function_getSelectedPivotDetailData.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">4000</Col>
+          <Col id="UP_MENU_CD">0</Col>
+          <Col id="MENU_NM">Event</Col>
+          <Col id="MENU_LVL">0</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">event_intro.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">4001</Col>
+          <Col id="UP_MENU_CD">4000</Col>
+          <Col id="MENU_NM">can/on create</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">event_create.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">4002</Col>
+          <Col id="UP_MENU_CD">4000</Col>
+          <Col id="MENU_NM">can/on render</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">event_render.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">4003</Col>
+          <Col id="UP_MENU_CD">4000</Col>
+          <Col id="MENU_NM">can/on toolbarbuttonclick</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">event_toolbarbuttonclick.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">4004</Col>
+          <Col id="UP_MENU_CD">4000</Col>
+          <Col id="MENU_NM">onerror</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">event_error.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">4005</Col>
+          <Col id="UP_MENU_CD">4000</Col>
+          <Col id="MENU_NM">ongridcellclick</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">event_ongridcellclick.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">4006</Col>
+          <Col id="UP_MENU_CD">4000</Col>
+          <Col id="MENU_NM">ongridcelldblclick</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">event_ongridcelldblclick.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">4007</Col>
+          <Col id="UP_MENU_CD">4000</Col>
+          <Col id="MENU_NM">ongridselectchanged</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">event_ongridselectchanged.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">6000</Col>
+          <Col id="UP_MENU_CD">0</Col>
+          <Col id="MENU_NM">활용</Col>
+          <Col id="MENU_LVL">0</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">uses_intro.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">6001</Col>
+          <Col id="UP_MENU_CD">6000</Col>
+          <Col id="MENU_NM">Sort 설정</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">uses_sort.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">6002</Col>
+          <Col id="UP_MENU_CD">6000</Col>
+          <Col id="MENU_NM">Filter 설정</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">uses_filter.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">6003</Col>
+          <Col id="UP_MENU_CD">6000</Col>
+          <Col id="MENU_NM">집계 설정</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">uses_aggregator.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">6004</Col>
+          <Col id="UP_MENU_CD">6000</Col>
+          <Col id="MENU_NM">사용자 집계 설정</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">uses_custom_aggregator.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">6005</Col>
+          <Col id="UP_MENU_CD">6000</Col>
+          <Col id="MENU_NM">cancreate Event 활용</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">uses_canCreate.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">6006</Col>
+          <Col id="UP_MENU_CD">6000</Col>
+          <Col id="MENU_NM">getPivotGrid 활용</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">uses_getPivotGrid.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">6007</Col>
+          <Col id="UP_MENU_CD">6000</Col>
+          <Col id="MENU_NM">nexacro chart연동</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">uses_getSelectPivotData.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">6008</Col>
+          <Col id="UP_MENU_CD">6000</Col>
+          <Col id="MENU_NM">대용량데이터 처리</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">gallery</Col>
+          <Col id="PGM_ID">uses_rawdata.xfdl</Col>
+        </Row>
+      </Rows>
+    </Dataset>
+  </Datasets>
+  <Variables/>
+  <DataObjects/>
+</AppVariables>

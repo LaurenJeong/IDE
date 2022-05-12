@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="test_action_commcode" width="1280" height="720" titletext="공통코드 샘플" onload="test_action_commcode_onload">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <View id="viwSearch" taborder="0" text="View00" viewdataset="viewdataset" left="8" top="10" width="569" height="116">
+          <Layouts>
+            <Layout>
+              <Static id="stBg" left="0" top="0" right="0" bottom="0" cssclass="sta_searchbox"/>
+              <Button id="btnSearch" width="100" height="30" right="5" bottom="5" cssclass="btn_search" text="Search" onclick="viwSearch_btnSearch_onclick"/>
+              <Static id="stcompany_Label" left="5" top="5" width="95" height="30" text="Company" cssclass="sta_label"/>
+              <Radio id="rdocompany" left="105" top="5" width="330" height="30" innerdataset="dsCompanyS" codecolumn="COMN_CD" datacolumn="COMN_CD_NM" rowcount="1"/>
+              <Static id="stdepartment_Label" left="5" top="40" width="95" height="30" text="Department" cssclass="sta_label"/>
+              <Combo id="cmbdepartment" left="105" top="40" width="330" height="30" innerdataset="dsDepartmentS" codecolumn="COMN_CD" datacolumn="COMN_CD_NM"/>
+              <Static id="stname_Label" left="5" top="75" width="95" height="30" text="Name" cssclass="sta_label"/>
+              <Edit id="edtname" left="105" top="75" width="330" height="30"/>
+            </Layout>
+            <Layout/>
+          </Layouts>
+          <Objects>
+            <Dataset id="viewdataset">
+              <ColumnInfo>
+                <Column id="company" type="BLOB" size="80"/>
+                <Column id="department" type="BLOB" size="80"/>
+                <Column id="name" type="STRING" size="80"/>
+              </ColumnInfo>
+              <Rows>
+                <Row/>
+              </Rows>
+            </Dataset>
+          </Objects>
+          <Bind>
+            <BindItem id="bind_rdocompany" compid="rdocompany" propid="value" datasetid="viewdataset" columnid="company"/>
+            <BindItem id="bind_cmbdepartment" compid="cmbdepartment" propid="value" datasetid="viewdataset" columnid="department"/>
+            <BindItem id="bind_edtname" compid="edtname" propid="value" datasetid="viewdataset" columnid="name"/>
+          </Bind>
+          <ModelInfo modelserviceid="model" serviceid="svcQuickCodeTutorial" modelid="tutorial_SearchEmployee" filepath="svcQuickCodeTutorial.xmodel">
+            <Fields>
+              <Field id="company" comptype="radio" fieldwidth="110px" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_label"/>
+              <Field id="department" required="false" comptype="combo" fieldwidth="110px" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_label"/>
+              <Field id="name" required="false" comptype="edit" fieldwidth="110px" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_label"/>
+            </Fields>
+            <Components>
+              <Component id="stcompany_Label" fields="company"/>
+              <Component id="rdocompany" fields="company"/>
+              <Component id="stdepartment_Label" fields="department"/>
+              <Component id="cmbdepartment" fields="department"/>
+              <Component id="stname_Label" fields="name"/>
+              <Component id="edtname" fields="name"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="SearchViewTemplate.xviewgen">
+            <Attribute id="direction" value="horizontal"/>
+            <Attribute id="halign" value="left"/>
+            <Attribute id="valign" value="top"/>
+            <Attribute id="searchbuttontype" value="bottom"/>
+            <Attribute id="searchbuttontext" value="Search"/>
+            <Attribute id="searchbuttoncssclass" value="btn_search"/>
+            <Attribute id="searchbgcssclass" value="sta_searchbox"/>
+          </ViewTemplateInfo>
+        </View>
+        <View id="viwList" taborder="1" text="View01" viewdataset="viewdataset" left="6" top="136" width="571" height="308">
+          <Layouts>
+            <Layout>
+              <Grid id="grdList" left="0" top="0" right="0" bottom="0" binddataset="viewdataset" autofittype="col">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="30" band="head"/>
+                      <Row size="30"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell id="cell_company" text="Company"/>
+                      <Cell col="1" id="cell_department" text="Department"/>
+                      <Cell col="2" id="cell_name" text="Name"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell id="cell_company" text="bind:company" displaytype="combocontrol" edittype="combo" combodataset="dsCompany" combocodecol="COMN_CD" combodatacol="COMN_CD_NM"/>
+                      <Cell col="1" id="cell_department" text="bind:department" displaytype="combocontrol" edittype="combo" combodataset="dsDepartment" combocodecol="COMN_CD" combodatacol="COMN_CD_NM"/>
+                      <Cell col="2" id="cell_name" text="bind:name" displaytype="normal" edittype="normal"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+            <Layout/>
+          </Layouts>
+          <Objects>
+            <Dataset id="viewdataset">
+              <ColumnInfo>
+                <Column id="company" type="STRING" size="80"/>
+                <Column id="department" type="STRING" size="80"/>
+                <Column id="name" type="STRING" size="80"/>
+              </ColumnInfo>
+            </Dataset>
+          </Objects>
+          <ModelInfo modelserviceid="model" serviceid="svcQuickCodeTutorial" modelid="tutorial_DetailEmployee" filepath="svcQuickCodeTutorial.xmodel">
+            <Fields>
+              <Field id="company" required="false" datatype="STRING" displaytype="combocontrol" edittype="combo" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="department" required="false" datatype="STRING" displaytype="combocontrol" edittype="combo" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="name" required="false" displaytype="normal" edittype="normal" fieldwidth="80" cssclass="" summprop="none"/>
+            </Fields>
+            <Components>
+              <Component id="grdList" fields="company,department,name"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="GridViewTemplate.xviewgen">
+            <Attribute id="headbandsize" value="30"/>
+            <Attribute id="bodybandsize" value="30"/>
+            <Attribute id="summbandsize" value="-1"/>
+          </ViewTemplateInfo>
+        </View>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="gdsCommCd">
+        <ColumnInfo>
+          <Column id="COMN_GRP_CD" type="STRING" size="256"/>
+          <Column id="COMN_GRP_CD_NM" type="STRING" size="256"/>
+          <Column id="COMN_CD" type="STRING" size="256"/>
+          <Column id="COMN_CD_NM" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="COMN_GRP_CD">01</Col>
+            <Col id="COMN_GRP_CD_NM">Company</Col>
+            <Col id="COMN_CD">10</Col>
+            <Col id="COMN_CD_NM">CompanyA</Col>
+          </Row>
+          <Row>
+            <Col id="COMN_GRP_CD">01</Col>
+            <Col id="COMN_GRP_CD_NM">Company</Col>
+            <Col id="COMN_CD">20</Col>
+            <Col id="COMN_CD_NM">CompanyB</Col>
+          </Row>
+          <Row>
+            <Col id="COMN_GRP_CD">02</Col>
+            <Col id="COMN_GRP_CD_NM">Department</Col>
+            <Col id="COMN_CD">100100</Col>
+            <Col id="COMN_CD_NM">부서01</Col>
+          </Row>
+          <Row>
+            <Col id="COMN_GRP_CD">02</Col>
+            <Col id="COMN_GRP_CD_NM">Department</Col>
+            <Col id="COMN_CD">100200</Col>
+            <Col id="COMN_CD_NM">부서02</Col>
+          </Row>
+          <Row>
+            <Col id="COMN_GRP_CD">02</Col>
+            <Col id="COMN_GRP_CD_NM">Department</Col>
+            <Col id="COMN_CD">100300</Col>
+            <Col id="COMN_CD_NM">부서03</Col>
+          </Row>
+          <Row>
+            <Col id="COMN_GRP_CD">02</Col>
+            <Col id="COMN_GRP_CD_NM">Department</Col>
+            <Col id="COMN_CD">200100</Col>
+            <Col id="COMN_CD_NM">부서04</Col>
+          </Row>
+          <Row>
+            <Col id="COMN_GRP_CD">02</Col>
+            <Col id="COMN_GRP_CD_NM">Department</Col>
+            <Col id="COMN_CD">200200</Col>
+            <Col id="COMN_CD_NM">부서05</Col>
+          </Row>
+          <Row>
+            <Col id="COMN_GRP_CD">02</Col>
+            <Col id="COMN_GRP_CD_NM">Department</Col>
+            <Col id="COMN_CD">200300</Col>
+            <Col id="COMN_CD_NM">부서06</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsList">
+        <ColumnInfo>
+          <Column id="company" type="BLOB" size="80"/>
+          <Column id="department" type="BLOB" size="80"/>
+          <Column id="name" type="STRING" size="80"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="company">10</Col>
+            <Col id="department">100100</Col>
+            <Col id="name">홍길동</Col>
+          </Row>
+          <Row>
+            <Col id="company">10</Col>
+            <Col id="department">100200</Col>
+            <Col id="name">홍상직</Col>
+          </Row>
+          <Row>
+            <Col id="company">10</Col>
+            <Col id="department">100200</Col>
+            <Col id="name">홍인형</Col>
+          </Row>
+          <Row>
+            <Col id="company">10</Col>
+            <Col id="department">100300</Col>
+            <Col id="name">백운도사</Col>
+          </Row>
+          <Row>
+            <Col id="company">20</Col>
+            <Col id="department">200100</Col>
+            <Col id="name">마숙</Col>
+          </Row>
+          <Row>
+            <Col id="company">20</Col>
+            <Col id="department">200100</Col>
+            <Col id="name">차돌바위</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsCompanyS">
+        <ColumnInfo>
+          <Column id="COMN_CD" type="STRING" size="256"/>
+          <Column id="COMN_CD_NM" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="COMN_CD">10</Col>
+            <Col id="COMN_CD_NM">CompanyA</Col>
+          </Row>
+          <Row>
+            <Col id="COMN_CD">20</Col>
+            <Col id="COMN_CD_NM">CompanyB</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsDepartmentS">
+        <ColumnInfo>
+          <Column id="COMN_CD" type="STRING" size="256"/>
+          <Column id="COMN_CD_NM" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="COMN_CD">100100</Col>
+            <Col id="COMN_CD_NM">부서01</Col>
+          </Row>
+          <Row>
+            <Col id="COMN_CD">100200</Col>
+            <Col id="COMN_CD_NM">부서02</Col>
+          </Row>
+          <Row>
+            <Col id="COMN_CD">100300</Col>
+            <Col id="COMN_CD_NM">부서03</Col>
+          </Row>
+          <Row>
+            <Col id="COMN_CD">200100</Col>
+            <Col id="COMN_CD_NM">부서04</Col>
+          </Row>
+          <Row>
+            <Col id="COMN_CD">200200</Col>
+            <Col id="COMN_CD_NM">부서05</Col>
+          </Row>
+          <Row>
+            <Col id="COMN_CD">200300</Col>
+            <Col id="COMN_CD_NM">부서06</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsCompany">
+        <ColumnInfo>
+          <Column id="COMN_CD" type="STRING" size="256"/>
+          <Column id="COMN_CD_NM" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="COMN_CD">10</Col>
+            <Col id="COMN_CD_NM">CompanyA</Col>
+          </Row>
+          <Row>
+            <Col id="COMN_CD">20</Col>
+            <Col id="COMN_CD_NM">CompanyB</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsDepartment">
+        <ColumnInfo>
+          <Column id="COMN_CD" type="STRING" size="256"/>
+          <Column id="COMN_CD_NM" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="COMN_CD">100100</Col>
+            <Col id="COMN_CD_NM">부서01</Col>
+          </Row>
+          <Row>
+            <Col id="COMN_CD">100200</Col>
+            <Col id="COMN_CD_NM">부서02</Col>
+          </Row>
+          <Row>
+            <Col id="COMN_CD">100300</Col>
+            <Col id="COMN_CD_NM">부서03</Col>
+          </Row>
+          <Row>
+            <Col id="COMN_CD">200100</Col>
+            <Col id="COMN_CD_NM">부서04</Col>
+          </Row>
+          <Row>
+            <Col id="COMN_CD">200200</Col>
+            <Col id="COMN_CD_NM">부서05</Col>
+          </Row>
+          <Row>
+            <Col id="COMN_CD">200300</Col>
+            <Col id="COMN_CD_NM">부서06</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <DsSetFirstCdAction id="DsSetFirstCdAction00" targetview="viwSearch" gridcell="-1" initindex="0" targetcomp="rdocompany" firstname="전체">
+        <Contents/>
+      </DsSetFirstCdAction>
+      <DsSetFirstCdAction id="DsSetFirstCdAction01" targetview="viwSearch" gridcell="-1" firstname="전체" initindex="0" targetcomp="cmbdepartment">
+        <Contents/>
+      </DsSetFirstCdAction>
+      <DsSetFirstCdAction id="DsSetFirstCdAction02" targetview="viwList" gridcell="0" firstname="선택" initindex="-1" targetcomp="grdList">
+        <Contents/>
+      </DsSetFirstCdAction>
+      <DsSetFirstCdAction id="DsSetFirstCdAction03" gridcell="-1" firstname="선택" initindex="-1" targetview="test_action_commcode">
+        <Contents/>
+      </DsSetFirstCdAction>
+    </Objects>
+    <Trigger>
+      <TriggerItem id="item1" triggertype="Form Init" triggerview="test_action_commcode" triggerobj="test_action_commcode" targetaction="DsSetFirstCdAction00" condition=""/>
+      <TriggerItem id="item0" triggertype="Form Init" triggerview="test_action_commcode" triggerobj="test_action_commcode" targetaction="DsSetFirstCdAction01" condition=""/>
+      <TriggerItem id="item2" triggertype="Form Init" triggerview="test_action_commcode" triggerobj="test_action_commcode" targetaction="DsSetFirstCdAction02" condition=""/>
+    </Trigger>
+    <Script type="xscript5.1"><![CDATA[
+this.test_action_commcode_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.DsSetFirstCdAction03.set_targetcomp(this.dsDepartment);
+	this.DsSetFirstCdAction03.run();
+};
+
+this.viwSearch_btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.viwList.form.viewdataset.copyData(this.dsList);
+};
+
+]]></Script>
+  </Form>
+</FDL>

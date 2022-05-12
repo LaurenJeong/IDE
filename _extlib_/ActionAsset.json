@@ -1,0 +1,59 @@
+﻿{
+	"name": "ActionAsset",
+	"moduletype": "component",
+	"version": "0",
+	"minnexacroversion": "",
+	"description": "",
+	"license": "",
+	"objInfo": [	
+    "ActionAsset/_metainfo_/CommonInfo.info",
+    "ActionAsset/_metainfo_/TranAction.info",
+    "ActionAsset/_metainfo_/MessageAction.info",
+    "ActionAsset/_metainfo_/PopupAction.info",
+    "ActionAsset/_metainfo_/ActionRunEventInfo.info",
+    "ActionAsset/_metainfo_/ActionSuccessEventInfo.info",
+    "ActionAsset/_metainfo_/ActionErrorEventInfo.info",
+    "ActionAsset/_metainfo_/TranActionSuccessEventInfo.info",
+    "ActionAsset/_metainfo_/TranActionErrorEventInfo.info",
+    "ActionAsset/_metainfo_/ExcelExportAction.info",
+    "ActionAsset/_metainfo_/ExcelImportAction.info",
+    "ActionAsset/_metainfo_/DsIsUpdatedAction.info",
+    "ActionAsset/_metainfo_/PopupCloseAction.info",
+    "ActionAsset/_metainfo_/DsSetFirstCdAction.info"
+	],
+	"scripts": [
+    "ActionAsset/TranAction.js",
+    "ActionAsset/MessageAction.js",
+    "ActionAsset/PopupAction.js",
+    "ActionAsset/ActionRunEventInfo.js",
+    "ActionAsset/ActionSuccessEventInfo.js",
+    "ActionAsset/ActionErrorEventInfo.js",
+    "ActionAsset/TranActionSuccessEventInfo.js",
+    "ActionAsset/TranActionErrorEventInfo.js",
+    "ActionAsset/ExcelExportAction.js",
+    "ActionAsset/ExcelImportAction.js",
+    "ActionAsset/DsIsUpdatedAction.js",
+    "ActionAsset/PopupCloseAction.js",
+    "ActionAsset/DsSetFirstCdAction.js"
+	],
+	"scriptsfilter": [
+
+	],
+	"designscripts": [
+
+	],
+	"help": "",	
+	"xcss": "ActionAsset/_xcss_/ActionAssetProject.xcss",
+	"images": "",	
+	"licensefiles": "",
+	"icons": "",
+	"userfolder": [
+
+	],
+	"installinfo": {
+
+	},
+	"contentseditor": [
+
+	]
+}

@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Work" width="800" height="600" titletext="Form_Work">
+    <Layouts>
+      <Layout width="800" height="600" screenid="Desktop_screen">
+        <View id="View00" taborder="0" text="View00" viewdataset="viewdataset" left="4" top="7" height="41" right="6">
+          <Layouts>
+            <Layout>
+              <Static id="stBg" left="0" top="0" right="0" bottom="0" cssclass="sta_searchbox"/>
+              <Button id="btnSearch" width="100" height="30" right="5" bottom="5" cssclass="btn_search" text="Search"/>
+              <Static id="stacompany_Label" left="5" top="5" width="95" height="30" text="Company" cssclass="sta_label"/>
+              <Combo id="cmbcompany" left="105" top="5" width="100" height="30"/>
+              <Static id="stadepartment_Label" left="210" top="5" width="95" height="30" text="Department" cssclass="sta_label"/>
+              <Edit id="edtdepartment" left="310" top="5" width="100" height="30"/>
+              <Static id="staname_Label" left="415" top="5" width="95" height="30" text="Name" cssclass="sta_label"/>
+              <Edit id="edtname" left="515" top="5" width="100" height="30"/>
+            </Layout>
+            <Layout/>
+          </Layouts>
+          <Objects>
+            <Dataset id="viewdataset">
+              <ColumnInfo>
+                <Column id="company" type="STRING" size="80"/>
+                <Column id="department" type="STRING" size="80"/>
+                <Column id="name" type="STRING" size="80"/>
+              </ColumnInfo>
+              <Rows>
+                <Row/>
+              </Rows>
+            </Dataset>
+          </Objects>
+          <Bind>
+            <BindItem id="bind_cmbcompany" compid="cmbcompany" propid="value" datasetid="viewdataset" columnid="company"/>
+            <BindItem id="bind_edtdepartment" compid="edtdepartment" propid="value" datasetid="viewdataset" columnid="department"/>
+            <BindItem id="bind_edtname" compid="edtname" propid="value" datasetid="viewdataset" columnid="name"/>
+          </Bind>
+          <ModelInfo modelserviceid="model" serviceid="svcQuickCodeTutorial" modelid="tutorial_SearchEmployee" filepath="svcQuickCodeTutorial.xmodel">
+            <Fields>
+              <Field id="company" datatype="STRING" comptype="combo" fieldwidth="110px" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_label" usecomp="true"/>
+              <Field id="department" required="false" datatype="STRING" comptype="edit" fieldwidth="110px" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_label" usecomp="true"/>
+              <Field id="name" required="false" comptype="edit" fieldwidth="110px" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_label" usecomp="true"/>
+            </Fields>
+            <Components>
+              <Component id="stacompany_Label" fields="company"/>
+              <Component id="cmbcompany" fields="company"/>
+              <Component id="stadepartment_Label" fields="department"/>
+              <Component id="edtdepartment" fields="department"/>
+              <Component id="staname_Label" fields="name"/>
+              <Component id="edtname" fields="name"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="SearchViewTemplate.xviewgen">
+            <Attribute id="direction" value="horizontal"/>
+            <Attribute id="halign" value="left"/>
+            <Attribute id="valign" value="top"/>
+            <Attribute id="searchbuttontype" value="bottom"/>
+            <Attribute id="searchbuttontext" value="Search"/>
+            <Attribute id="searchbuttoncssclass" value="btn_search"/>
+            <Attribute id="searchbgcssclass" value="sta_searchbox"/>
+          </ViewTemplateInfo>
+        </View>
+        <View id="View03" taborder="3" text="View03" viewdataset="viewdataset" left="2" top="65" width="793" height="42">
+          <Layouts>
+            <Layout>
+              <Button id="btnAdd" left="458" top="6" width="80" height="30" text="신규"/>
+              <Button id="btnDel" left="543" top="6" width="80" height="30" text="삭제"/>
+              <Button id="btnSave" left="628" top="6" width="80" height="30" text="저장"/>
+              <Button id="btnPrint" left="713" top="6" width="80" height="30" text="출력"/>
+            </Layout>
+            <Layout/>
+          </Layouts>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="CommBtn" filepath="sample\Button.xmodel">
+            <Fields>
+              <Field id="Add" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Del" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Save" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Print" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+            </Fields>
+            <Components>
+              <Component id="btnAdd" fields="Add"/>
+              <Component id="btnDel" fields="Del"/>
+              <Component id="btnSave" fields="Save"/>
+              <Component id="btnPrint" fields="Print"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="ButtonViewTemplate.xviewgen">
+            <Attribute id="direction" value="horizontal"/>
+            <Attribute id="halign" value="right"/>
+            <Attribute id="valign" value="middle"/>
+          </ViewTemplateInfo>
+        </View>
+        <View id="View01" taborder="1" text="View01" viewdataset="viewdataset" left="2" top="119" width="365" height="471">
+          <Layouts>
+            <Layout>
+              <Grid id="grdList" left="0" top="0" right="0" bottom="0" binddataset="viewdataset">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="30" band="head"/>
+                      <Row size="30" band="body"/>
+                      <Row size="30" band="summ"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell id="cell_company" col="0" row="0" text="Company"/>
+                      <Cell id="cell_department" col="1" row="0" text="Department"/>
+                      <Cell id="cell_name" col="2" row="0" text="Name"/>
+                      <Cell id="cell_position" col="3" row="0" text="Position"/>
+                      <Cell id="cell_phone" col="4" row="0" text="Phone"/>
+                      <Cell id="cell_address" col="5" row="0" text="Address"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell id="cell_company" col="0" row="0" text="bind:company" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_department" col="1" row="0" text="bind:department" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_name" col="2" row="0" text="bind:name" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_position" col="3" row="0" text="bind:position" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_phone" col="4" row="0" text="bind:phone" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_address" col="5" row="0" text="bind:address" displaytype="normal" edittype="none"/>
+                    </Band>
+                    <Band id="summary">
+                      <Cell id="cell_company" col="0" row="0" text=""/>
+                      <Cell id="cell_department" col="1" row="0" text=""/>
+                      <Cell id="cell_name" col="2" row="0" text=""/>
+                      <Cell id="cell_position" col="3" row="0" text=""/>
+                      <Cell id="cell_phone" col="4" row="0" text=""/>
+                      <Cell id="cell_address" col="5" row="0" text=""/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+            <Layout/>
+          </Layouts>
+          <Objects>
+            <Dataset id="viewdataset">
+              <ColumnInfo>
+                <Column id="company" type="STRING" size="80"/>
+                <Column id="department" type="STRING" size="80"/>
+                <Column id="name" type="STRING" size="80"/>
+                <Column id="position" type="STRING" size="80"/>
+                <Column id="phone" type="STRING" size="80"/>
+                <Column id="address" type="STRING" size="256"/>
+              </ColumnInfo>
+              <Rows>
+                <Row/>
+              </Rows>
+            </Dataset>
+          </Objects>
+          <ModelInfo modelserviceid="model" serviceid="svcQuickCodeTutorial" modelid="tutorial_DetailEmployee" filepath="svcQuickCodeTutorial.xmodel">
+            <Fields>
+              <Field id="company" required="false" datatype="STRING" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="department" required="false" datatype="STRING" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="name" required="false" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="position" required="false" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="phone" required="false" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="address" required="false" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+            </Fields>
+            <Components>
+              <Component id="grdList" fields="company,department,name,position,phone,address"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="GridViewTemplate.xviewgen">
+            <Attribute id="headbandsize" value="30"/>
+            <Attribute id="bodybandsize" value="30"/>
+            <Attribute id="summbandsize" value="30"/>
+          </ViewTemplateInfo>
+        </View>
+        <View id="View02" taborder="2" text="View02" viewdataset="viewdataset" left="372" top="120" width="420" height="473" sourceview="View01">
+          <Layouts>
+            <Layout>
+              <Static id="stacompany_bg" left="0" top="0" width="420" height="40" cssclass="sta_fieldbox"/>
+              <Static id="stacompany_Label" left="0" top="0" width="100" height="40" text="Company" cssclass="sta_labelbox"/>
+              <Edit id="edtcompany" left="105" top="5" width="310" height="30"/>
+              <Static id="stadepartment_bg" left="0" top="39" width="420" height="40" cssclass="sta_fieldbox"/>
+              <Static id="stadepartment_Label" left="0" top="39" width="100" height="40" text="Department" cssclass="sta_labelbox"/>
+              <Edit id="edtdepartment" left="105" top="44" width="310" height="30"/>
+              <Static id="staname_bg" left="0" top="78" width="420" height="40" cssclass="sta_fieldbox"/>
+              <Static id="staname_Label" left="0" top="78" width="100" height="40" text="Name" cssclass="sta_labelbox"/>
+              <Edit id="edtname" left="105" top="83" width="310" height="30"/>
+              <Static id="staposition_bg" left="0" top="117" width="420" height="40" cssclass="sta_fieldbox"/>
+              <Static id="staposition_Label" left="0" top="117" width="100" height="40" text="Position" cssclass="sta_labelbox"/>
+              <Edit id="edtposition" left="105" top="122" width="310" height="30"/>
+              <Static id="staphone_bg" left="0" top="156" width="420" height="40" cssclass="sta_fieldbox"/>
+              <Static id="staphone_Label" left="0" top="156" width="100" height="40" text="Phone" cssclass="sta_labelbox"/>
+              <Edit id="edtphone" left="105" top="161" width="310" height="30"/>
+              <Static id="staaddress_bg" left="0" top="195" width="420" height="40" cssclass="sta_fieldbox"/>
+              <Static id="staaddress_Label" left="0" top="195" width="100" height="40" text="Address" cssclass="sta_labelbox"/>
+              <Edit id="edtaddress" left="105" top="200" width="310" height="30"/>
+            </Layout>
+            <Layout/>
+          </Layouts>
+          <Objects>
+            <Dataset id="viewdataset">
+              <ColumnInfo>
+                <Column id="company" type="BLOB" size="80"/>
+                <Column id="department" type="BLOB" size="80"/>
+                <Column id="name" type="STRING" size="80"/>
+                <Column id="position" type="STRING" size="80"/>
+                <Column id="phone" type="STRING" size="80"/>
+                <Column id="address" type="STRING" size="256"/>
+              </ColumnInfo>
+              <Rows>
+                <Row/>
+              </Rows>
+            </Dataset>
+          </Objects>
+          <Bind>
+            <BindItem id="bind_edtcompany" compid="edtcompany" propid="value" datasetid="viewdataset" columnid="company"/>
+            <BindItem id="bind_edtdepartment" compid="edtdepartment" propid="value" datasetid="viewdataset" columnid="department"/>
+            <BindItem id="bind_edtname" compid="edtname" propid="value" datasetid="viewdataset" columnid="name"/>
+            <BindItem id="bind_edtposition" compid="edtposition" propid="value" datasetid="viewdataset" columnid="position"/>
+            <BindItem id="bind_edtphone" compid="edtphone" propid="value" datasetid="viewdataset" columnid="phone"/>
+            <BindItem id="bind_edtaddress" compid="edtaddress" propid="value" datasetid="viewdataset" columnid="address"/>
+          </Bind>
+          <ModelInfo modelserviceid="model" serviceid="svcQuickCodeTutorial" modelid="tutorial_DetailEmployee" filepath="svcQuickCodeTutorial.xmodel">
+            <Fields>
+              <Field id="company" required="false" comptype="edit" fieldwidth="100%" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+              <Field id="department" required="false" comptype="edit" fieldwidth="100%" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+              <Field id="name" required="false" comptype="edit" fieldwidth="100%" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+              <Field id="position" required="false" comptype="edit" fieldwidth="100%" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+              <Field id="phone" required="false" comptype="edit" fieldwidth="100%" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+              <Field id="address" required="false" comptype="edit" fieldwidth="100%" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+            </Fields>
+            <Components>
+              <Component id="stacompany_bg" fields="company"/>
+              <Component id="stacompany_Label" fields="company"/>
+              <Component id="edtcompany" fields="company"/>
+              <Component id="stadepartment_bg" fields="department"/>
+              <Component id="stadepartment_Label" fields="department"/>
+              <Component id="edtdepartment" fields="department"/>
+              <Component id="staname_bg" fields="name"/>
+              <Component id="staname_Label" fields="name"/>
+              <Component id="edtname" fields="name"/>
+              <Component id="staposition_bg" fields="position"/>
+              <Component id="staposition_Label" fields="position"/>
+              <Component id="edtposition" fields="position"/>
+              <Component id="staphone_bg" fields="phone"/>
+              <Component id="staphone_Label" fields="phone"/>
+              <Component id="edtphone" fields="phone"/>
+              <Component id="staaddress_bg" fields="address"/>
+              <Component id="staaddress_Label" fields="address"/>
+              <Component id="edtaddress" fields="address"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="FreeformViewTemplateFieldBox.xviewgen">
+            <Attribute id="direction" value="horizontal"/>
+            <Attribute id="halign" value="left"/>
+            <Attribute id="valign" value="top"/>
+          </ViewTemplateInfo>
+        </View>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <MessageAction id="MessageAction00" message="조회하겠습니다." messagetype="alert">
+        <Contents><![CDATA[{
+    "model":{
+        "input":[
+            {
+                "name":"View00:company",
+                "viewid":"View00",
+                "fieldid":"company",
+                "value":"company"
+            },
+            {
+                "name":"View00:department",
+                "viewid":"View00",
+                "fieldid":"department",
+                "value":"department"
+            },
+            {
+                "name":"View00:name",
+                "viewid":"View00",
+                "fieldid":"name",
+                "value":"name"
+            }
+        ]
+    }
+}]]></Contents>
+      </MessageAction>
+      <ExcelExportAction id="ExcelExportAction00" sheetname="Sheet1" exporttype="excel2007">
+        <Contents/>
+      </ExcelExportAction>
+    </Objects>
+    <Trigger>
+      <TriggerItem id="item0" triggertype="Click" triggerview="View00" triggerobj="btnSearch" targetaction="MessageAction00" condition=""/>
+    </Trigger>
+    <Script type="xscript5.1"><![CDATA[]]></Script>
+  </Form>
+</FDL>

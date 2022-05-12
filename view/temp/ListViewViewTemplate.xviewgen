@@ -1,0 +1,1691 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ViewTemplateInfo version="1.0">
+  <ViewTemplate id="FreeformViewTemplate" viewtype="IITP" description=""/>
+  <Script version="1.0" type="xscript5.1"><![CDATA[/**
+*  ListView View Template
+*  @FileName 	ListViewViewTemplate.xviewgen
+*  @Creator 	Creator
+*  @CreateDate 	2022.04.28
+*  @Desction    리스트뷰 생성 템플릿
+*  @version		1.0.0.0
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  2022.04.28     		Creator       	    	최초 생성
+*******************************************************************************
+*/
+/************************************************************************************************
+ * include 선언부
+ ************************************************************************************************/
+include "view_lib::util.xjs";
+include "view_lib::common.xjs";
+/************************************************************************************************
+ * 변수 선언 영역
+ ************************************************************************************************/
+//--------------------------------------------------------------------------------------------------------
+// 타이틀 객체 관련 상수
+//--------------------------------------------------------------------------------------------------------
+//ListView 영역 top 위치(title영역에 따라 위치 변경됨)
+this.VIEW_TOP				= 0;
+//타이틀 영역 전체건수 표시여부
+this.USE_TOT_COUNT			= "true";
+//타이틀 영역 접기/펼치기 버튼 표시여부(ListView에서는 사용안함)
+this.USE_EXPAND_BUTTON		= "none";
+//--------------------------------------------------------------------------------------------------------	
+
+//--------------------------------------------------------------------------------------------------------
+// ListView 객체 관련 상수
+//--------------------------------------------------------------------------------------------------------
+// ListView ID
+this.LISTVIEW_ID			= "livList";
+
+//Band Default Width
+this.BAND_WIDTH				= "100%";
+
+//Field Default Width
+this.FIELD_WIDTH			= "150px";
+
+//Field Default Height
+this.FIELD_HEIGHT			= "40px";
+
+//Label Default Width
+this.LABEL_WIDTH			= "100px";
+
+//Detail 밴드가 표시되는 방법. bandexpandtype 기본 설정 값
+this.BAND_EXPAND_TYPE		= "none";			// bandexpandtype : 'none' | 'expand' | 'accordion' | 'popup'
+
+//Band 오른쪽 끝에 확장바(ExpandBar)의 표시 여부를 설정. expandbartype 기본 설정 값
+this.EXPAND_BAR_TYPE		= "fasle";			// expandbartype : 'true' | 'fasle'
+this.EXPAND_BAR_WIDTH		= 40;
+this.EXPAND_BAR_HEIGHT		= 40;
+
+//Field Default Type
+this.FIELD_DISPLAY_TYPE		= "normal";
+this.FIELD_EDIT_TYPE		= "none";
+
+//Label Default Type
+this.LABEL_DISPLAY_TYPE		= "normal";
+
+//Component Padding
+this.COMP_PADDING_LEFT		= 5;
+this.COMP_PADDING_TOP		= 5;
+this.COMP_PADDING_RIGHT		= 5;
+this.COMP_PADDING_BOTTOM	= 5;
+
+//Gap Between Components (Left and Right)
+this.COMP_SPACE				= 5;
+
+//Gap Between Components (Top and Bottom)
+this.LINE_SPACE				= 5;
+
+//Component Cell Default CSS Class
+this.FIELD_CSSCLASS			= "";
+
+//Label Cell Default CSS Class
+this.LABEL_CSSCLASS			= "";
+
+//Background Cell Default CSS Class
+this.FIELD_BG_CSSCLASS		= "";
+
+//Background Component Use Type
+this.FIELD_COMP_BG			= "true";
+
+//Component Use Type
+this.USE_COMP				= "true";
+
+//--------------------------------------------------------------------------------------------------------
+/************************************************************************************************
+ * Nexacro Studio 호출 필수 FUNCTION 영역
+ ************************************************************************************************/
+/*---------------------------------------------------------------------------------------------*
+ * Function    : fn_GetViewGenerationResult
+ * Parameter   :
+ *               - fieldarray     : model field list
+ *               - contents       : old contents (include <View>)
+ *               - generationattr : attributes for view generation
+ * Return      : View contents (source + script) (JSON format)
+                 ex) {
+                        "View": {
+                            "tag": "View",
+                            "attribute": {
+                                "id": "View00",
+                                "viewtype": "FreeForm",
+                                "taborder": "2",
+                                "text": "search view",
+                                "left": "0",
+                                ...
+                            },
+                            "Model": [
+                                {   // with field
+                                    "fieldid": "department",
+                                    "Components": [
+                                    ...
+                                    ]
+                                },
+                                {   // without field
+                                    "fieldid": "",
+                                    "Components": [
+                                    ...
+                                    ]
+                                }
+                            ],
+                            "InitValue": [
+                            ],
+                            "Objects": [
+                            ],
+                            "Bind": [
+                            ],
+                            "Script": {
+                                "tag": "Script",
+                                "attribute": {
+                                },
+                                "value": ""
+                            }
+                        }
+                    }
+ * Description : Generate the view based on the model field and return the results.
+ *---------------------------------------------------------------------------------------------*
+ *                            !!! This is a required function. !!!                             *
+ *                            !!! Do not delete it. !!!                                        *
+ *---------------------------------------------------------------------------------------------*/
+fn_GetViewGenerationResult = function(fieldarray, contents, generationattr)
+{
+	//Return Value
+    var vResult = "";
+
+    //trace(">> fieldarray : " + fieldarray);
+	//trace(">> contents : " + contents);
+    //trace(">> generationattr : " + generationattr);
+	
+	//Make Generation Info
+	//this.oFieldArray : Model Information as JSON Object
+	//this.oContents : View Component Information as JSON Object
+	//this.oContents.View.Model : Model Information Initialization
+	//this.oGenerationAttr : Setting Information as JSON Object
+	//this.oUseFieldArray : Use Model Information as JSON Object
+	this.lfn_MakeGenerationInfo(fieldarray, contents, generationattr, false);
+
+	//Load Model Information Generation Function
+	fn_GetModel();
+
+	//Load InitValue Information Generation Function
+    this.oContents.View.InitValue = fn_GetInitValue();
+
+	//Load Object Information Generation Function
+    this.oContents.View.Objects = fn_GetObjects();
+
+	//Load BindInfo Information Generation Function
+    this.oContents.View.Bind = fn_GetBind();
+
+	//Load Script Information Generation Function
+    this.oContents.View.Script = fn_GetScript();
+
+	//Convert View Component Information into String
+    vResult = JSON.stringify(this.oContents, null, "\t");
+
+    //trace(">> vResult : " + vResult);
+    //Return View Component Information
+    return vResult;
+};
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetViewAttributeList
+ * Return       : View generation attribute list (JSON format)
+                  ex)   {
+                        "attributecount": "2",
+                        "attributes": [
+                           {
+                                "id": "use_triggerbutton",
+                                "edittype": "Boolean",              // edittype : Boolean/String/Number/Enum/ViewObjList
+                                "defaultvalue": "true",
+                                "description": "Specifies whether trigger button is auto-created or not"
+                            },
+                            {
+                                "id": "triggerbuttontext",
+                                "edittype": "String",               // edittype : Boolean/String/Number/Enum/ViewObjList
+                                "defaultvalue": "Search",
+                                "description": "Enter text for trigger button"
+                            }
+                        ]
+                    }
+ * Description : Obtain a list of custom attributes required for view generation
+ *---------------------------------------------------------------------------------------------*/
+fn_GetViewAttributeList = function()
+{
+    var sViewAttr = "";
+    var oViewAttr = {
+                        "attributes": [
+							this.oAttrTitleText,					// Title Text
+							this.oAttrTitleUseTotolCount,			// 전체건수 표시여부
+                            {
+                                "id": "direction",
+                                "edittype": "Enum",
+                                "defaultvalue": "horizontal",
+								"enumlist" : ["horizontal", "vertical"],
+                                "description": "Cell 생성 방향 지정"
+												+ "\n" + " - horizontal : 왼쪽에서 오른쪽으로 생성"
+												+ "\n" + " - vertical : 위에서 아래로 생성"
+                            },
+
+							{
+                                "id": "usefieldbox",
+                                "edittype": "Boolean",
+                                "defaultvalue": this.FIELD_COMP_BG,
+                                "description": "Field영역에 배경 Box를 그릴지 여부"
+                            },
+							{
+                                "id": "bandexpandtype",
+                                "edittype": "Enum",
+                                "defaultvalue": this.BAND_EXPAND_TYPE,
+								"enumlist" : ["none", "expand", "accordion", "popup"],
+                                "description": "Detail 밴드가 표시되는 방법을  지정"
+												+ "\n" + " - none : Detail 밴드를 항상 표시"
+												+ "\n" + " - expand : Detail 밴드를 표시/숨김"
+												+ "\n" + " - accordion : Detail 밴드를 표시/숨김(현재 아이템 이외에 다른 아이템에 표시된 Detail 밴드를 자동으로 숨김)"
+												+ "\n" + " - popup : Detail 밴드를 팝업으로 표시"
+                            },
+							{
+                                "id": "expandbartype",
+                                "edittype": "Boolean",
+                                "defaultvalue": this.EXPAND_BAR_TYPE,
+                                "description": "Body 밴드 오른쪽 끝에 확장바(ExpandBar)의 표시 여부"
+                            },
+							{
+                                "id": "bodyformat",
+                                "edittype": "layout",
+								"defaultvalue": "",
+								"description": "Body Band Layout을 설정"
+												+ "\n" + "(Layout을 설정할 경우 band, direction 속성은 무시됩니다.)"
+                            },
+							{
+                                "id": "detailformat",
+                                "edittype": "layout",
+								"defaultvalue": "",
+								"description": "Detail Band Layout을 설정"
+												+ "\n" + "(Layout을 설정할 경우 band, direction 속성은 무시됩니다.)"
+                            }
+                        ]
+                  };
+
+	oViewAttr["attributecount"] = oViewAttr["attributes"].length;
+
+	sViewAttr = JSON.stringify(oViewAttr, null, "\t");
+    return sViewAttr;
+};
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetFieldUserAttributeList
+ * Return       : user attribute list from model field(JSON format)
+                  ex)   {
+                        "attributecount": "2",
+                        "attributes": [
+                           {
+                                "id": "use_triggerbutton",
+                                "edittype": "Boolean",              // edittype : Boolean/String/Number/Enum/ViewObjList
+                                "defaultvalue": "true",
+                                "description": "Specifies whether trigger button is auto-created or not"
+                            },
+                            {
+                                "id": "triggerbuttontext",
+                                "edittype": "String",               // edittype : Boolean/String/Number/Enum/ViewObjList
+                                "defaultvalue": "Search",
+                                "description": "Enter text for trigger button"
+                            }
+                        ]
+                    }
+ * Description  : Obtain a list of user attributes to register in model field
+ *---------------------------------------------------------------------------------------------*/
+fn_GetFieldUserAttributeList = function ()
+{
+	var sFieldAttr = "";
+	var oFieldAttr = {
+                        "attributes": [
+							{
+                                "id": "band",
+                                "edittype": "Enum",
+                                "defaultvalue": "body",
+								"enumlist" : ["body", "detail"],
+                                "description": "Cell 생성시 수직 정렬 방식을 설정하는 속성"
+                            },
+                            {
+                                "id": "displaytype",
+                                "edittype": "Enum",
+								"enumlist" : ["normal", "none", "buttoncontrol", "calendarcontrol", "date", "checkboxcontrol", "combocontrol", "combotext", "currency", "decoratetext", "editcontrol", "imagecontrol", "mask", "maskeditcontrol", "number",  "progressbarcontrol",  "text",  "textareacontrol",  "treeitemcontrol"],
+                                "defaultvalue": this.FIELD_DISPLAY_TYPE,
+                                "description": "Field Cell 표시타입"
+                            },
+							{
+                                "id": "edittype",
+                                "edittype" : "Enum",
+								"enumlist" : ["normal", "none", "button", "checkbox", "combo", "date", "mask", "readonly", "text", "textarea", "tree"],
+								"defaultvalue" : this.FIELD_EDIT_TYPE,
+                                "description" : "Field Cell 입력타입"
+                            },
+							{
+                                "id": "fieldwidth",
+                                "edittype": "String",
+								"defaultvalue": this.FIELD_WIDTH,
+                                "description": "Field 넓이(px or %)"
+                            },
+							{
+                                "id": "fieldheight",
+                                "edittype": "String",
+								"defaultvalue": this.FIELD_HEIGHT,
+                                "description": "Field 높이(px or %)"
+                            },
+							{
+                                "id": "labelwidth",
+                                "edittype": "Number",
+								"defaultvalue": this.LABEL_WIDTH,
+                                "description": "Label 넓이(px)"
+                            },
+							{
+                                "id": "fieldcssclass",
+                                "edittype": "String",
+								"defaultvalue": this.FIELD_CSSCLASS,
+                                "description": "Field CSS Class"
+                            },
+							{
+                                "id": "labelcssclass",
+                                "edittype": "String",
+								"defaultvalue": this.LABEL_CSSCLASS,
+                                "description": "Label CSS Class"
+                            },
+							{
+                                "id": "usecomp",
+                                "edittype": "Boolean",
+								"defaultvalue": this.USE_COMP,
+                                "description": "Cell 생성여부"
+                            }
+                        ]
+                  };
+
+	oFieldAttr["attributecount"] = oFieldAttr["attributes"].length;
+
+ 	sFieldAttr = JSON.stringify(oFieldAttr, null, "\t");
+    return sFieldAttr;
+};
+
+/************************************************************************************************
+ * 사용자 FUNCTION 영역
+ ************************************************************************************************/
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetModel
+ * Parameter    :
+ * Return       :
+ * Description  : Model Information Production Function
+ *---------------------------------------------------------------------------------------------*/
+fn_GetModel = function()
+{
+	//Import View Component Width Value
+	var nViewCompWidth = this.oContents.View.referenceinfo.realwidth;
+
+	//Import View Component Height Value
+	var nViewCompHeight = this.oContents.View.referenceinfo.realheight;
+	
+	// Title 영역
+	var sTitleText			= this.oGenerationAttr.attributes.titletext;			// 타이틀 Text
+	var sUseTotalCount		= this.oGenerationAttr.attributes.usetotalcount;		// 전체건수 Static 생성
+	var sUseExpandButton	= "none";												// expand 토글버튼 생성
+	
+	this.VIEW_TOP = this.lfn_MakeTitleArea(sTitleText, sUseTotalCount, sUseExpandButton);
+	
+	// Detail 밴드가 표시되는 방법을  지정
+	var sBandExpandType = this.oGenerationAttr.attributes.bandexpandtype;
+	
+	// Body 밴드 오른쪽 끝에 확장바(ExpandBar)의 표시 여부
+	var sExpandBarType	= this.oGenerationAttr.attributes.expandbartype;
+	var bExpandBar		= sExpandBarType == "true" ? true : false;
+	
+	// ListView 위치
+	var nTop	= this.VIEW_TOP;
+	var nBottom	= 0;
+	var nLeft	= 0;
+	var nRight	= 0;
+	var nHeight	= nViewCompHeight - nTop;
+	var nWidth	= nViewCompWidth;
+	
+	// Field Array
+	var arrField = new Array();
+	var arrFieldUse = new Array(); 
+	var arrFieldBody = new Array(); 
+	var arrFieldDetail = new Array(); 
+	var oField;
+	
+	//Create Model Field ID List to use in LivtView
+    for(i=0;i<this.oFieldArray.fieldcount;i++)
+    {
+        oField = this.oFieldArray.fields[i];
+		
+		// this.oFieldArray Json Data로 Field Array() 셋팅
+		arrField.push(oField.id);
+		
+		
+		// 사용여부
+		if (oField.usecomp != "false") {
+			arrFieldUse.push(oField);
+			
+			if (oField.band == "detail") {
+				arrFieldDetail.push(oField);
+			} else {
+				arrFieldBody.push(oField);
+			}
+		}
+    }
+	
+	// Band 배열(body,detail)
+	var arrFormat = new Array();
+	var oBandBody = {};
+	var oBandDetail = {};
+	
+	// Body Band
+	oBandBody = fn_GetBands("body", arrFieldUse, arrFieldBody, this.oGenerationAttr.attributes.bodyformat, nWidth, nHeight, bExpandBar);
+	if (this.lfn_IsNotNull(oBandBody))		arrFormat.push(oBandBody);
+	
+	// Detail Band
+	oBandDetail = fn_GetBands("detail", arrFieldUse, arrFieldDetail, this.oGenerationAttr.attributes.detailformat, nWidth, nHeight, false);
+	if (this.lfn_IsNotNull(oBandDetail))		arrFormat.push(oBandDetail);
+	
+	//Add Grip Component
+	var oModel = this.oContents.View.Model;
+    oModel[oModel.length] = {
+            "fieldid" : arrField.join(","),
+            "Components" :
+            [
+                {
+                    "tag" : "ListView",
+                    "attribute" :
+                    {
+                        "id" : this.LISTVIEW_ID, "left" : nLeft,    "top" : nTop, "right" : nRight, "bottom" : nBottom, "binddataset" : "viewdataset"
+						, "bandexpandtype" : sBandExpandType
+                    },
+                    "ListView" :
+                    [
+                        {
+                            "tag": "Formats",
+                            "attribute": {},
+                            "Formats":
+                            [
+                                {
+                                    "tag": "Format",
+                                    "attribute": { "id": "default" },
+                                    "Format": arrFormat
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+		
+	//Return Information of Model to be Created
+    return oModel;
+};
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetBands
+ * Parameter    : 
+				- sBand : Band Type(body, detail)
+				- arrFieldList : Field List added on the Cell
+				- oLayout : Layout Setting Information
+				- nViewCompWidth : View Component Real Width
+				- nViewCompHeight : View Component Real Height
+				- bExpandBar : ExpandBar 표시여부
+				- 
+ * Return       : Band Info Object
+ * Description  : Band Information Production Function
+ *---------------------------------------------------------------------------------------------*/
+fn_GetBands = function(sBand, arrFieldUse, arrFieldBand, oLayout, nViewCompWidth, nViewCompHeight, bExpandBar)
+{
+	var arrBandCells = new Array();
+	var oBand = {};
+	
+	var nBandHeight = 0;
+	var nCellBottom = 0;
+	var oCell;
+	
+	if (bExpandBar)
+	{
+		nViewCompWidth = nViewCompWidth - this.EXPAND_BAR_WIDTH - this.COMP_SPACE;
+	}
+	
+	//If format properties are set up, create components based on layout rules
+	if(oLayout)
+	{
+		// TODO : layout!!!!
+		//Load Layout Calculation Function
+		fn_CalcLayout(arrFieldUse, oLayout, nViewCompWidth, nViewCompHeight);
+
+		//Load Layout-based Component Production Function
+		arrBandCells = fn_GetBandCellByLayout(arrFieldUse, oLayout);
+	}
+	//If the format properties are not set, create components based on default rules
+	else
+	{
+		//Import Component Production Direction Information
+		var sDirection = this.oGenerationAttr.attributes.direction;
+
+		//Import Component Horizontal Alignment Information
+		var sHAlign = "left";
+
+		//Import Component Vertical Alignment Information
+		var sVAlign = "top";
+
+		//Load Component Location Calculation Information
+		var arrFieldPosition = fn_CalcField(arrFieldBand, sDirection, sVAlign, sHAlign, nViewCompWidth, nViewCompHeight);
+		
+		//Load Component Production Function
+		arrBandCells = fn_GetBandCell(0, 0, nViewCompWidth, nViewCompHeight, sDirection, arrFieldPosition, false);
+	}
+	
+	// Band 객체값 셋팅
+	if (arrBandCells.length > 0 || bExpandBar) 		// Band Cell이 있거나, ExpandBar가 있는 경우 Band 설정
+	{
+		oBand = {
+			"tag" : "Band",
+			"attribute" : {
+				"id"		: sBand,
+				"width"		: "100%",
+				"height"	: nBandHeight
+			},
+			"Band" : arrBandCells
+		};
+		
+		// 가장 아래 Cell 기준으로 Band 높이 설정
+		if (arrBandCells.length > 0) {
+			for(var i = 0; i < arrBandCells.length; i++)
+			{
+				oCell = arrBandCells[i];
+				nCellBottom = nexacro.toNumber(oCell.attribute.top,0) + nexacro.toNumber(oCell.attribute.height,0);
+			
+				if (nBandHeight < nCellBottom)		nBandHeight = nCellBottom;
+			}
+			
+			oBand.attribute.height = nBandHeight;
+		}
+		
+		// bExpandBar 설정
+		if (bExpandBar) {
+			oBand.attribute.expandbartype = bExpandBar;
+			oBand.attribute.expandbarsize = this.EXPAND_BAR_WIDTH + " " + this.EXPAND_BAR_HEIGHT;
+			
+			// Band 사이즈가 ExpandBar보다 작은경우 Band 사이즈 설정
+			if (nBandHeight < this.EXPAND_BAR_HEIGHT) {
+				oBand.attribute.height = this.EXPAND_BAR_HEIGHT;
+			} 
+		}
+	}
+			
+	return oBand;
+};
+
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_CalcLayout
+ * Parameter    : obj
+ * Return       :
+				- oLayout : Layout Setting Information
+				- nViewCompWidth : View Component Real Width
+				- nViewCompHeight : View Component Real Height
+ * Description  : Layout Calculation Function
+ *---------------------------------------------------------------------------------------------*/
+fn_CalcLayout = function(arrFieldList, oLayout, nViewCompWidth, nViewCompHeight)
+{
+	//CellList Information set on Layout
+	var arrCellList = oLayout.celllist;
+
+	//ColumnSize Information set on Layout
+	var arrColSize = oLayout.columnsize;
+
+	//RowSize Information set on Layout
+	var arrRowSize = oLayout.rowsize;
+
+	//CellList Quantity
+	var nCellCnt = arrCellList.length;
+
+	//The Sum of Column/Row Sizes that were not set as -1
+	var nAllColSize = 0;
+	var nAllRowSize = 0;
+
+	//Quantity of Column/Row Size set as -1
+	var nNoColSizeCnt = 0;
+	var nNoRowSizeCnt = 0;
+
+	//Replacement Size if Column/Row Size is -1
+	var nColSizeDef = 0;
+	var nRowSizeDef = 0 ;
+
+	var oCell;
+	var sDirection, sVAlign, sHAlign;
+	var nCol, nRow, nColSpan, nRowSpan;
+	var nColSize, nRowSize;
+
+	var nFieldWidth;
+	var nFieldWidthType;
+	var nFiledWidthMax;
+	var nFieldHeight;
+	var nFieldHeightType;
+	var nFieldHeightMax;
+
+	//Evaluate Sum of Column Sizes that are not set as -1
+	nAllColSize = arrColSize.reduce(function (pre, value){
+		if(value==-1)return pre;
+		else return pre + value;
+	});
+
+	//Evaluate Sum of Row Sizes that are not set as -1
+	nAllRowSize = arrRowSize.reduce(function (pre, value){
+		if(value==-1)return pre;
+		else return pre + value;
+	});
+
+	if(nAllColSize==-1)nAllColSize = 0;
+
+	if(nAllRowSize==-1)nAllRowSize = 0;
+
+	//Evaluate Quantity of Column/Rows set as -1
+	nNoColSizeCnt = arrColSize.filter(arrColSize=>arrColSize==-1).length;
+	nNoRowSizeCnt = arrRowSize.filter(arrRowSize=>arrRowSize==-1).length;
+
+	//If there are Column/Rows set as -1
+	//(View Component Size -(The Sum of Column/Row Sizes not set as -1))/Number of Column/Rows set as -1
+	if(nNoColSizeCnt>0)nColSizeDef = (nViewCompWidth - nAllColSize)/nNoColSizeCnt;
+	if(nNoRowSizeCnt>0)nRowSizeDef = (nViewCompHeight - nAllRowSize)/nNoRowSizeCnt;
+
+	//Save Default Column/Row Size on Layout
+	oLayout.colsizedef = nColSizeDef;
+	oLayout.rowsizedef = nRowSizeDef;
+
+	//Evaluate the Field Location Value of each Cell
+	for(var i=0;i<nCellCnt;i++)
+	{
+		//Import Information set on Cell
+		oCell = arrCellList[i];
+		sDirection = oCell.direction;
+		sVAlign = oCell.valign;
+		sHAlign = oCell.halign;
+		nCol = nexacro.toNumber(oCell.col);
+		nRow = nexacro.toNumber(oCell.row);
+		nColSpan = nexacro.toNumber(oCell.colspan);
+		nRowSpan = nexacro.toNumber(oCell.rowspan);
+
+		//Initialize to 1 if there are no Col/RowSpan Values
+		if(!nColSpan)nColSpan = 1;
+		if(!nRowSpan)nRowSpan = 1;
+
+		//Evaluate the Width/Height of that Cell
+		nColSize = this.lfn_GetCellSize(oLayout.columnsize, nCol, nColSpan, nColSizeDef);
+		nRowSize = this.lfn_GetCellSize(oLayout.rowsize, nRow, nRowSpan, nRowSizeDef);
+
+		//Save the Width/Height Value on that Cell
+		oCell.realcolsize = nColSize;
+		oCell.realrowsize = nRowSize;
+
+		//If there are fields connected to that Cell
+		if(oCell.fieldlist)
+		{
+			//Evaluate the Field Location Value to input on that Cell
+			oCell.fieldposition = fn_CalcFieldByLayout(arrFieldList, sDirection, sVAlign, sHAlign, nColSize, nRowSize, oCell.fieldlist);
+		}
+	}
+}
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_CalcFieldByLayout
+ * Parameter    :
+				- sDirection : Component Production Direction
+				- sVAlign : Component Vertical Alignment Method(top|middle|bottom)
+				- sHAlign : Component Horizontal Alignment Method(left|center|right)
+				- nColSize : The Width of The Cell to be Expressed
+				- nRowSize : The Height of The Cell to be Expressed
+				- arrFieldInCellList : Field List added on the Cell
+ * Return       : arrFieldPosition : Object Array with Field Location Information
+ * Description  : Function to Evaluate the Field Location Value to be Expressed
+ *---------------------------------------------------------------------------------------------*/
+fn_CalcFieldByLayout = function(arrFieldList, sDirection, sVAlign, sHAlign, nColSize, nRowSize, arrFieldInCellList)
+{
+	var nLeft = 0;
+	var nTop = 0;
+	var nRowIdx = 0;
+	var nColIdx = 0;
+	var nFiledWidthMax = 0;
+	var nFiledHeightMax = 0;
+
+	var nStartX, nStartY;
+	var nEndX, nEndX;
+	var nTemp;
+
+	//Number of Fields connected to the Cell
+	var nFieldInCellCnt;
+
+	//Object Array to save the Field Location Information
+	var arrFieldPosition = [];
+
+	//Col Size without the Label Area
+	var nRealColSize;
+
+	//Label Width
+	var nLabelWidth;
+
+	//Check Quantity with Field List connected to Cell
+	var nFieldInCellCnt = arrFieldInCellList.length;
+
+	//If the Component Production Direction is Horizontal
+	//Choose Array, as the x-coordinate for each row is different
+	//Choose Number, as the y-coordinate for each column is identical
+	if(sDirection=="horizontal")
+	{
+		var arrAlignX = [];
+		var nAlignY;
+	}
+	//If the Component Production Direction is Vertical
+	//Choose Number, as the x-coordinate for each row is identical
+	//Choose Array, as the y-coordinate for each column is different
+	else
+	{
+		var nAlignX;
+		var arrAlignY = [];
+	}
+
+	for(var j=0;j<nFieldInCellCnt;j++)
+	{
+		//Import Field Information registered on the Model based on the Fields connected to the Cell
+		sFieldId =  arrFieldInCellList[j];
+		oField = arrFieldList.filter(arrFieldList=>arrFieldList.id==sFieldId)[0];
+
+		//Import Label Width Information set on the first Field
+		if(j==0)nLabelWidth = nexacro.toNumber(oField.labelwidth);
+
+		//Evaluate Col Size excluding Label Area
+		nRealColSize = nColSize - nLabelWidth;
+
+		//Evaluate Width/Height that this field will be expressed on
+		nFieldWidth = this.lfn_GetRealSize(oField.fieldwidth, 0, nRealColSize, this.FIELD_WIDTH, 0, 0);
+		nFieldHeight = this.lfn_GetRealSize(oField.fieldheight, 0, nRowSize, this.FIELD_HEIGHT, 0, 0);
+
+		//If the Component Production Direction is Horizontal
+		if(sDirection=="horizontal")
+		{
+
+			//Calculate the difference arising from the conversion process from Padding to Comp/Line Space
+			if(nColIdx!=0)nTemp = this.lfn_CalcPaddingToSpace("Col", nColIdx+1, nColIdx, (this.COMP_PADDING_TOP+this.COMP_PADDING_BOTTOM), this.LINE_SPACE, true);
+			else nTemp = 0;
+
+			//Start a new line if the Field exceeds the Cell Height
+			if(nLeft+nFieldWidth-nTemp>nRealColSize)
+			{
+				//The Right value of the last Field of this Row
+				nEndX = nLeft;
+
+				//Calculate the difference arising from the conversion process from Padding to Comp/Line Space
+				if(nColIdx!=0)nTemp = this.lfn_CalcPaddingToSpace("Col", nColIdx, nColIdx-1, (this.COMP_PADDING_TOP+this.COMP_PADDING_BOTTOM), this.LINE_SPACE, true);
+				else nTemp = 0;
+
+				//Evaluate the HAlign Starting Value of this Row
+				arrAlignX[nRowIdx] = this.lfn_CalcAlignPos(sHAlign, nRealColSize, (nEndX - nStartX - nTemp));
+
+				//Create the starting Left/Top Coordinates of the next Row
+				//Set the Bottom value of the Field with the largest Height of this Row as the Top value of the next Row
+				nTop += nFiledHeightMax;
+
+				//Initialize the Left Coordinate
+				nLeft = 0;
+
+				//Initialize the largest Height Value
+				nFiledHeightMax = 0;
+
+				//Initialize the Col Index
+				nColIdx = 0;
+
+				//Increase Row Index
+				nRowIdx++;
+			}
+
+			//Evaluate the largest Height Value
+			if(nFieldHeight>nFiledHeightMax)nFiledHeightMax = nFieldHeight;
+		}
+		//If the Component Production Direction is Vertical
+		else
+		{
+			//Calculate the difference arising from the conversion process from Padding to Comp/Line Space
+			if(nColIdx!=0)nTemp = this.lfn_CalcPaddingToSpace("Row", nColIdx+1, nColIdx, (this.COMP_PADDING_TOP+this.COMP_PADDING_BOTTOM), this.LINE_SPACE, true);
+			else nTemp = 0;
+
+			//Start a new line if the Field exceeds the Cell Height
+			if(nTop+nFieldHeight-nTemp>nRowSize)
+			{
+				//The Bottom Value of the last Field of this Row
+				nEndY = nTop;
+
+				//Calculate the difference arising from the conversion process from Padding to Comp/Line Space
+				if(nColIdx!=0)nTemp = this.lfn_CalcPaddingToSpace("Row", nColIdx, nColIdx-1, (this.COMP_PADDING_TOP+this.COMP_PADDING_BOTTOM), this.LINE_SPACE, true);
+				else nTemp = 0;
+
+				//Evaluate the VAlign Starting Location Value of this Row
+				arrAlignY[nRowIdx] = this.lfn_CalcAlignPos(sVAlign, nRowSize, ( nEndY - nStartY - nTemp));
+
+				//Create the starting Left/Top Coordinates of the next Row
+				//Set the right value of the field with the largest width of this row as the left value of the next Row
+				nLeft += nFiledWidthMax;
+
+				//Initialize Top Coordinate
+				nTop = 0;
+
+				//Initialize the largest Width Value
+				nFiledWidthMax = 0;
+
+				//Initialize the Col Index
+				nColIdx = 0;
+
+				//Increase Row Index
+				nRowIdx++;
+			}
+
+			//Evaluate the largest Width Value
+			if(nFieldWidth>nFiledWidthMax)nFiledWidthMax = nFieldWidth;
+		}
+
+		//Starting Left/Top Location Value of the Field
+		if(j==0)
+		{
+			nStartX = nLeft;
+			nStartY = nTop;
+		}
+
+		//If is it the last Field
+		if(j==nFieldInCellCnt-1)
+		{
+			//If the Component Production Direction is Horizontal
+			if(sDirection=="horizontal")
+			{
+				//The Right value of the last Field of this Row
+				nEndX = nLeft + nFieldWidth;
+
+				//Calculate the difference arising from the conversion process from Padding to Comp/Line Space
+				if(nColIdx!=0)nTemp = this.lfn_CalcPaddingToSpace("Col", nColIdx+1, nColIdx, (this.COMP_PADDING_TOP+this.COMP_PADDING_BOTTOM), this.LINE_SPACE, true);
+				else nTemp = 0;
+
+				//Evaluate the HAlign Starting Value of this Row
+				arrAlignX[nRowIdx] = this.lfn_CalcAlignPos(sHAlign, nRealColSize, (nEndX - nStartX - nTemp));
+
+				//The Bottom Value of the Field with the largest Height until the last Field
+				nEndY = nTop + nFiledHeightMax;
+
+				//Calculate the difference arising from the conversion process from Padding to Comp/Line Space
+				if(nRowIdx!=0)nTemp = this.lfn_CalcPaddingToSpace("Row", nRowIdx+1, nRowIdx, this.COMP_PADDING_BOTTOM, this.LINE_SPACE, false);
+				else nTemp = 0;
+
+				//Evaluate the VAlign Starting Location Value
+				nAlignY = this.lfn_CalcAlignPos(sVAlign, nRowSize, (nEndY - nStartY - nTemp));
+			}
+			//If the Component Production Direction is Vertical
+			else
+			{
+				//The Bottom Value of the last Field of this Row
+				nEndY = nTop + nFieldHeight;
+
+				//Calculate the difference arising from the conversion process from Padding to Comp/Line Space
+				if(nColIdx!=0)nTemp = this.lfn_CalcPaddingToSpace("Row", nColIdx+1, nColIdx, this.COMP_PADDING_BOTTOM, this.LINE_SPACE, false);
+				else nTemp = 0;
+
+				//Evaluate the HAlign Starting Value of this Row
+				arrAlignY[nRowIdx] = this.lfn_CalcAlignPos(sVAlign, nRowSize, (nEndY - nStartY - nTemp));
+
+				//The Right Value of the Field with the largest Height until the last Field
+				nEndX = nLeft + nFiledWidthMax;
+
+				//Calculate the difference arising from the conversion process from Padding to Comp/Line Space
+				if(nRowIdx!=0)nTemp = this.lfn_CalcPaddingToSpace("Col", nRowIdx+1, nRowIdx, this.COMP_PADDING_RIGHT, this.COMP_SPACE, false);
+				else nTemp = 0;
+
+				//Evaluate the HAlign Starting Value
+				nAlignX = this.lfn_CalcAlignPos(sHAlign, nRealColSize, (nEndX - nStartX - nTemp));
+
+			}
+		}
+
+		//Save the Field Location Information
+		arrFieldPosition[j] =
+		{
+			"fieldid" : sFieldId,
+			"left" : nLeft,
+			"top" : nTop,
+			"width" : nFieldWidth,
+			"height" : nFieldHeight,
+			"rowidx" : nRowIdx,
+			"colidx" : nColIdx,
+			"alignx" : 0,
+			"aligny" : 0,
+			"colsize" : nColSize,
+			"rowsize" : nRowSize
+		};
+
+		//Set the Left/Top Location Value of the next Field
+		if(sDirection=="horizontal")nLeft += nFieldWidth;
+		else nTop += nFieldHeight;
+
+		//Increase Col Index
+		nColIdx++;
+	}
+
+	//Save Align X/Y Value on the Field Location Information
+	if(sDirection=="horizontal")
+	{
+		for(var i=0;i<arrFieldPosition.length;i++)
+		{
+			nRowIdx = arrFieldPosition[i].rowidx;
+			arrFieldPosition[i].alignx = arrAlignX[nRowIdx];
+			arrFieldPosition[i].aligny = nAlignY;
+		}
+	}else
+	{
+		for(var i=0;i<arrFieldPosition.length;i++)
+		{
+			nRowIdx = arrFieldPosition[i].rowidx;
+			arrFieldPosition[i].alignx = nAlignX;
+			arrFieldPosition[i].aligny = arrAlignY[nRowIdx];
+		}
+	}
+
+	//Return Field Location Information
+	return arrFieldPosition;
+}
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_CalcField
+ * Parameter    :
+				- sDirection : Component Production Direction
+				- sVAlign : Component Vertical Alignment Method(top|middle|bottom)
+				- sHAlign : Component Horizontal Alignment Method(left|center|right)
+				- nColSize : The Width of The Cell to be Expressed
+				- nRowSize : The Height of The Cell to be Expressed
+ * Return       : arrFieldPosition : Object Array with Field Location Information
+ * Description  : Function to Evaluate the Field Location Value to be Expressed
+ *---------------------------------------------------------------------------------------------*/
+fn_CalcField = function(arrFieldList, sDirection, sVAlign, sHAlign, nColSize, nRowSize)
+{
+	var nLeft = 0;
+	var nTop = 0;
+	var nRowIdx = 0;
+	var nColIdx = 0;
+	var nFiledWidthMax = 0;
+	var nFiledHeightMax = 0;
+
+	var nStartX, nStartY;
+	var nEndX, nEndX;
+	var nTemp;
+
+	//Number of Fields connected to the Cell
+	var nFieldInCellCnt;
+
+	//Object Array to save the Field Location Information
+	var arrFieldPosition = [];
+
+	//Col Size without the Label Area
+	var nRealColSize;
+
+	//Label Width
+	var nLabelWidth;
+
+	//Check Quantity with Field List connected to Cell
+	var nFieldInCellCnt = arrFieldList.length;
+
+	//If the Component Production Direction is Horizontal
+	//Choose Array, as the x-coordinate for each row is different
+	//Choose Number, as the y-coordinate for each column is identical
+	if(sDirection=="horizontal")
+	{
+		var arrAlignX = [];
+		var nAlignY;
+	}
+	//If the Component Production Direction is Vertical
+	//Choose Number, as the x-coordinate for each row is identical
+	//Choose Array, as the y-coordinate for each column is different
+	else
+	{
+		var nAlignX;
+		var arrAlignY = [];
+	}
+
+	for(var j=0;j<nFieldInCellCnt;j++)
+	{
+		//Import Field List Registered to the Model
+		oField = arrFieldList[j];
+		sFieldId = oField.id;
+
+		//Import Label Width Information set on the current Field
+		nLabelWidth = nexacro.toNumber(oField.labelwidth);
+
+		//Evaluate Col Size excluding Label Area
+		nRealColSize = nColSize - nLabelWidth;
+
+		//Evaluate Width/Height that this field will be expressed on
+		nFieldWidth = this.lfn_GetRealSize(oField.fieldwidth, 0 , nRealColSize, this.FIELD_WIDTH, 0, 0);
+		nFieldHeight = this.lfn_GetRealSize(oField.fieldheight, 0, nRowSize, this.FIELD_HEIGHT, 0, 0);
+
+		//If the Component Production Direction is Horizontal
+		if(sDirection=="horizontal")
+		{
+
+			//Calculate the difference arising from the conversion process from Padding to Comp/Line Space
+			if(nColIdx!=0)nTemp = this.lfn_CalcPaddingToSpace("Col", nColIdx+1, nColIdx, this.COMP_PADDING_RIGHT, this.COMP_SPACE, false);
+			else nTemp = 0;
+
+			//Start a new line if the Field exceeds the Cell Height
+			if(nLeft+nFieldWidth+nLabelWidth-nTemp>nColSize)
+			{
+				//The Right value of the last Field of this Row
+				nEndX = nLeft;
+
+				//Calculate the difference arising from the conversion process from Padding to Comp/Line Space
+				if(nColIdx!=0)nTemp = this.lfn_CalcPaddingToSpace("Col", nColIdx, nColIdx-1, this.COMP_PADDING_RIGHT, this.COMP_SPACE, false);
+				else nTemp = 0;
+
+				//Evaluate the HAlign Starting Value of this Row
+				arrAlignX[nRowIdx] = this.lfn_CalcAlignPos(sHAlign, nColSize, (nEndX - nStartX - nTemp));
+
+				//Create the starting Left/Top Coordinates of the next Row
+				//Set the Bottom value of the Field with the largest Height of this Row as the Top value of the next Row
+				nTop += nFiledHeightMax;
+
+				//Initialize the Left Coordinate
+				nLeft = 0;
+
+				//Initialize the largest Height Value
+				nFiledHeightMax = 0;
+
+				//Initialize the Col Index
+				nColIdx = 0;
+
+				//Increase Row Index
+				nRowIdx++;
+
+			}
+
+			//Evaluate the largest Height Value
+			if(nFieldHeight>nFiledHeightMax)nFiledHeightMax = nFieldHeight;
+		}
+		//If the Component Production Direction is Vertical
+		else
+		{
+			//Start a new line if the Field exceeds the Cell Height
+			if(nTop+nFieldHeight>nRowSize)
+			{
+				//The Bottom Value of the last Field of this Row
+				nEndY = nTop;
+
+				//Evaluate the VAlign Starting Location Value of this Row
+				arrAlignY[nRowIdx] = this.lfn_CalcAlignPos(sVAlign, nRowSize, (nEndY - nStartY));
+
+				//Create the starting Left/Top Coordinates of the next Row
+				//Set the right value of the field with the largest width of this row as the left value of the next Row
+				nLeft += nFiledWidthMax + nLabelWidth;
+
+				//Initialize Top Coordinate
+				nTop = 0;
+
+				//Initialize the largest Width Value
+				nFiledWidthMax = 0;
+
+				//Initialize the Col Index
+				nColIdx = 0;
+
+				//Increase Row Index
+				nRowIdx++;
+			}
+
+			//Evaluate the largest Width Value
+			if(nFieldWidth>nFiledWidthMax)nFiledWidthMax = nFieldWidth;
+		}
+
+		//Starting Left/Top Location Value of the Field
+		if(j==0)
+		{
+			nStartX = nLeft;
+			nStartY = nTop;
+		}
+
+		//If is it the last Field
+		if(j==nFieldInCellCnt-1)
+		{
+			//If the Component Production Direction is Horizontal
+			if(sDirection=="horizontal")
+			{
+				//The Right value of the last Field of this Row
+				nEndX = nLeft + nLabelWidth + nFieldWidth;
+
+				//Calculate the difference arising from the conversion process from Padding to Comp/Line Space
+				if(nColIdx!=0)nTemp = this.lfn_CalcPaddingToSpace("Col", nColIdx+1, nColIdx, this.COMP_PADDING_RIGHT, this.COMP_SPACE, false);
+				else nTemp = 0;
+
+				//Evaluate the HAlign Starting Value of this Row
+				arrAlignX[nRowIdx] = this.lfn_CalcAlignPos(sHAlign, nColSize, (nEndX - nStartX - nTemp));
+
+				//The Bottom Value of the Field with the largest Height until the last Field
+				nEndY = nTop + nFiledHeightMax;
+
+				//Evaluate the VAlign Starting Location Value
+				nAlignY = this.lfn_CalcAlignPos(sVAlign, nRowSize, (nEndY - nStartY));
+			}
+			//If the Component Production Direction is Vertical
+			else
+			{
+				//The Bottom Value of the last Field of this Row
+				nEndY = nTop+nFieldHeight;
+
+				//Evaluate the HAlign Starting Value of this Row
+				arrAlignY[nRowIdx] = this.lfn_CalcAlignPos(sVAlign, nRowSize, (nEndY - nStartY));
+
+				//The Right Value of the Field with the largest Height until the last Field
+				nEndX = nLeft + nFiledWidthMax + nLabelWidth;
+
+				//Calculate the difference arising from the conversion process from Padding to Comp/Line Space
+				if(nRowIdx!=0)nTemp = this.lfn_CalcPaddingToSpace("Col", nRowIdx+1, nRowIdx, this.COMP_PADDING_RIGHT, this.COMP_SPACE, false);
+				else nTemp = 0;
+
+				//Evaluate the HAlign Starting Value
+				nAlignX = this.lfn_CalcAlignPos(sHAlign, nColSize, (nEndX - nStartX - nTemp));
+			}
+		}
+		
+		//this.lfn_Log(sFieldId + " => left : " + nLeft + ", top : " + nTop + ", width : " + nFieldWidth + ", height : " + nFieldHeight);
+
+		//Save the Field Location Information
+		arrFieldPosition[j] =
+		{
+			"fieldid" : sFieldId,
+			"left" : nLeft,
+			"top" : nTop,
+			"width" : nFieldWidth,
+			"height" : nFieldHeight,
+			"rowidx" : nRowIdx,
+			"colidx" : nColIdx,
+			"alignx" : 0,
+			"aligny" : 0,
+			"colsize": nColSize,
+			"rowsize" : nRowSize
+		};
+
+		//Set the Left/Top Location Value of the next Field
+		if(sDirection=="horizontal")nLeft += nFieldWidth + nLabelWidth;
+		else nTop += nFieldHeight;
+
+		//Increase Col Index
+		nColIdx++;
+	}
+
+	//Save Align X/Y Value on the Field Location Information
+	if(sDirection=="horizontal")
+	{
+		for(var i=0;i<arrFieldPosition.length;i++)
+		{
+			nRowIdx = arrFieldPosition[i].rowidx;
+			arrFieldPosition[i].alignx = arrAlignX[nRowIdx];
+			arrFieldPosition[i].aligny = nAlignY;
+		}
+	}else
+	{
+		for(var i=0;i<arrFieldPosition.length;i++)
+		{
+			nRowIdx = arrFieldPosition[i].rowidx;
+			arrFieldPosition[i].alignx = nAlignX;
+			arrFieldPosition[i].aligny = arrAlignY[nRowIdx];
+		}
+	}
+
+	//Return Field Location Information
+	return arrFieldPosition;
+}
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetBandCellByLayout
+ * Parameter    :
+				- oLayout : Layout Setting Information
+ * Return       :
+ * Description  : Layout-based Component Production Function
+ *---------------------------------------------------------------------------------------------*/
+fn_GetBandCellByLayout = function(arrFieldList, oLayout)
+{
+	var arrBandCells = new Array();
+	var arrCellRet = new Array();
+	
+	//CellList Information set on Layout
+	var arrCellList = oLayout.celllist;
+
+	//ColumnSize Information set on Layout
+	var arrColSize = oLayout.columnsize;
+
+	//RowSize Information set on Layout
+	var arrRowSize = oLayout.rowsize;
+
+	//Import Column/Row Default Size
+	var nColSizeDef = oLayout.colsizedef;
+	var nRowSizeDef = oLayout.rowsizedef;
+
+	var nCol, nRow, nColSpan, nRowSpan;
+	var sDirection, sVAlign, sHAlign;
+	var nWidth;
+	var nHeight;
+	var bStartCol = true;
+
+	var oCell;
+	var oStatic;
+
+	for(var i=0;i<arrCellList.length;i++)
+	{
+		oCell = arrCellList[i];
+		sDirection = oCell.direction
+		nCol = nexacro.toNumber(oCell.col);
+		nRow = nexacro.toNumber(oCell.row);
+		nColSpan = nexacro.toNumber(oCell.colspan);
+		nRowSpan = nexacro.toNumber(oCell.rowspan);
+
+		//Initialize to 1 if there are no Col/RowSpan Values
+		if(!nColSpan)nColSpan = 1;
+		if(!nRowSpan)nRowSpan = 1;
+
+		//Continue if there are no Fields on the Cell
+		if(!oCell.fieldlist)continue;
+
+		//Import the Left/Top Location Value of the current Cell
+		nLeft = this.lfn_GetCellSize(arrColSize, 0, nCol, nColSizeDef);
+		nTop = this.lfn_GetCellSize(arrRowSize, 0, nRow, nColSizeDef);
+		
+		if(nCol==0)bStartCol = true;
+		else bStartCol = false;
+
+		arrCellRet = fn_GetBandCell(nLeft, nTop, oCell.realcolsize, oCell.realrowsize, sDirection, oCell.fieldposition, true, nRow, bStartCol);
+		
+		if (arrCellRet.length > 0) {
+			arrBandCells = arrBandCells.concat(arrCellRet);
+		}
+	}
+	
+	return arrBandCells;
+}
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetBandCell
+ * Parameter    :
+				- nBaseLeft : Reference Coordinate (Left) to create Component
+				- nBaseTop : Reference Coordinate (Top) to create Component
+				- nBaseWidth : Reference Coordinate (Width) to create Component
+				- nBaseHeight : Reference Coordinate (Height) to create Component
+				- sDirection : Component Production Direction
+				- arrFieldPosition: Object Array with Field Location Information
+				- bUseLayout : Whether Layout was used
+                - nLayoutRow : 레이아웃 기준 현재 Row Index
+				- bStartCol : 레이아웃 기준 첫번째 Col Index인지 여부
+ * Return       :
+ * Description  : Component Tag Production Function
+ *---------------------------------------------------------------------------------------------*/
+fn_GetBandCell = function(nBaseLeft, nBaseTop, nBaseWidth, nBaseHeight, sDirection, arrFields, bUseLayout, nLayoutRow, bStartCol)
+{
+	var arrBandCells = new Array();
+	
+	var nLabelLeft, nLabelTop, nLabelWidth, nLabelHeight;
+	var nCompLeft, nCompTop, nCompWidth, nCompHeight, nCompBgWidth;
+	var nPosLeft, nPosTop, nPosWidth, nPosHeight;
+	var nLabelAreaWidth;
+	var nColSize, nRowSize;
+
+	var oAlignPos;
+	var sFieldId;
+	var oField;
+	var oFieldPosition;
+	var nRowIdx, nColIdx;
+	var nAlignX, nAlignY;
+	var nCheckIdx;
+
+	var sCompId;
+	var sCellClassNm = "Cell";
+	var sLabel;
+	var sDisplayType;
+	var sEditType;
+	var sFieldCssClass;
+	var sLabelCssClass;
+	var sFieldBgCssClass = this.FIELD_BG_CSSCLASS;
+	
+	// FieldBox 사용여부
+	var sUseFieldBox = this.oGenerationAttr.attributes.usefieldbox;
+
+	if(!bUseLayout)bUseLayout = false;
+
+	//If using Layout
+	if(bUseLayout==true)
+	{
+		for(var i=0;i<arrFields.length;i++)
+		{
+			//Import Field Object
+			oFieldPosition = arrFields[i];
+			sFieldId = oFieldPosition.fieldid;
+			oField = this.oFieldArray.fields.filter(fields=>fields.id==sFieldId)[0];
+			
+			//Displaytype 설정
+			sDisplayType = oField.displaytype;
+			
+			//edittype 설정
+			sEditType = oField.edittype;
+
+			//Import Field Css Class Id Value
+			sFieldCssClass = oField.fieldcssclass;
+
+			//Import Label Css Class Id Value
+			sLabelCssClass = oField.labelcssclass;
+
+			//Import Row/Col Index where the Field will be located
+			nRowIdx = oFieldPosition.rowidx;
+			nColIdx = oFieldPosition.colidx;
+
+			//Import Align Location Information of the Field
+			nAlignX = oFieldPosition.alignx;
+			nAlignY = oFieldPosition.aligny;
+
+			//Import Field Location Information
+			nPosLeft = nexacro.toNumber(oFieldPosition.left);
+			nPosTop = nexacro.toNumber(oFieldPosition.top);
+			nPosWidth = nexacro.toNumber(oFieldPosition.width);
+			nPosHeight = nexacro.toNumber(oFieldPosition.height);
+			
+			//Create Label Area with Label Information from the first Field
+			if(i==0)
+			{
+				nLabelAreaWidth = nexacro.toNumber(oField.labelwidth);
+				nLabelLeft = nBaseLeft + nPosLeft;
+				nLabelTop = nBaseTop + nPosTop;
+				nLabelWidth = nLabelAreaWidth;
+				nLabelHeight = nexacro.toNumber(nBaseHeight);
+			}
+
+			//Component Left Coordinate = Cell Left + Field Left + Label Area Width + HAlign Starting Coordinate
+			nCompLeft = nBaseLeft + nPosLeft + nLabelAreaWidth + nAlignX;
+
+			//Component Top Coordinate = Cell Top + Field Top + VAlign Starting Coordinate
+			nCompTop = nBaseTop + nPosTop + nAlignY;
+
+			//Component Width = Field Width - Left/Right Padding
+			nCompWidth = nPosWidth - this.COMP_PADDING_LEFT - this.COMP_PADDING_RIGHT;
+
+			//Component Height = Field Height - Top/Bottom Padding
+			nCompHeight = nPosHeight - this.COMP_PADDING_TOP - this.COMP_PADDING_BOTTOM;
+
+			if(sDirection=="horizontal")
+			{
+				if(nColIdx!=0)
+				{
+					//Component Left Coordinate = Component Left Coordinate - (Padding Value excluding the Left Padding of the first Component) + (Comp Space*Number of Components)
+					nCompLeft = nCompLeft - (this.COMP_PADDING_LEFT*nColIdx) - (this.COMP_PADDING_RIGHT*(nColIdx-1)) + (this.COMP_SPACE *nColIdx);
+				}else
+				{
+					//Component Left Coordinate = Component Left Coordinate + Component Left Padding
+					nCompLeft = nCompLeft + this.COMP_PADDING_LEFT;
+				}
+
+				if(nRowIdx!=0)
+				{
+					//Component Top Coordinate = Component Top Coordinate - (Padding Value excluding the Top Padding of the first Component) + (Line Space*Number of Components)
+					nCompTop = nCompTop - (this.COMP_PADDING_TOP*(nRowIdx-1)) - (this.COMP_PADDING_BOTTOM*nRowIdx) + (this.LINE_SPACE *nRowIdx);
+				}else
+				{
+					//Component Top Coordinate = Component Top Coordinate + Component Top Padding
+					nCompTop = nCompTop + this.COMP_PADDING_TOP;
+				}
+			}else
+			{
+				if(nRowIdx!=0)
+				{
+					//Component Left Coordinate = Component Left Coordinate - (Padding Value excluding the Left Padding of the first Component) + (Comp Space*Number of Components)
+					nCompLeft = nCompLeft - (this.COMP_PADDING_LEFT*nRowIdx) - (this.COMP_PADDING_RIGHT*(nRowIdx-1)) + (this.COMP_SPACE *nRowIdx);
+
+				}else
+				{
+					//Component Left Coordinate = Component Left Coordinate + Component Left Padding
+					nCompLeft = nCompLeft + this.COMP_PADDING_LEFT;
+				}
+
+				if(nColIdx!=0)
+				{
+					//Component Top Coordinate = Component Top Coordinate - (Padding Value excluding the Top Padding of the first Component) + (Line Space*Number of Components)
+					nCompTop = nCompTop - (this.COMP_PADDING_TOP*(nColIdx-1)) - (this.COMP_PADDING_BOTTOM*nColIdx) + (this.LINE_SPACE *nColIdx);
+				}else
+				{
+					//Component Top Coordinate = Component Top Coordinate + Component Top Padding
+					nCompTop = nCompTop + this.COMP_PADDING_TOP;
+				}
+			}
+			
+			nLabelTop = nLabelTop - (nLayoutRow * 1);
+			nCompTop = nCompTop - (nLayoutRow * 1);
+
+			//If it is the first label and the label width is no 0, add label tag
+			if(i==0)
+			{
+				//필드 배경 Cell 추가
+				if(bStartCol==true && sUseFieldBox == "true")
+				{
+					nCompBgWidth = this.oContents.View.referenceinfo.realwidth;
+
+					sCompId = this.lfn_GetCompId(sCellClassNm + "_" + "Bg" + "_" + sFieldId );
+					oComp = {
+								"tag" : sCellClassNm,
+								"attribute" :
+								{
+									"id" : sCompId, "left" : 0, "top" : nLabelTop, "width" : nCompBgWidth, "height" : nLabelHeight
+									,"cssclass" : sFieldBgCssClass
+								}
+							};
+					arrBandCells.push(oComp);
+				}
+				
+				if(nLabelWidth>0)
+				{
+					sCompId = this.lfn_GetCompId(sCellClassNm + "_" + "Label" + "_" + sFieldId );
+					oComp = {
+								"tag" : sCellClassNm,
+								"attribute" :
+								{
+									"id" : sCompId, "left" : nLabelLeft, "top" : nLabelTop, "width" : nLabelWidth, "height" : nLabelHeight
+									, "text" : oField.label, "cssclass" : sLabelCssClass
+								}
+							};
+					arrBandCells.push(oComp);
+				}
+			}
+			
+			//Add Component Tag
+			sCompId = this.lfn_GetCompId(sCellClassNm + "_" + sFieldId);
+			sLabel = "bind:"+sFieldId;
+			oComp = {
+						"tag" : sCellClassNm,
+						"attribute" :
+						{
+							"id" : sCompId, "left" : nCompLeft, "top" : nCompTop, "width" : nCompWidth, "height" : nCompHeight
+							, "text": sLabel, "displaytype" : sDisplayType, "edittype" : sEditType, "cssclass":sFieldCssClass
+						}
+					};
+
+			//If the Component Type is Button, add label text to the text properties
+			if(sDisplayType=="buttoncontrol")
+			{
+				oComp.attribute.text = oField.label;
+			}
+
+			arrBandCells.push(oComp);
+		}
+	}
+	//If Layout is not used
+	else
+	{
+		for(var i=0;i<arrFields.length;i++)
+		{
+			//Import Field Object
+			oFieldPosition = arrFields[i];
+			sFieldId = oFieldPosition.fieldid;
+			oField = this.oFieldArray.fields.filter(fields=>fields.id==sFieldId)[0];
+			
+			//Displaytype 설정
+			sDisplayType = oField.displaytype;
+			
+			//edittype 설정
+			sEditType = oField.edittype;
+			
+			//Import Component Css Class Id Value
+			sFieldCssClass = oField.fieldcssclass;
+
+			//Import Label Css Class Id Value
+			sLabelCssClass = oField.labelcssclass;
+
+			//Import Row/Col Index where the Field will be located
+			nRowIdx = oFieldPosition.rowidx;
+			nColIdx = oFieldPosition.colidx;
+			
+			nRowSize = oFieldPosition.rowsize;
+			nColSize = oFieldPosition.colsize;
+
+			//Import Align Location Information of the Field
+			nAlignX = oFieldPosition.alignx;
+			nAlignY = oFieldPosition.aligny;
+
+			//Import Field Location Information
+			nPosLeft = nexacro.toNumber(oFieldPosition.left);
+			nPosTop = nexacro.toNumber(oFieldPosition.top);
+			nPosWidth = nexacro.toNumber(oFieldPosition.width);
+			nPosHeight = nexacro.toNumber(oFieldPosition.height);
+			
+			//Import Field Label Width Information
+			nLabelAreaWidth = nexacro.toNumber(oField.labelwidth);
+
+			//Calculate the Left/Top Coordinate where the Component will be located
+			//Evaluate actual Component Location Information reflecting Align, Padding, Comp/Line Space, etc.
+			//Label Left Coordinate = Cell Left + Field Left + HAlign Starting Coordinate
+			nLabelLeft = nBaseLeft + nPosLeft + nAlignX;
+
+			//Label Top Coordinate = Cell Top + Field Top + VAlign Starting Coordinate
+			nLabelTop = nBaseTop + nPosTop + nAlignY;
+
+			//Label Width = Label Area Width
+			nLabelWidth = nLabelAreaWidth;
+
+			//Label Height = Field Height
+			nLabelHeight =  nPosHeight;
+
+			if(sDirection=="horizontal")
+			{
+				if(nColIdx!=0)
+				{
+					nLabelLeft = nLabelLeft - (this.COMP_PADDING_RIGHT*(nColIdx)) + (this.COMP_SPACE *nColIdx);
+				}else
+				{
+					nLabelLeft = nBaseLeft + nPosLeft + nAlignX;
+				}
+			}else
+			{
+				if(nRowIdx!=0)
+				{
+					nLabelLeft = nLabelLeft - (this.COMP_PADDING_RIGHT*(nRowIdx)) + (this.COMP_SPACE *nRowIdx);
+				}else
+				{
+					nLabelLeft = nBaseLeft + nPosLeft + nAlignX;
+				}
+			}
+
+			nCompLeft = nLabelLeft + nLabelWidth + this.COMP_PADDING_LEFT;
+			nCompTop = nBaseTop + nPosTop + nAlignY + this.COMP_PADDING_TOP;
+			nCompWidth = nPosWidth - this.COMP_PADDING_LEFT - this.COMP_PADDING_RIGHT;
+			nCompHeight = nPosHeight - this.COMP_PADDING_TOP - this.COMP_PADDING_BOTTOM;
+			
+			if(sDirection=="horizontal")
+			{
+				nLabelTop = nLabelTop - (nRowIdx * 1);
+				nCompTop = nCompTop - (nRowIdx * 1);
+				nCheckIdx = nColIdx;
+			}
+			else
+			{
+				nLabelTop = nLabelTop - (nColIdx * 1);
+				nCompTop = nCompTop - (nColIdx * 1);
+				nCheckIdx = nRowIdx;
+			}
+			
+			//필드 배경 Cell 추가
+			if(nCheckIdx==0 && sUseFieldBox == "true")
+			{
+				nCompBgWidth = nColSize - nLabelLeft;
+
+				sCompId = this.lfn_GetCompId(sCellClassNm + "_" + "Bg" + "_" + sFieldId );
+				oComp = {
+							"tag" : sCellClassNm,
+							"attribute" :
+							{
+								"id" : sCompId, "left" : nLabelLeft, "top" : nLabelTop, "width" : nCompBgWidth, "height" : nLabelHeight
+								,"cssclass" : sFieldBgCssClass
+							}
+						};
+				arrBandCells.push(oComp);
+			}
+			
+			// 라벨 Cell 추가
+			if(nLabelWidth>0)
+			{
+				sCompId = this.lfn_GetCompId(sCellClassNm + "_" + "Label" + "_" + sFieldId);
+				oComp = {
+							"tag" : sCellClassNm,
+							"attribute" :
+							{
+								"id" : sCompId, "left" : nLabelLeft, "top" : nLabelTop, "width" : nLabelWidth, "height" : nLabelHeight
+								, "text" : oField.label, "cssclass" : sLabelCssClass
+							}
+						};
+				arrBandCells.push(oComp);
+			}
+			
+			// Field Cell 추가
+			sCompId = this.lfn_GetCompId(sCellClassNm + "_" + sFieldId);
+			sLabel = "bind:"+sFieldId;
+			oComp =	{
+						"tag" : sCellClassNm,
+						"attribute" :
+						{
+							"id" : sCompId, "left" : nCompLeft, "top" : nCompTop, "width" : nCompWidth, "height" : nCompHeight
+							, "text": sLabel, "displaytype" : sDisplayType, "edittype" : sEditType, "cssclass":sFieldCssClass
+						}
+					};
+			
+			
+			if(sDisplayType=="buttoncontrol")
+			{
+				oComp.attribute.text = oField.label;
+			}
+			
+			arrBandCells.push(oComp);
+		}
+	}
+	
+	return arrBandCells;
+};
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetInitValue
+ * Return       : initvalue contents (JSON format)
+ * Description  : Function to generate <InitValue> source
+ *---------------------------------------------------------------------------------------------*/
+fn_GetInitValue = function()
+{
+
+    var oInitValue = [];
+
+    return oInitValue;
+};
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetObjects
+ * Return       : objects contents (JSON format)
+ * Description  : Function to generate <Objects> source
+ *---------------------------------------------------------------------------------------------*/
+fn_GetObjects = function()
+{
+    //Initialize Object
+    var oObjects = [];
+
+    var oViewDataset = this.lfn_GetDataset("viewdataset", this.oFieldArray, 1);
+
+    //Object Information Setting
+    oObjects.push(oViewDataset);
+
+    //Return Object Information
+    return oObjects;
+};
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetBind
+ * Return       : bind contents (JSON format)
+ * Description  : Function to generate <Bind> source
+ *---------------------------------------------------------------------------------------------*/
+fn_GetBind = function()
+{
+	var oBind = this.lfn_GetBindItem("viewdataset", this.arrBindItems);
+
+    return oBind;
+};
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetScript
+ * Return       : script contents (JSON format)
+ * Description  : Function to generate <Script> source
+ *---------------------------------------------------------------------------------------------*/
+fn_GetScript = function()
+{
+    var oScript = {};
+
+    /*
+    oScript =
+    {
+        "tag": "Script",
+        "attribute": { "type" : "xscript5.1" },
+        "value": "this.fn_Alert = function(){this.alert('MESSAGE')};"
+    }
+    */
+
+    return oScript;
+};]]></Script>
+</ViewTemplateInfo>

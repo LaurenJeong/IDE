@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModelInfo version="1.1">
+  <Models>
+    <Model id="CommBtn" name="CommBtn" iotype="" description="">
+      <Field required="false" id="Add" label="신규" fieldtype="FreeText" datatype="STRING" datasize="80" editable="true"/>
+      <Field required="false" id="Del" label="삭제" fieldtype="FreeText" datatype="STRING" datasize="80" editable="true"/>
+      <Field required="false" id="Save" label="저장" fieldtype="FreeText" datatype="STRING" datasize="80" editable="true"/>
+      <Field required="false" id="Print" label="출력" fieldtype="FreeText" datatype="STRING" datasize="80" editable="true"/>
+      <Field required="false" id="Ok" label="확인" fieldtype="FreeText" datatype="STRING" datasize="80" editable="true"/>
+      <Field required="false" id="Cancel" label="취소" fieldtype="FreeText" datatype="STRING" datasize="80" editable="true"/>
+      <FieldUserAttributes>
+        <Attribute name="editable" edittype="Boolean" enuminfo="" defaultvalue="true" description="Sets whether the field data can be edited."/>
+      </FieldUserAttributes>
+    </Model>
+    <Model id="CommBtn_0" name="CommBtn" iotype="" description="">
+      <Field required="false" id="Add" label="신규" fieldtype="FreeText" datatype="STRING" datasize="80" editable="true"/>
+      <Field required="false" id="Del" label="삭제" fieldtype="FreeText" datatype="STRING" datasize="80" editable="true"/>
+      <Field required="false" id="Save" label="저장" fieldtype="FreeText" datatype="STRING" datasize="80" editable="true"/>
+      <Field required="false" id="Print" label="출력" fieldtype="FreeText" datatype="STRING" datasize="80" editable="true"/>
+      <Field required="false" id="Ok" label="확인" fieldtype="FreeText" datatype="STRING" datasize="80" editable="true"/>
+      <Field required="false" id="Cancel" label="취소" fieldtype="FreeText" datatype="STRING" datasize="80" editable="true"/>
+      <FieldUserAttributes>
+        <Attribute name="editable" edittype="Boolean" enuminfo="" defaultvalue="true" description="Sets whether the field data can be edited."/>
+      </FieldUserAttributes>
+    </Model>
+  </Models>
+  <Service id="" name="" url=""/>
+</ModelInfo>

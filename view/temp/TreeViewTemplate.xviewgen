@@ -1,0 +1,743 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ViewTemplateInfo version="1.0">
+  <ViewTemplate id="GridViewTemplate" viewtype="IITP" description=""/>
+  <Script version="1.0" type="xscript5.1"><![CDATA[/**
+*  Tree View Template
+*  @FileName 	TreeViewTemplate.xviewgen
+*  @Creator 	Creator
+*  @CreateDate 	2022.04.27
+*  @Desction    트리 생성 템플릿
+*  @version		1.0.0.0
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  2022.04.27     		Creator       	    	최초 생성
+*******************************************************************************
+*/
+/************************************************************************************************
+ * include 선언부
+ ************************************************************************************************/
+include "view_lib::util.xjs";
+include "view_lib::common.xjs";
+/************************************************************************************************
+ * 변수 선언 영역
+ ************************************************************************************************/
+//--------------------------------------------------------------------------------------------------------
+// 타이틀 객체 관련 상수
+//--------------------------------------------------------------------------------------------------------
+//Tree 영역 top 위치(title영역에 따라 위치 변경됨)
+this.VIEW_TOP = 0;
+//Tree 영역 bottom 위치(title영역에 따라 위치 변경됨)
+this.VIEW_BOTTOM = 0;
+//타이틀 영역 전체건수 표시여부
+this.USE_TOT_COUNT			= "false";
+//타이틀 영역 접기/펼치기 버튼 표시여부(Grid에서는 사용안함)
+this.USE_EXPAND_BUTTON		= "none";
+//--------------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------------
+// Grid 속성 관련 상수
+//--------------------------------------------------------------------------------------------------------
+// Grid autofittype 속성 기본값
+this.AUTOFIT_TYPE		= "col";
+
+// Grid treeinitstatus 속성 기본값
+this.TREE_INIT_STATUS	= "collapse";
+
+// Grid treeusebutton 속성 기본값
+this.TREE_USE_BUTTON	= "use";
+
+// Grid treeuseimage 속성 기본값
+this.TREE_USE_IMAGE		= "true";
+
+// Grid treeuseline 속성 기본값
+this.TREE_USE_LINE		= "true";
+
+// Grid class 속성 기본값
+this.TREE_CSSCLASS		= "";
+
+// Grid ID
+this.TREE_ID			= "grdList"
+//--------------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------------
+// Grid Cell 속성 관련 상수
+//--------------------------------------------------------------------------------------------------------
+// Grid body Band 영역 높이 기본값
+this.BODY_BAND_SIZE			= 30;
+
+// Grid Cell Col 기본 넓이
+this.COL_SIZE				= 200;
+
+// Grid Cell displaytype 속성 기본값
+this.TREE_TYPE				= "none";
+
+// Grid Cell treestartlevel 속성 기본값
+this.TREE_START_LEVEL		= 0;
+
+// Grid Cell cssclass 속성 기본값
+this.CELL_CSSCLASS			= "";
+//--------------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------------
+// expand/collapse 버튼 관련 상수
+//--------------------------------------------------------------------------------------------------------
+this.TREE_BUTTON_POSITON		= "none";
+// expand/collapse 버튼 사이즈(width, height)
+this.TREE_BUTTON_SIZE			= 30;
+// expand/collapse 버튼 가로 사이간격
+this.TREE_BUTTON_COMP_SPACE		= 5;
+// expand/collapse 버튼과 Gird 세로 사이간격
+this.TREE_BUTTON_LINE_SPACE		= 5;
+
+// expand 버튼 ID
+this.TREE_BUTTON_EXPAND_ID			= "btnTreeexpand";
+// collapse 버튼 ID
+this.TREE_BUTTON_COLLAPSE_ID		= "btnTreecollapse";
+// expand 버튼 cssclass
+this.TREE_BUTTON_EXPAND_CSSCLASS 	= "btn_WF_Treeexpand";
+// collapse 버튼 cssclass
+this.TREE_BUTTON_COLLAPSE_CSSCLASS 	= "btn_WF_Treecollapse";
+//--------------------------------------------------------------------------------------------------------
+//////////////////////////////Constant Setting END ////////////////////////////////////////////////////
+/************************************************************************************************
+ * Nexacro Studio 호출 필수 FUNCTION 영역
+ ************************************************************************************************/
+/*---------------------------------------------------------------------------------------------*
+ * Function    : fn_GetViewGenerationResult
+ * Parameter   :
+ *               - fieldarray     : model field list
+ *               - contents       : old contents (include <View>)
+ *               - generationattr : attributes for view generation
+ * Return      : View contents (source + script) (JSON format)
+                 ex) {
+                        "View": {
+                            "tag": "View",
+                            "attribute": {
+                                "id": "View00",
+                                "viewtype": "FreeForm",
+                                "taborder": "2",
+                                "text": "search view",
+                                "left": "0",
+                                ...
+                            },
+                            "Model": [
+                                {   // with field
+                                    "fieldid": "department",
+                                    "Components": [
+                                    ...
+                                    ]
+                                },
+                                {   // without field
+                                    "fieldid": "",
+                                    "Components": [
+                                    ...
+                                    ]
+                                }
+                            ],
+                            "InitValue": [
+                            ],
+                            "Objects": [
+                            ],
+                            "Bind": [
+                            ],
+                            "Script": {
+                                "tag": "Script",
+                                "attribute": {
+                                },
+                                "value": ""
+                            }
+                        }
+                    }
+ * Description : Generate the view based on the model field and return the results.
+ *---------------------------------------------------------------------------------------------*
+ *                            !!! This is a required function. !!!                             *
+ *                            !!! Do not delete it. !!!                                        *
+ *---------------------------------------------------------------------------------------------*/
+fn_GetViewGenerationResult = function(fieldarray, contents, generationattr)
+{
+	//Return Value
+    var vResult = "";
+
+    //trace(">> fieldarray : " + fieldarray);
+	//trace(">> contents : " + contents);
+    //trace(">> generationattr : " + generationattr);
+
+    //Make Generation Info
+	//this.oFieldArray : Model Information as JSON Object
+	//this.oContents : View Component Information as JSON Object
+	//this.oContents.View.Model : Model Information Initialization
+	//this.oGenerationAttr : Setting Information as JSON Object
+	//this.oUseFieldArray : Use Model Information as JSON Object
+	this.lfn_MakeGenerationInfo(fieldarray, contents, generationattr, false);
+	
+	//Load Model Information Production Function
+	fn_GetModel();
+
+	//Load InitValue Information Production Function
+    this.oContents.View.InitValue = fn_GetInitValue();
+
+	//Load Object Information Production Function
+    this.oContents.View.Objects = fn_GetObjects();
+
+	//Load Script Information Production Function
+    this.oContents.View.Script = fn_GetScript();
+
+	//Convert View Component Information to String
+    vResult = JSON.stringify(this.oContents, null, "\t");
+
+    //trace(">> vResult : " + vResult);
+    //Return View Component Information
+    return vResult;
+};
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetViewAttributeList
+ * Return       : View generation attribute list (JSON format)
+                  ex)   {
+                        "attributecount": "2",
+                        "attributes": [
+                           {
+                                "id": "use_triggerbutton",
+                                "edittype": "Boolean",              // edittype : Boolean/String/Number/Enum/ViewObjList
+                                "defaultvalue": "true",
+                                "description": "Specifies whether trigger button is auto-created or not"
+                            },
+                            {
+                                "id": "triggerbuttontext",
+                                "edittype": "String",               // edittype : Boolean/String/Number/Enum/ViewObjList
+                                "defaultvalue": "Search",
+                                "description": "Enter text for trigger button"
+                            }
+                        ]
+                    }
+ * Description : Obtain a list of custom attributes required for view generation
+ *---------------------------------------------------------------------------------------------*/
+fn_GetViewAttributeList = function()
+{
+    var sViewAttr = "";
+    var oViewAttr = {
+                        "attributes": [
+							this.oAttrTitleText,					// Title Text
+							{
+                                "id": "treeinitstatus",
+                                "edittype" : "Enum",
+								"enumlist" : ["collapse", "expand"],
+								"defaultvalue" : this.TREE_INIT_STATUS,
+								"description": "최초 로드 시 표시되는 트리의 상태를 설정"
+                            },
+							{
+                                "id": "treeusebutton",
+                                "edittype" : "Enum",
+								"enumlist" : ["use", "no"],
+								"defaultvalue" : this.TREE_USE_BUTTON,
+								"description": "트리에서 Collapse/Expand 버튼을 사용할지 여부 설정"
+                            },
+							{
+                                "id": "treeuseimage",
+                                "edittype": "Boolean",
+								"defaultvalue": this.TREE_USE_IMAGE,
+								"description": "트리 상태를 나타내는 이미지를 사용할 지 설정"
+                            },
+							{
+                                "id": "treeuseline",
+                                "edittype": "Boolean",
+								"defaultvalue": this.TREE_USE_LINE,
+								"description": "하위트리와 연결되는 선을 표시할지 설정"
+                            },
+							{
+                                "id": "treestatusbutton",
+                                "edittype" : "Enum",
+								"enumlist" : ["none", "lefttop", "righttop", "leftbottom", "rightbottom"],
+								"defaultvalue": this.TREE_BUTTON_POSITON,
+								"description": "Expand/Collapse 추가 버튼 사용여부 및 위치설정"
+                            },
+							{
+                                "id": "treestartlevel",
+                                "edittype": "Number",
+								"defaultvalue": this.TREE_START_LEVEL,
+								"description": "트리 Level 최소값"
+
+                            },
+							{
+                                "id": "bodybandsize",
+                                "edittype": "Number",
+								"defaultvalue": this.BODY_BAND_SIZE,
+								"description": "트리 Row Size"
+
+                            },
+							{
+                                "id": "treecssclass",
+                                "edittype": "String",
+								"defaultvalue": this.CELL_CSSCLASS,
+								"description": "트리 cssclass"
+                            },
+							{
+                                "id": "cellcssclass",
+                                "edittype": "String",
+								"defaultvalue": this.CELL_CSSCLASS,
+                                "description": "Cell CSS Class"
+                            }
+                        ]
+                  };
+
+	oViewAttr["attributecount"] = oViewAttr["attributes"].length;
+
+	sViewAttr = JSON.stringify(oViewAttr, null, "\t");
+    return sViewAttr;
+};
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetFieldUserAttributeList
+ * Return       : user attribute list from model field(JSON format)
+                  ex)   {
+                        "attributecount": "2",
+                        "attributes": [
+                           {
+                                "id": "use_triggerbutton",
+                                "edittype": "Boolean",              // edittype : Boolean/String/Number/Enum/ViewObjList
+                                "defaultvalue": "true",
+                                "description": "Specifies whether trigger button is auto-created or not"
+                            },
+                            {
+                                "id": "triggerbuttontext",
+                                "edittype": "String",               // edittype : Boolean/String/Number/Enum/ViewObjList
+                                "defaultvalue": "Search",
+                                "description": "Enter text for trigger button"
+                            }
+                        ]
+                    }
+ * Description  : Obtain a list of user attributes to register in model field
+ *---------------------------------------------------------------------------------------------*/
+fn_GetFieldUserAttributeList = function ()
+{
+	var sFieldAttr = "";
+	var oFieldAttr = {
+                        "attributes": [
+                            {
+                                "id": "treetype",
+                                "edittype": "Enum",
+								"enumlist" : ["none", "treelevel", "treetext", "treecheck"],
+                                "defaultvalue": this.TREE_TYPE,
+                                "description": "Tree 설정값"
+												+ "\n" + " - none : 사용안함"
+												+ "\n" + " - treelevel : 트리에서 level값으로 사용"
+												+ "\n" + " - treetext : 트리 Text"
+												+ "\n" + " - treecheck : 트리 CheckBox"
+                            }
+                        ]
+                  };
+
+	oFieldAttr["attributecount"] = oFieldAttr["attributes"].length;
+
+ 	sFieldAttr = JSON.stringify(oFieldAttr, null, "\t");
+    return sFieldAttr;
+}
+
+/************************************************************************************************
+ * 사용자 FUNCTION 영역
+ ************************************************************************************************/
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetModel
+ * Parameter    :
+ *                - this.oFieldArray : model field data
+ *                - this.oContents : view contents
+ *                - this.oGenerationAttr : attributes for view generation
+ * Return       : model contents (JSON format)
+ * Description  : Function to generate a component source based on field information of the model entered by the user
+ *---------------------------------------------------------------------------------------------*/
+fn_GetModel = function()
+{
+	// 그리드 Attribute
+	var oGridAttr = {};
+	var oTreeCellAttr = {};
+	
+	var sTitleText			= this.oGenerationAttr.attributes.titletext;			// 타이틀 Text
+	var sTreeInitStatus		= this.oGenerationAttr.attributes.treeinitstatus;			// 최초 로드 시 표시되는 트리의 상태
+	var sTreeUseButton		= this.oGenerationAttr.attributes.treeusebutton;			// 트리에서 Collapse/Expand 버튼을 사용할지 여부
+	var sTreeUseImage		= this.oGenerationAttr.attributes.treeuseimage;				// 트리 상태를 나타내는 이미지를 사용여부
+	var sTreeUseLine		= this.oGenerationAttr.attributes.treeuseline;				// 하위트리와 연결되는 선 사용여부
+	var sTreeStatusButton	= this.oGenerationAttr.attributes.treestatusbutton;			// Expand/Collapse 추가 버튼 사용여부 및 위치설정
+	var sTreeStartLevel		= this.oGenerationAttr.attributes.treestartlevel;			// 트리 시작 level값
+	var sBodyBandSize		= this.oGenerationAttr.attributes.bodybandsize;				// 트리 Row Size
+	var sCssclass			= this.oGenerationAttr.attributes.treecssclass;				// 그리드 cssclass
+	var sCellCssclass		= this.oGenerationAttr.attributes.cellcssclass;				// 트리 cell cssclass
+	
+	var bTreeUseCheckbox	= false;													// treeusecheckbox 사용여부
+	var sUseTotalCount		= this.USE_TOT_COUNT;										// 전체건수 Static 생성
+	var sUseExpandButton	= this.USE_EXPAND_BUTTON;									// expand 토글버튼 생성
+	
+	this.VIEW_TOP = this.lfn_MakeTitleArea(sTitleText, sUseTotalCount, sUseExpandButton);
+	
+	//Import Model Field Quantity
+    var nFieldCount = this.oFieldArray.fieldcount;
+	
+	// Field Array
+	var arrField = new Array(); 
+	var oField;
+
+	// 트리상태 변경 버튼 생성
+	if (sTreeStatusButton != "none")
+	{
+		// 트리 Expand/Collapse 추가버튼 생성
+		fn_MakeTreeStatusButton();
+	}
+	
+	// Grid 위치
+	var nTop	= this.VIEW_TOP;
+	var nBottom	= this.VIEW_BOTTOM;
+	var nLeft	= 0;
+	var nRight	= 0;
+	
+	var sTreeType;
+	var oTreeLvlField;
+	var oTreeTextField;
+	var oTreeChkField;
+	
+	//트리에서 사용할 모델 Field ID 리스트 만들기
+    for(i=0;i<nFieldCount;i++)
+    {
+        oField = this.oFieldArray.fields[i];
+		sTreeType = oField.treetype;
+		
+		// this.oFieldArray Json Data로 Field Array() 셋팅
+		arrField.push(oField.id);
+		
+		// displaytype에 따라 Array() 셋팅
+		if (sTreeType == "treelevel") {
+			if(this.lfn_IsNull(oTreeLvlField)) {
+				oTreeLvlField = oField;
+			} else {
+				this.lfn_Log("treelevel이 여러개 설정되었습니다.(1개의 필드만 설정가능합니다)","warn");
+			}
+			
+		} else if (sTreeType == "treetext") {
+			if(this.lfn_IsNull(oTreeTextField)) {
+				oTreeTextField = oField;
+			} else {
+				this.lfn_Log("treetext가 여러개 설정되었습니다.(1개의 필드만 설정가능합니다)","warn");
+			}
+		} else if (sTreeType == "treecheck") {
+			if(this.lfn_IsNull(oTreeChkField)) {
+				oTreeChkField = oField;
+				bTreeUseCheckbox = true;			// treecheck가 설정된 경우에만 treeusecheckbox 속성을 true로 설정
+			} else {
+				this.lfn_Log("treecheck가 여러개 설정되었습니다.(1개의 필드만 설정가능합니다)","warn");
+			}
+		}
+    }
+	
+	if (sBodyBandSize <= 0)			sBodyBandSize = this.AUTOFIT_TYPE;
+	if (sTreeStartLevel <= 0)		sTreeStartLevel = this.TREE_START_LEVEL;
+	
+	// 트리그리드 속성 설정
+	oGridAttr = {
+					  "id" : this.TREE_ID
+					, "left" : nLeft, "top" : nTop, "right" : nRight, "bottom" : nBottom
+					, "binddataset"		: "viewdataset"
+					, "autofittype"		: this.AUTOFIT_TYPE
+					, "treeinitstatus"	: sTreeInitStatus + ",all"
+					, "treeusebutton"	: sTreeUseButton
+					, "treeuseimage"	: sTreeUseImage
+					, "treeuseline"		: sTreeUseLine
+					, "treeusecheckbox"	: bTreeUseCheckbox
+				};
+	
+	// 트리 그리드 cssclass 설정
+	if(this.lfn_IsNotNull(sCssclass)) {
+		oGridAttr["cssclass"]	= sCssclass;
+	}
+	
+	// 트리 Cell 속성 설정
+	oTreeCellAttr = {
+						  "displaytype" : "treeitemcontrol"
+						, "edittype" : "tree"
+					};
+					
+	// Tree Level값 설정
+	if(this.lfn_IsNotNull(oTreeLvlField)) {
+		oTreeCellAttr["treelevel"] = "bind:" + oTreeLvlField.id;
+		oTreeCellAttr["treestartlevel"] = sTreeStartLevel;
+	} else {
+		this.lfn_Log("treelevel이 설정되지 않았습니다.","error");
+		return;
+	}
+	
+	// Tree Text값 설정
+	if(this.lfn_IsNotNull(oTreeTextField)) {
+		oTreeCellAttr["text"] = "bind:" + oTreeTextField.id;
+	} else {
+		this.lfn_Log("treetext이 설정되지 않았습니다.","error");
+		return;
+	}
+	
+	// Tree CheckBox값 설정
+	if(this.lfn_IsNotNull(oTreeChkField)) {
+		oTreeCellAttr["treecheck"] = "bind:" + oTreeChkField.id;
+	}
+	
+	// 트리 cell cssclass 설정
+	if(this.lfn_IsNotNull(sCellCssclass)) {
+		oTreeCellAttr["cssclass"]	= sCellCssclass;
+	}
+	
+	var oModel = this.oContents.View.Model;
+	oModel[oModel.length] = {
+            "fieldid" : arrField.join(","),
+            "Components" :
+            [
+                {
+                    "tag" : "Grid",
+                    "attribute" : oGridAttr,
+                    "Grid" :
+                    [
+                        {
+                            "tag": "Formats",
+                            "attribute": {},
+                            "Formats":
+                            [
+                                {
+                                    "tag": "Format",
+                                    "attribute": { "id": "default" },
+                                    "Format":
+                                    [
+                                        {
+                                            "tag": "Columns",
+                                            "Columns": [{ "tag" : "Column", "attribute" : {"size" : this.COL_SIZE}}]
+                                        },
+                                        {
+                                            "tag": "Rows",
+                                            "Rows": [{ "tag" : "Row", "attribute" : {"size" : sBodyBandSize}}]
+                                        },
+                                        {
+                                            "tag": "Band",
+                                            "attribute": { "id" : "body"},
+                                            "Band": [{ "tag" : "Cell", "attribute" : oTreeCellAttr}]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+		
+	//Return Information of Model to be Created
+    return oModel;
+};
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_MakeTreeStatusButton
+ * Parameter    :
+ * Return       :
+ * Description  : 트리 Expand/Collapse 추가버튼 생성
+ *---------------------------------------------------------------------------------------------*/
+fn_MakeTreeStatusButton = function()
+{
+	var sTreeStatusButton	= this.oGenerationAttr.attributes.treestatusbutton;			// Expand/Collapse 추가 버튼 사용여부 및 위치설정
+
+	var oModel = this.oContents.View.Model;
+	var sViewNm = this.oContents.View.attribute.id;
+	var oField;
+	var oComp;
+
+	var nCompWidth	= this.TREE_BUTTON_SIZE;
+	var nCompHeight = this.TREE_BUTTON_SIZE;
+	
+	var oBtnCollapse	= {
+							  "id" : this.TREE_BUTTON_COLLAPSE_ID
+							, "width" : nCompWidth, "height" : nCompHeight
+							, "cssclass" : this.TREE_BUTTON_COLLAPSE_CSSCLASS
+							, "onclick" : sViewNm + ".form." + "lfn_TreeView_btnTreecollapse_onclick"
+						};
+	var oBtnExpand		= {
+							  "id" : this.TREE_BUTTON_EXPAND_ID
+							, "width" : nCompWidth, "height" : nCompHeight
+							, "cssclass" : this.TREE_BUTTON_EXPAND_CSSCLASS
+							, "onclick" : sViewNm + ".form." + "lfn_TreeView_btnTreeexpand_onclick"
+						};
+	
+	// sTreeStatusButton에 따라 위치설정
+	if (sTreeStatusButton == "lefttop")
+	{
+		// Collapse 버튼 위치 설정
+		oBtnCollapse["top"]		= this.VIEW_TOP;
+		oBtnCollapse["left"]	= 0;
+		
+		// Expand 버튼 위치 설정
+		oBtnExpand["top"]		= this.VIEW_TOP;
+		oBtnExpand["left"]		= this.TREE_BUTTON_SIZE + this.TREE_BUTTON_COMP_SPACE;
+		
+		// Tree Grid 위치 설정
+		this.VIEW_TOP			= this.VIEW_TOP + this.TREE_BUTTON_SIZE + this.TREE_BUTTON_LINE_SPACE;
+	}
+	else if (sTreeStatusButton == "righttop")
+	{
+		// Collapse 버튼 위치 설정
+		oBtnCollapse["top"]		= 0;
+		oBtnCollapse["right"]	= this.TREE_BUTTON_SIZE + this.TREE_BUTTON_COMP_SPACE;
+		
+		// Expand 버튼 위치 설정
+		oBtnExpand["top"]		= 0;
+		oBtnExpand["right"]		= 0;
+		
+		// Tree Grid 위치 설정
+		this.VIEW_TOP			= Math.max(this.VIEW_TOP, (this.TREE_BUTTON_SIZE + this.TREE_BUTTON_LINE_SPACE));
+	}
+	else if (sTreeStatusButton == "leftbottom")
+	{
+		// Collapse 버튼 위치 설정
+		oBtnCollapse["bottom"]	= 0;
+		oBtnCollapse["left"]	= 0;
+		
+		// Expand 버튼 위치 설정
+		oBtnExpand["bottom"]	= 0
+		oBtnExpand["left"]		= this.TREE_BUTTON_SIZE + this.TREE_BUTTON_COMP_SPACE;
+		
+		// Tree Grid 위치 설정
+		this.VIEW_BOTTOM		= this.TREE_BUTTON_SIZE + this.TREE_BUTTON_LINE_SPACE;
+	}
+	else if (sTreeStatusButton == "rightbottom")
+	{
+		// Collapse 버튼 위치 설정
+		oBtnCollapse["bottom"]	= 0;
+		oBtnCollapse["right"]	= this.TREE_BUTTON_SIZE + this.TREE_BUTTON_COMP_SPACE;
+		
+		// Expand 버튼 위치 설정
+		oBtnExpand["bottom"]	= 0;
+		oBtnExpand["right"]		= 0;
+		
+		// Tree Grid 위치 설정
+		this.VIEW_BOTTOM		= this.TREE_BUTTON_SIZE + this.TREE_BUTTON_LINE_SPACE;
+	}
+
+	//Add Background Static Component Tag
+	oModel[oModel.length] =
+	{
+		"fieldid" : "",
+		"Components" :
+		[{ "tag" : "Button", "attribute" : oBtnCollapse}
+		, { "tag" : "Button", "attribute" : oBtnExpand}]
+	};
+};
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetInitValue
+ * Parameter    :
+ *                - this.oFieldArray : model field data
+ *                - this.oContents : view contents
+ *                - this.oGenerationAttr : attributes for view generation
+ * Return       : initvalue contents (JSON format)
+ * Description  : Function to generate <InitValue> source
+ *---------------------------------------------------------------------------------------------*/
+fn_GetInitValue = function()
+{
+    var oInitValue = [];
+    /*
+    oInitValue =
+    [
+        {
+            "tag" : "initValue",
+            "initValue" :
+            [
+                {
+                    "tag" : "Button",
+                    "attribute" :
+                    {
+                        "id" : "btnSearch", "text" : "Search11"
+                    }
+                }
+            ]
+        }
+    ];
+    */
+    return oInitValue;
+};
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetObjects
+ * Parameter    :
+ *                - this.oFieldArray : model field data
+ *                - this.oContents : view contents
+ *                - this.oGenerationAttr : attributes for view generation
+ * Return       : objects contents (JSON format)
+ * Description  : Function to generate <Objects> source
+ *---------------------------------------------------------------------------------------------*/
+fn_GetObjects = function()
+{
+    //Initialize Object
+    var oObjects = [];
+
+    var oViewDataset = this.lfn_GetDataset("viewdataset", this.oFieldArray, 1);
+
+    //Object Information Setting
+    oObjects.push(oViewDataset);
+
+    //Return Object Information
+    return oObjects;
+};
+
+/*---------------------------------------------------------------------------------------------*
+ * Function     : fn_GetScript
+ * Parameter    :
+ *                - this.oFieldArray : model field data
+ *                - this.oContents : view contents
+ *                - this.oGenerationAttr : attributes for view generation
+ * Return       : script contents (JSON format)
+ * Description  : Function to generate <Script> source
+ *---------------------------------------------------------------------------------------------*/
+fn_GetScript = function()
+{
+	//Initialize Script Information
+    var oScript = {};
+    var sScript = "";
+	
+	var sTreeStatusButton	= this.oGenerationAttr.attributes.treestatusbutton;			// Expand/Collapse 추가 버튼 사용여부 및 위치설정
+	
+	if (sTreeStatusButton != "none")
+	{
+		/*
+		this.lfn_TreeView_btnTreecollapse_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+		{
+			var objForm = obj.parent;
+			var objGrid = objForm.components['" + this.TREE_ID + "'];
+			objGrid.set_treeinitstatus('collapse,all');
+		};
+		this.lfn_TreeView_btnTreeexpand_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+		{
+			var objForm = obj.parent;
+			var objGrid = objForm.components['" + this.TREE_ID + "'];
+			objGrid.set_treeinitstatus('expand,all');
+		};
+		*/
+		
+		sScript += "this.lfn_TreeView_btnTreecollapse_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)";
+		sScript += "{";
+		sScript += "	var objForm = obj.parent;";
+		sScript += "	var objGrid = objForm.components['" + this.TREE_ID + "'];";
+		sScript += "	objGrid.set_treeinitstatus('collapse,all');";
+		sScript += "};";
+		sScript += "this.lfn_TreeView_btnTreeexpand_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)";
+		sScript += "{";
+		sScript += "	var objForm = obj.parent;";
+		sScript += "	var objGrid = objForm.components['" + this.TREE_ID + "'];";
+		sScript += "	objGrid.set_treeinitstatus('expand,all');";
+		sScript += "};";
+	}
+	
+	if (this.lfn_IsNotNull(sScript))
+	{
+		sScript = nexacro.replaceAll(sScript,"\t","");
+		
+		oScript =
+		{
+			"tag": "Script",
+			"attribute": { "type" : "xscript5.1" },
+			"value": sScript
+		}
+	};
+	//Return Script Information
+    return oScript;
+};]]></Script>
+</ViewTemplateInfo>

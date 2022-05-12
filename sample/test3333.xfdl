@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="test3333" width="1280" height="1024" titletext="New Form">
+    <Layouts>
+      <Layout height="1024" width="1280">
+        <View id="View00" taborder="0" text="View00" viewdataset="viewdataset" left="46" top="21" width="525" height="396">
+          <Layouts>
+            <Layout>
+              <Grid id="grdList" left="0" top="0" right="291" bottom="107" binddataset="viewdataset">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="0" band="head"/>
+                      <Row size="30" band="body"/>
+                      <Row size="30" band="summ"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell id="cell_Company" col="0" row="0" text="회사명"/>
+                      <Cell id="cell_Department" col="1" row="0" text="부서명"/>
+                      <Cell id="cell_Name" col="2" row="0" text="성명"/>
+                      <Cell id="cell_Phone" col="3" row="0" text="전화번호"/>
+                      <Cell id="cell_Email" col="4" row="0" text="이메일주소"/>
+                      <Cell id="cell_field0" col="5" row="0" text="label0"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell id="cell_Company" col="0" row="0" text="bind:Company" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_Department" col="1" row="0" text="bind:Department" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_Name" col="2" row="0" text="bind:Name" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_Phone" col="3" row="0" text="bind:Phone" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_Email" col="4" row="0" text="bind:Email" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_field0" col="5" row="0" text="bind:field0" displaytype="normal" edittype="none"/>
+                    </Band>
+                    <Band id="summary">
+                      <Cell id="cell_Company" col="0" row="0" text=""/>
+                      <Cell id="cell_Department" col="1" row="0" text=""/>
+                      <Cell id="cell_Name" col="2" row="0" text=""/>
+                      <Cell id="cell_Phone" col="3" row="0" text=""/>
+                      <Cell id="cell_Email" col="4" row="0" text=""/>
+                      <Cell id="cell_field0" col="5" row="0" text=""/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Grid id="Grid00" taborder="1" left="255" top="14" width="230" height="261" binddataset="Dataset00">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row band="head" size="24"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="Column0"/>
+                      <Cell col="1" text="Column1"/>
+                      <Cell col="2" text="Column2"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:Column0"/>
+                      <Cell col="1" text="bind:Column1"/>
+                      <Cell col="2" text="bind:Column2"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+          <Objects>
+            <Dataset id="viewdataset">
+              <ColumnInfo>
+                <Column id="Company" type="STRING" size="80"/>
+                <Column id="Department" type="STRING" size="80"/>
+                <Column id="Name" type="STRING" size="80"/>
+                <Column id="Phone" type="STRING" size="80"/>
+                <Column id="Email" type="STRING" size="80"/>
+                <Column id="field0" type="STRING" size="80"/>
+              </ColumnInfo>
+              <Rows>
+                <Row>
+                  <Col id="Company">1</Col>
+                  <Col id="Department">8</Col>
+                </Row>
+                <Row>
+                  <Col id="Company">2</Col>
+                  <Col id="Department">7</Col>
+                </Row>
+                <Row>
+                  <Col id="Company">3</Col>
+                  <Col id="Department">6</Col>
+                </Row>
+                <Row>
+                  <Col id="Company">4</Col>
+                  <Col id="Department">5</Col>
+                </Row>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+                <Row/>
+              </Rows>
+            </Dataset>
+          </Objects>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="FreeFormModel001" filepath="sample\FreeForm.xmodel">
+            <Fields>
+              <Field id="Company" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="Department" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="Name" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="Phone" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="Email" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="field0" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+            </Fields>
+            <Components>
+              <Component id="grdList" fields="Company,Department,Name,Phone,Email,field0"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="GridViewTemplate.xviewgen">
+            <Attribute id="usetotalcount" value="false"/>
+            <Attribute id="headbandsize" value="0"/>
+            <Attribute id="bodybandsize" value="30"/>
+            <Attribute id="summbandsize" value="30"/>
+          </ViewTemplateInfo>
+        </View>
+        <Grid id="Grid00" taborder="1" left="57" top="360" width="489" height="202" binddataset="View00.form.viewdataset">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="Company"/>
+                <Cell col="1" text="Department"/>
+                <Cell col="2" text="Name"/>
+                <Cell col="3" text="Phone"/>
+                <Cell col="4" text="Email"/>
+                <Cell col="5" text="field0"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:Company"/>
+                <Cell col="1" text="bind:Department"/>
+                <Cell col="2" text="bind:Name"/>
+                <Cell col="3" text="bind:Phone"/>
+                <Cell col="4" text="bind:Email"/>
+                <Cell col="5" text="bind:field0"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="Dataset00">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

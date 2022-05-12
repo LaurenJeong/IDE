@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="test_20220426" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <View id="View00" taborder="0" text="View00" viewdataset="viewdataset" left="39" top="35" width="649" height="75">
+          <Layouts>
+            <Layout>
+              <ListView id="ListView00" taborder="0" left="0" top="0" right="0" bottom="0" binddataset="viewdataset">
+                <Formats>
+                  <Format id="default">
+                    <Band id="body" width="100%" height="92">
+                      <Cell id="Cell00" left="10" top="5" width="120" height="24" text="Company"/>
+                      <Cell id="Cell01" left="135" top="5" width="180" height="24" text="bind:Company"/>
+                      <Cell id="Cell02" left="325" top="5" width="120" height="24" text="Department"/>
+                      <Cell id="Cell03" left="450" top="5" width="180" height="24" text="bind:Department"/>
+                      <Cell id="Cell04" left="10" top="34" width="120" height="24" text="Name"/>
+                      <Cell id="Cell05" left="135" top="34" width="180" height="24" text="bind:Name"/>
+                      <Cell id="Cell06" left="325" top="34" width="120" height="24" text="Phone"/>
+                      <Cell id="Cell07" left="450" top="34" width="180" height="24" text="bind:Phone"/>
+                      <Cell id="Cell08" left="10" top="63" width="120" height="24" text="Email"/>
+                      <Cell id="Cell09" left="135" top="63" width="180" height="24" text="bind:Email"/>
+                      <Cell id="Cell10" left="325" top="63" width="120" height="24" text="field0"/>
+                      <Cell id="Cell11" left="450" top="63" width="180" height="24" text="bind:field0"/>
+                    </Band>
+                    <Band id="detail" width="100%" height="92">
+                      <Cell id="Cell00" left="10" top="5" width="120" height="24" text="Company"/>
+                      <Cell id="Cell01" left="135" top="5" width="180" height="24" text="bind:Company"/>
+                      <Cell id="Cell02" left="325" top="5" width="120" height="24" text="Department"/>
+                      <Cell id="Cell03" left="450" top="5" width="180" height="24" text="bind:Department"/>
+                      <Cell id="Cell04" left="10" top="34" width="120" height="24" text="Name"/>
+                      <Cell id="Cell05" left="135" top="34" width="180" height="24" text="bind:Name"/>
+                      <Cell id="Cell06" left="325" top="34" width="120" height="24" text="Phone"/>
+                      <Cell id="Cell07" left="450" top="34" width="180" height="24" text="bind:Phone"/>
+                      <Cell id="Cell08" left="10" top="63" width="120" height="24" text="Email"/>
+                      <Cell id="Cell09" left="135" top="63" width="180" height="24" text="bind:Email"/>
+                      <Cell id="Cell10" left="325" top="63" width="120" height="24" text="field0"/>
+                      <Cell id="Cell11" left="450" top="63" width="180" height="24" text="bind:field0"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </ListView>
+            </Layout>
+            <Layout/>
+          </Layouts>
+          <Objects>
+            <Dataset id="viewdataset">
+              <ColumnInfo>
+                <Column id="Company" type="STRING" size="80"/>
+                <Column id="Department" type="STRING" size="80"/>
+                <Column id="Name" type="STRING" size="80"/>
+                <Column id="Phone" type="STRING" size="80"/>
+                <Column id="Email" type="STRING" size="80"/>
+                <Column id="field0" type="STRING" size="80"/>
+              </ColumnInfo>
+              <Rows>
+                <Row/>
+              </Rows>
+            </Dataset>
+          </Objects>
+          <Bind>
+            <BindItem id="bind_edtCompany" compid="edtCompany" propid="value" datasetid="viewdataset" columnid="Company"/>
+            <BindItem id="bind_edtDepartment" compid="edtDepartment" propid="value" datasetid="viewdataset" columnid="Department"/>
+            <BindItem id="bind_edtName" compid="edtName" propid="value" datasetid="viewdataset" columnid="Name"/>
+            <BindItem id="bind_edtPhone" compid="edtPhone" propid="value" datasetid="viewdataset" columnid="Phone"/>
+            <BindItem id="bind_edtEmail" compid="edtEmail" propid="value" datasetid="viewdataset" columnid="Email"/>
+            <BindItem id="bind_edtField0" compid="edtField0" propid="value" datasetid="viewdataset" columnid="field0"/>
+          </Bind>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="FreeFormModel001" filepath="sample\FreeForm.xmodel">
+            <Fields>
+              <Field id="Company" description="" comptype="edit" fieldwidth="100%" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+              <Field id="Department" description="" comptype="edit" fieldwidth="100%" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+              <Field id="Name" description="" comptype="edit" fieldwidth="100%" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+              <Field id="Phone" description="" comptype="edit" fieldwidth="100%" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+              <Field id="Email" description="" comptype="edit" fieldwidth="100%" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+              <Field id="field0" description="" comptype="edit" fieldwidth="100%" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+            </Fields>
+            <Components>
+              <Component id="staCompanyBg" fields="Company"/>
+              <Component id="staCompanyLabel" fields="Company"/>
+              <Component id="edtCompany" fields="Company"/>
+              <Component id="staDepartmentBg" fields="Department"/>
+              <Component id="staDepartmentLabel" fields="Department"/>
+              <Component id="edtDepartment" fields="Department"/>
+              <Component id="staNameBg" fields="Name"/>
+              <Component id="staNameLabel" fields="Name"/>
+              <Component id="edtName" fields="Name"/>
+              <Component id="staPhoneBg" fields="Phone"/>
+              <Component id="staPhoneLabel" fields="Phone"/>
+              <Component id="edtPhone" fields="Phone"/>
+              <Component id="staEmailBg" fields="Email"/>
+              <Component id="staEmailLabel" fields="Email"/>
+              <Component id="edtEmail" fields="Email"/>
+              <Component id="staField0Bg" fields="field0"/>
+              <Component id="staField0Label" fields="field0"/>
+              <Component id="edtField0" fields="field0"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="FreeformFieldBoxViewTemplate.xviewgen">
+            <Attribute id="direction" value="horizontal"/>
+            <Attribute id="halign" value="left"/>
+            <Attribute id="valign" value="top"/>
+          </ViewTemplateInfo>
+        </View>
+        <ListView id="ListView00" taborder="1" left="23" top="916" width="1057" height="117" binddataset="viewdataset">
+          <Formats>
+            <Format id="default">
+              <Band id="body" width="100%" height="63">
+                <Cell id="Cell00" left="10" top="5" width="120" height="24" text="Company"/>
+                <Cell id="Cell01" left="135" top="5" width="180" height="24" text="bind:Company"/>
+                <Cell id="Cell02" left="325" top="5" width="120" height="24" text="Department"/>
+                <Cell id="Cell03" left="450" top="5" width="180" height="24" text="bind:Department"/>
+                <Cell id="Cell04" left="640" top="5" width="120" height="24" text="Name"/>
+                <Cell id="Cell05" left="765" top="5" width="180" height="24" text="bind:Name"/>
+                <Cell id="Cell06" left="10" top="34" width="120" height="24" text="Phone"/>
+                <Cell id="Cell07" left="135" top="34" width="180" height="24" text="bind:Phone"/>
+                <Cell id="Cell08" left="325" top="34" width="120" height="24" text="Email"/>
+                <Cell id="Cell09" left="450" top="34" width="180" height="24" text="bind:Email"/>
+                <Cell id="Cell10" left="640" top="34" width="120" height="24" text="field0"/>
+                <Cell id="Cell11" left="765" top="34" width="180" height="24" text="bind:field0"/>
+              </Band>
+            </Format>
+          </Formats>
+        </ListView>
+        <View id="View01" taborder="2" viewdataset="viewdataset" left="39" top="190" width="661" height="30" cssclass="viw_test_bg">
+          <Layouts>
+            <Layout>
+              <Static id="staTitle" taborder="0" text="제목" left="0" top="0" width="80" height="30" cssclass="sta_WF_subtitle" fittocontents="width"/>
+              <Static id="staTotCnt" taborder="1" text="(총 &lt;b v='true'&gt;&lt;fc v='#da291c'&gt;0&lt;/fc&gt;&lt;/b&gt;건)" left="staTitle:5" top="0" width="50" height="30" fittocontents="width" usedecorate="true" cssclass="sta_WF_totalCount"/>
+            </Layout>
+          </Layouts>
+        </View>
+        <Button id="Button00" taborder="3" text="Button00" left="39" top="141" width="117" height="28"/>
+        <View id="View01_00" taborder="4" viewdataset="viewdataset" left="40" top="250" width="661" height="190" cssclass="viw_test_bg">
+          <Layouts>
+            <Layout>
+              <Button id="btnExpand" left="0" top="5" height="20" width="20" cssclass="btn_WF_title_close" onclick="lfn_Title_btnTitleOpenClose_onclick" _openclose="open"/>
+              <Static id="staTitle" left="25" top="0" height="30" width="80" text="상세내역" fittocontents="width" cssclass="sta_WF_subtitle_noicon"/>
+              <Static id="staCompanyBg" left="0" top="30" width="661" height="40" cssclass="sta_fieldbox"/>
+              <Static id="staCompanyLabel" left="0" top="30" width="100" height="40" text="회사명" cssclass="sta_labelbox"/>
+              <Edit id="edtCompany" left="105" top="35" width="140" height="30"/>
+              <Static id="staDepartmentLabel" left="250" top="30" width="100" height="40" text="부서명" cssclass="sta_labelbox"/>
+              <Edit id="edtDepartment" left="355" top="35" width="140" height="30"/>
+              <Static id="staNameBg" left="0" top="69" width="661" height="40" cssclass="sta_fieldbox"/>
+              <Static id="staNameLabel" left="0" top="69" width="100" height="40" text="성명" cssclass="sta_labelbox"/>
+              <Edit id="edtName" left="105" top="74" width="140" height="30"/>
+              <Static id="staPhoneLabel" left="250" top="69" width="100" height="40" text="전화번호" cssclass="sta_labelbox"/>
+              <Edit id="edtPhone" left="355" top="74" width="140" height="30"/>
+              <Static id="staEmailBg" left="0" top="108" width="661" height="40" cssclass="sta_fieldbox"/>
+              <Static id="staEmailLabel" left="0" top="108" width="100" height="40" text="이메일주소" cssclass="sta_labelbox"/>
+              <Edit id="edtEmail" left="105" top="113" width="140" height="30"/>
+              <Static id="staField0Bg" left="0" top="147" width="661" height="40" cssclass="sta_fieldbox"/>
+              <Static id="staField0Label" left="0" top="147" width="100" height="40" text="label0" cssclass="sta_labelbox"/>
+              <Edit id="edtField0" left="105" top="152" width="551" height="30"/>
+            </Layout>
+          </Layouts>
+          <Objects>
+            <Dataset id="viewdataset">
+              <ColumnInfo>
+                <Column id="Company" type="STRING" size="80"/>
+                <Column id="Department" type="STRING" size="80"/>
+                <Column id="Name" type="STRING" size="80"/>
+                <Column id="Phone" type="STRING" size="80"/>
+                <Column id="Email" type="STRING" size="80"/>
+                <Column id="field0" type="STRING" size="80"/>
+              </ColumnInfo>
+              <Rows>
+                <Row/>
+              </Rows>
+            </Dataset>
+          </Objects>
+          <Bind>
+            <BindItem id="bind_edtCompany" compid="edtCompany" propid="value" datasetid="viewdataset" columnid="Company"/>
+            <BindItem id="bind_edtDepartment" compid="edtDepartment" propid="value" datasetid="viewdataset" columnid="Department"/>
+            <BindItem id="bind_edtName" compid="edtName" propid="value" datasetid="viewdataset" columnid="Name"/>
+            <BindItem id="bind_edtPhone" compid="edtPhone" propid="value" datasetid="viewdataset" columnid="Phone"/>
+            <BindItem id="bind_edtEmail" compid="edtEmail" propid="value" datasetid="viewdataset" columnid="Email"/>
+            <BindItem id="bind_edtField0" compid="edtField0" propid="value" datasetid="viewdataset" columnid="field0"/>
+          </Bind>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="FreeFormModel001" filepath="sample\FreeForm.xmodel">
+            <Fields>
+              <Field id="Company" description="" comptype="edit" fieldwidth="150" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+              <Field id="Department" description="" comptype="edit" fieldwidth="150" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+              <Field id="Name" description="" comptype="edit" fieldwidth="150" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+              <Field id="Phone" description="" comptype="edit" fieldwidth="150" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+              <Field id="Email" description="" comptype="edit" fieldwidth="150" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+              <Field id="field0" description="" comptype="edit" fieldwidth="100%" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+            </Fields>
+            <Components>
+              <Component id="staCompanyBg" fields="Company"/>
+              <Component id="staCompanyLabel" fields="Company"/>
+              <Component id="edtCompany" fields="Company"/>
+              <Component id="staDepartmentLabel" fields="Department"/>
+              <Component id="edtDepartment" fields="Department"/>
+              <Component id="staNameBg" fields="Name"/>
+              <Component id="staNameLabel" fields="Name"/>
+              <Component id="edtName" fields="Name"/>
+              <Component id="staPhoneLabel" fields="Phone"/>
+              <Component id="edtPhone" fields="Phone"/>
+              <Component id="staEmailBg" fields="Email"/>
+              <Component id="staEmailLabel" fields="Email"/>
+              <Component id="edtEmail" fields="Email"/>
+              <Component id="staField0Bg" fields="field0"/>
+              <Component id="staField0Label" fields="field0"/>
+              <Component id="edtField0" fields="field0"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="FreeformViewTemplate.xviewgen">
+            <Attribute id="direction" value="horizontal"/>
+            <Attribute id="halign" value="left"/>
+            <Attribute id="valign" value="top"/>
+            <Attribute id="titletext" value="상세내역"/>
+            <Attribute id="useexpandbutton" value="open"/>
+            <Attribute id="usefieldbox" value="true"/>
+          </ViewTemplateInfo>
+        </View>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsTree">
+        <ColumnInfo>
+          <Column id="TREE_TXT" type="STRING" size="256"/>
+          <Column id="TREE_LVL" type="STRING" size="256"/>
+          <Column id="TREE_CHK" type="STRING" size="1"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="TREE_TXT">depth 1</Col>
+            <Col id="TREE_LVL">0</Col>
+            <Col id="TREE_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="TREE_TXT">depth 2</Col>
+            <Col id="TREE_LVL">1</Col>
+            <Col id="TREE_CHK">1</Col>
+          </Row>
+          <Row>
+            <Col id="TREE_TXT">depth 2</Col>
+            <Col id="TREE_LVL">1</Col>
+            <Col id="TREE_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="TREE_TXT">depth 1</Col>
+            <Col id="TREE_LVL">0</Col>
+            <Col id="TREE_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="TREE_TXT">depth 2</Col>
+            <Col id="TREE_LVL">1</Col>
+            <Col id="TREE_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="TREE_TXT">depth 2</Col>
+            <Col id="TREE_LVL">1</Col>
+            <Col id="TREE_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="TREE_TXT">depth 1</Col>
+            <Col id="TREE_LVL">0</Col>
+            <Col id="TREE_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="TREE_TXT">depth 2</Col>
+            <Col id="TREE_LVL">1</Col>
+            <Col id="TREE_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="TREE_TXT">depth 2</Col>
+            <Col id="TREE_LVL">1</Col>
+            <Col id="TREE_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="TREE_TXT">depth 2</Col>
+            <Col id="TREE_LVL">1</Col>
+            <Col id="TREE_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="TREE_TXT">depth 2</Col>
+            <Col id="TREE_LVL">1</Col>
+            <Col id="TREE_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="TREE_TXT">depth 1</Col>
+            <Col id="TREE_LVL">0</Col>
+            <Col id="TREE_CHK">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="viewdataset">
+        <ColumnInfo>
+          <Column id="Company" type="STRING" size="80"/>
+          <Column id="Department" type="STRING" size="80"/>
+          <Column id="Name" type="STRING" size="80"/>
+          <Column id="Phone" type="STRING" size="80"/>
+          <Column id="Email" type="STRING" size="80"/>
+          <Column id="field0" type="STRING" size="80"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.lfn_TreeView_btnTreecollapse_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objForm = obj.parent;
+	var objGrid = objForm.components['grdList'];
+	objGrid.set_treeinitstatus('collapse,all');
+};
+
+this.lfn_TreeView_btnTreeexpand_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objForm = obj.parent;
+	var objGrid = objForm.components['grdList'];
+	objGrid.set_treeinitstatus('expand,all');
+};
+
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MetaInfo version="2.0">
+  <Object id="DsSetFirstCdAction">
+    <ObjectInfo inheritance="nexacro.Action" classname="nexacro.DsSetFirstCdAction" shorttypename="DsSetFirstCdAction" csstypename="DsSetFirstCdAction" csscontrolname="DsSetFirstCdActionControl" group="Action" subgroup="Action" csspseudo="" container="false" tabstop="false" cssstyle="false" defaultwidth="" defaultheight="" registration="allow" edittype="action" useinitvalue="false" popup="false" edittypecomponent="" dblclickevent="" requirement="IE10,IE11,Edge,Chrome,Safari,Firefox,Opera,Windows NRE,macOS NRE,Android NRE,iOS/iPadOS NRE,Android Default Web Browser,iOS/iPadOS Default Web Browser" description="Trigger가 발생하는 시점에 수행하는 Action을 설정합니다." finalclass="true"/>
+    <PropertyInfo>
+      <Property name="targetview" group="" subgroup="" refreshinfo="targetview" displayinfo="" edittype="ViewObjList" readonly="false" initonly="false" hidden="false" control="false" expr="false" bind="false" deprecated="false" unused="false" mandatory="false" objectinfo="" enuminfo="" enuminfo2="" unitinfo="" delimiter="" requirement="IE10,IE11,Edge,Chrome,Safari,Firefox,Opera,Windows NRE,macOS NRE,Android NRE,iOS/iPadOS NRE,Android Default Web Browser,iOS/iPadOS Default Web Browser" description="데이터를 추가 할 Object가 있는 View 오브젝트를 설정합니다." csspropertyname="" normalpropertyname="targetview"/>
+      <Property name="targetcomp" readonly="false" initonly="false" hidden="false" control="false" expr="false" bind="false" unused="false" mandatory="false" edittype="ViewChildObjList" description="데이터를 추가 할 Object를 설정합니다.&#13;&#10;&#13;&#10;Dataset을 설정하는 경우 해당 데이터셋에 첫행 데이터를 추가합니다.&#13;&#10;Combo, Radio등 Innerdataset이 설정된 Object의 경우 Innerdataset에 첫행 데이터를 추가합니다.&#13;&#10;Grid의 경우 gridcell속성에 설정된 cell의  Innerdataset에 첫행 데이터를 추가합니다.&#13;&#10;그 외 Object의 경우 onerrer 이벤트가 발생되며 동작되지 않습니다."/>
+      <Property name="gridcell" readonly="false" initonly="false" hidden="false" control="false" expr="false" bind="false" unused="false" mandatory="false" edittype="Number" description="targetcomp가 Grid일때 Innerdataset이 설정된 cell을 입력합니다." defaultvalue="-1"/>
+      <Property name="firstname" readonly="false" initonly="false" hidden="false" control="false" expr="false" bind="false" unused="false" mandatory="false" edittype="String" description="첫번째 Row에 추가할 name 값을 입력합니다.&#13;&#10;ex) 전체, 선택 등..."/>
+      <Property name="firstcode" readonly="false" initonly="false" hidden="false" control="false" expr="false" bind="false" unused="false" mandatory="false" edittype="String" description="첫번째 Row에 추가할 code 값을 입력합니다."/>
+      <Property name="firstcodecol" readonly="false" initonly="false" hidden="false" control="false" expr="false" bind="false" unused="false" mandatory="false" description="첫번째 Row에 추가할 값 컬럼ID를 입력합니다.&#13;&#10;(기본값:Combo의 경우 codecolumn값 사용. Dataset은 공통코드의 코드컬럼값 사용.)" edittype="String"/>
+      <Property name="firstnamecol" readonly="false" initonly="false" hidden="false" control="false" expr="false" bind="false" unused="false" mandatory="false" edittype="String" description="첫번째 Row에 추가할 CD값  컬럼ID를 입력합니다.&#13;&#10;(기본값:Combo의 경우 datacolumn값 사용. Dataset은 공통코드의 코드명컬럼값 사용.)"/>
+      <Property name="initindex" readonly="false" initonly="false" hidden="false" control="false" expr="false" bind="false" unused="false" mandatory="false" edittype="Number" description="첫번째 Row 추가 후 Object(Combo, Radio) 의 index에 설정 할 값을 입력합니다.&#13;&#10;-1입력시 동작되지 않습니다." defaultvalue="-1"/>
+    </PropertyInfo>
+    <CSSInfo>
+      <PropertyInfo/>
+    </CSSInfo>
+    <StatusInfo/>
+    <MethodInfo/>
+    <EventHandlerInfo>
+      <EventHandler name="canrun" group="Event" unused="false" description="Action이 실행되기 전 발생하는 이벤트 입니다." requirement="IE10,IE11,Edge,Chrome,Safari,Firefox,Opera,Windows NRE,macOS NRE,Android NRE,iOS/iPadOS NRE,Android Default Web Browser,iOS/iPadOS Default Web Browser">
+        <Syntax text="canrun(obj:nexacro.DsSetFirstCdAction, e:nexacro.ActionRunEventInfo)">
+          <Return type="Boolean" description="이벤트에서 리턴값을 &quot;true&quot;로 반환하면 Action이 실행됩니다.&#13;&#10;이벤트에서 리턴값을 &quot;false&quot;로 반환하면 Action이 실행되지 않습니다.&#13;&#10;&#13;&#10;이벤트에서 리턴값을 생략하면 &quot;true&quot;로 적용됩니다."/>
+          <Arguments>
+            <Argument name="obj" type="nexacro.DsSetFirstCdAction"/>
+            <Argument name="e" type="nexacro.ActionRunEventInfo"/>
+          </Arguments>
+        </Syntax>
+      </EventHandler>
+      <EventHandler name="onerror" group="" deprecated="false" unused="false" requirement="IE10,IE11,Edge,Chrome,Safari,Firefox,Opera,Windows NRE,macOS NRE,Android NRE,iOS/iPadOS NRE,Android Default Web Browser,iOS/iPadOS Default Web Browser" description="run 메소드 실행이 실패했을때 Trigger callback 처리를 위한 event 입니다.">
+        <Syntax text="onerror(obj:nexacro.Action, e:nexacro.ActionErrorEventInfo)">
+          <Return type="" description=""/>
+          <Arguments>
+            <Argument name="obj" type="nexacro.Action" in="false" out="false" option="false" variable="false" description="Event가 발생한 Object."/>
+            <Argument name="e" type="nexacro.ActionErrorEventInfo" in="false" out="false" option="false" variable="false" description="Event Object."/>
+          </Arguments>
+        </Syntax>
+      </EventHandler>
+      <EventHandler name="onsuccess" group="" deprecated="false" unused="false" requirement="IE10,IE11,Edge,Chrome,Safari,Firefox,Opera,Windows NRE,macOS NRE,Android NRE,iOS/iPadOS NRE,Android Default Web Browser,iOS/iPadOS Default Web Browser" description="run 메소드 실행이 성공했을때 Trigger callback 처리를 위한 event 입니다.">
+        <Syntax text="onsuccess(obj:nexacro.Action, e:nexacro.ActionSuccessEventInfo)">
+          <Return type="" description=""/>
+          <Arguments>
+            <Argument name="obj" type="nexacro.Action" in="false" out="false" option="false" variable="false" description="Event가 발생한 Object."/>
+            <Argument name="e" type="nexacro.ActionSuccessEventInfo" in="false" out="false" option="false" variable="false" description="Event Object."/>
+          </Arguments>
+        </Syntax>
+      </EventHandler>
+    </EventHandlerInfo>
+  </Object>
+</MetaInfo>

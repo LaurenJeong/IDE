@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="test_action_popupsub" width="450" height="500" titletext="팝업화면 샘플" onload="test_action_popupsub_onload">
+    <Layouts>
+      <Layout height="500" mobileorientation="landscape" width="450">
+        <View id="viwSearch" taborder="0" viewdataset="viewdataset" left="20" top="60" height="40" right="20">
+          <Layouts>
+            <Layout>
+              <Static id="stBg" left="0" top="0" right="0" bottom="0" cssclass="sta_searchbox"/>
+              <Button id="btnSearch" width="100" height="30" right="5" bottom="5" cssclass="btn_search" text="Search" onclick="viwSearch_btnSearch_onclick"/>
+              <Static id="stname_Label" left="5" top="5" width="95" height="30" text="Name" cssclass="sta_label"/>
+              <Edit id="edtname" left="105" top="5" width="100" height="30"/>
+            </Layout>
+            <Layout/>
+          </Layouts>
+          <Objects>
+            <Dataset id="viewdataset">
+              <ColumnInfo>
+                <Column id="name" type="STRING" size="80"/>
+              </ColumnInfo>
+              <Rows>
+                <Row/>
+              </Rows>
+            </Dataset>
+          </Objects>
+          <Bind>
+            <BindItem id="bind_edtname" compid="edtname" propid="value" datasetid="viewdataset" columnid="name"/>
+          </Bind>
+          <ModelInfo modelserviceid="model" serviceid="svcQuickCodeTutorial" modelid="tutorial_SearchEmployee" filepath="svcQuickCodeTutorial.xmodel">
+            <Fields>
+              <Field id="name" required="false" comptype="edit" fieldwidth="110px" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_label"/>
+            </Fields>
+            <Components>
+              <Component id="stname_Label" fields="name"/>
+              <Component id="edtname" fields="name"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="SearchViewTemplate.xviewgen">
+            <Attribute id="direction" value="horizontal"/>
+            <Attribute id="halign" value="left"/>
+            <Attribute id="valign" value="top"/>
+            <Attribute id="searchbuttontype" value="bottom"/>
+            <Attribute id="searchbuttontext" value="Search"/>
+            <Attribute id="searchbuttoncssclass" value="btn_search"/>
+            <Attribute id="searchbgcssclass" value="sta_searchbox"/>
+          </ViewTemplateInfo>
+        </View>
+        <Static id="Static00" taborder="1" text="팝업타이틀" left="20" top="20" height="30" cssclass="sta_WF_title01" right="20"/>
+        <View id="viwPopBtn" taborder="3" viewdataset="viewdataset" left="20" height="30" bottom="20" right="20">
+          <Layouts>
+            <Layout type="horizontal" flexmainaxisalign="center" flexcrossaxisalign="center" horizontalgap="10">
+              <Button id="btnOk" taborder="0" text="확인" left="110" top="9" width="80" height="30" cssclass="btn_cm_basic02"/>
+              <Button id="btnCancel" taborder="1" text="취소" left="110" top="9" width="80" height="30" cssclass="btn_cm_basic01"/>
+            </Layout>
+          </Layouts>
+        </View>
+        <View id="viwList" taborder="2" viewdataset="viewdataset" left="20" top="viwSearch:10" right="20" bottom="viwPopBtn:10">
+          <Layouts>
+            <Layout>
+              <Grid id="grdList" left="0" top="0" right="0" bottom="0" binddataset="viewdataset" autofittype="col">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="30" band="head"/>
+                      <Row size="30" band="body"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell id="cell_company" col="0" row="0" text="Company"/>
+                      <Cell id="cell_department" col="1" row="0" text="Department"/>
+                      <Cell id="cell_name" col="2" row="0" text="Name"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell id="cell_company" col="0" row="0" text="bind:company" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_department" col="1" row="0" text="bind:department" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_name" col="2" row="0" text="bind:name" displaytype="normal" edittype="none"/>
+                    </Band>
+                    <Band id="summary"/>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+            <Layout/>
+          </Layouts>
+          <Objects>
+            <Dataset id="viewdataset">
+              <ColumnInfo>
+                <Column id="company" type="STRING" size="80"/>
+                <Column id="department" type="STRING" size="80"/>
+                <Column id="name" type="STRING" size="80"/>
+              </ColumnInfo>
+            </Dataset>
+          </Objects>
+          <ModelInfo modelserviceid="model" serviceid="svcQuickCodeTutorial" modelid="tutorial_DetailEmployee" filepath="svcQuickCodeTutorial.xmodel">
+            <Fields>
+              <Field id="company" required="false" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="department" required="false" editable="false" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="name" required="false" editable="false" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none"/>
+            </Fields>
+            <Components>
+              <Component id="grdList" fields="company,department,name"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="GridViewTemplate.xviewgen">
+            <Attribute id="headbandsize" value="30"/>
+            <Attribute id="bodybandsize" value="30"/>
+            <Attribute id="summbandsize" value="-1"/>
+          </ViewTemplateInfo>
+        </View>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsData">
+        <ColumnInfo>
+          <Column id="company" type="STRING" size="80"/>
+          <Column id="department" type="STRING" size="80"/>
+          <Column id="name" type="STRING" size="80"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="name">직원1</Col>
+            <Col id="company">TOBESOFT</Col>
+            <Col id="department">부서1</Col>
+          </Row>
+          <Row>
+            <Col id="company">TOBESOFT</Col>
+            <Col id="department">부서1</Col>
+            <Col id="name">직원2</Col>
+          </Row>
+          <Row>
+            <Col id="company">TOBESOFT</Col>
+            <Col id="department">부서1</Col>
+            <Col id="name">직원3</Col>
+          </Row>
+          <Row>
+            <Col id="company">TOBESOFT</Col>
+            <Col id="department">부서2</Col>
+            <Col id="name">직원4</Col>
+          </Row>
+          <Row>
+            <Col id="company">TOBESOFT</Col>
+            <Col id="department">부서2</Col>
+            <Col id="name">직원5</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <PopupCloseAction id="PopupCloseAction00" returntype="none">
+        <Contents/>
+      </PopupCloseAction>
+      <PopupCloseAction id="PopupCloseAction01" targetview="viwList" targetcomp="viewdataset" returntype="currow">
+        <Contents/>
+      </PopupCloseAction>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.test_action_popupsub_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	var sReturnType = this.gfnGetArgument("returntype");
+	
+	this.PopupCloseAction01.set_returntype(sReturnType);
+};
+
+this.viwSearch_btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.viwList.form.viewdataset.copyData(this.dsData);
+};
+
+/**
+ * @description 화면에 설정된 파라미터객체 반환
+*/
+this.gfnGetArgument = function(sName)
+{
+	var ret;
+	
+	try {
+		ret = this.getOwnerFrame()[sName];
+	} catch(e){}
+	
+	return ret;
+};
+
+
+]]></Script>
+    <Trigger>
+      <TriggerItem id="item0" triggertype="Click" triggerview="viwPopBtn" triggerobj="btnCancel" targetaction="PopupCloseAction00" condition=""/>
+      <TriggerItem id="item1" triggertype="Click" triggerview="viwPopBtn" triggerobj="btnOk" targetaction="PopupCloseAction01" condition=""/>
+    </Trigger>
+  </Form>
+</FDL>

@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XCSS version="1.0"><![CDATA[/*** QuickCode 샘플용 css ***/
+.Static.sta_label
+{
+	font : bold 13px "Arial","Malgun Gothic","Gulim";
+	-nexa-border : 0px none;
+	-nexa-padding : 0px 5px 0px 5px;
+}
+.Static.sta_labelbox
+{
+	background : #f7f7f7;
+	-nexa-border : 1px solid #c7c7c7;
+	-nexa-text-align : right;
+	-nexa-padding : 0px 5px 0px 5px;
+}
+
+.Static.sta_fieldbox
+{
+	-nexa-border : 1px solid #c7c7c7;
+	-nexa-padding : 0px 5px 0px 5px;
+}
+
+.Static.sta_searchbox
+{
+	background : #f7f7f7;
+	-nexa-border : 1px solid #c7c7c7;
+	-nexa-text-align : left;
+	-nexa-padding : 0px 5px 0px 5px;
+}
+
+.Button.btn_search,.Button.btn_search[status=focused],.Button.btn_search[userstatus=selected]
+{
+	background : #834694;
+	color : #ffffff;
+	cursor : pointer;
+	font : 12px "Malgun Gothci","Arial","Gulim";
+	-nexa-border : 1px solid #6f397e;
+	-nexa-text-align : center;
+}
+.Button.btn_search[status=mouseover]
+{
+	background : #6f397e;
+	color : #ffffff;
+	-nexa-border : 1px solid #6f397e;
+}
+.Button.btn_search[userstatus=pushed]
+{
+	background : #6f397e;
+	color : #ffffff;
+	-nexa-border : 1px solid #6f397e;
+	-nexa-text-decoration : underline;
+}
+.Button.btn_search[status=disabled]
+{
+	background : #dddddd;
+	color : #aaaaaa;
+	-nexa-border : 1px solid #aaaaaa;
+}
+
+.Static.sta_WF_subtitle
+{
+	background : url('imagerc::img_WF_title02.png') no-repeat left center;
+	color : #101010;
+	font : bold 13px "Malgun Gothic","Arial","Gulim";
+	-nexa-padding : 0px 0px 0px 12px;
+}
+
+.Static.sta_WF_subtitle_noicon
+{
+	color : #101010;
+	font : bold 13px "Malgun Gothic","Arial","Gulim";
+	-nexa-padding : 0px 0px 0px 0px;
+}
+
+.Button.btn_WF_title_open
+{
+	-nexa-icon : url('imagerc::img_WF_title_open.png');
+}
+.Button.btn_WF_title_close
+{
+	-nexa-icon : url('imagerc::img_WF_title_close.png');
+}
+
+.Static.sta_WF_totalCount
+{
+	color : #505050;
+	-nexa-word-wrap : none;
+}
+
+.View.viw_test_bg
+{
+	background : #eeeeee;
+}
+
+/* TreeViewTemplate */
+/* 접고, 펼치기 버튼 */
+.Button.btn_WF_Treecollapse
+{
+	-nexa-text-align 	: center;
+	-nexa-vertical-align 	: middle;
+	background 		: url('imagerc::btn_WF_Treecollapse.png') no-repeat center center #ffffff;
+}
+.Button.btn_WF_Treecollapse[status=mouseover],.Button.btn_WF_Treecollapse[status=focused]
+{
+	background : url('imagerc::btn_WF_Treecollapse.png') no-repeat center center #fefefe;
+}
+.Button.btn_WF_Treecollapse[userstatus=pushed],.Button.btn_WF_Treecollapse[userstatus=selected]
+{
+	background : url('imagerc::btn_WF_Treecollapse.png') no-repeat center center #e9e9e9;
+}
+.Button.btn_WF_Treeexpand
+{
+	-nexa-text-align 	: center;
+	-nexa-vertical-align 	: middle;
+	background 		: url('imagerc::btn_WF_Treeexpand.png') no-repeat center center #ffffff;
+}
+.Button.btn_WF_Treeexpand[status=mouseover],.Button.btn_WF_Treeexpand[status=focused]
+{
+	background : url('imagerc::btn_WF_Treeexpand.png') no-repeat center center #fefefe;
+}
+
+.Button.btn_WF_Treeexpand[userstatus=pushed],.Button.btn_WF_Treeexpand[userstatus=selected]
+{
+	background : url('imagerc::btn_WF_Treeexpand.png') no-repeat center center #e9e9e9;
+}
+
+.Grid.grd_WF_treetest
+{
+	color : #101010;
+	-nexa-border : 1px solid #c7c7c7;
+}
+.Grid.grd_WF_treetest[status=focused]
+{
+	color : #ffffff;
+}
+.Grid.grd_WF_treetest .body .row .cell
+{
+	color : #101010;
+	-nexa-border : 0px none;
+}
+.Grid.grd_WF_treetest .body .row .cell[status=mouseover]
+{
+	background : #e7e7e7;
+	color : #101010;
+	-nexa-border : 0px none;
+}
+.Grid.grd_WF_treetest .body .row .cell[userstatus=selected],.Grid.grd_WF_treetest .body .row .cell[status=focused]
+{
+	background : #a1c4e8;
+	-nexa-border : 0px none;
+}
+
+.Grid .body .row .cell.cell_treetest .celltreeitem .treeitemtext
+{
+	color : #0078ff;
+}
+
+]]></XCSS>

@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="test_20220509" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Button id="Button00" taborder="1" text="Button00" left="46" top="450" width="387" height="95" layoutorder="9" onclick="Button00_onclick"/>
+        <View id="View01_00" taborder="0" viewdataset="viewdataset" left="40" top="250" width="661" height="190" cssclass="viw_test_bg">
+          <Layouts>
+            <Layout>
+              <Button id="btnExpand" left="0" top="5" height="20" width="20" cssclass="btn_WF_title_open" onclick="View01_00.form.lfn_Title_btnTitleOpenClose_onclick" _openclose="close"/>
+              <Static id="staTitle" left="25" top="0" height="30" width="80" text="상세내역" fittocontents="width" cssclass="sta_WF_subtitle_noicon"/>
+              <Static id="staCompanyBg" left="0" top="30" width="661" height="40" cssclass="sta_fieldbox"/>
+              <Static id="staCompanyLabel" left="0" top="30" width="100" height="40" text="회사명" cssclass="sta_labelbox"/>
+              <Edit id="edtCompany" left="105" top="35" width="140" height="30"/>
+              <Static id="staDepartmentLabel" left="250" top="30" width="100" height="40" text="부서명" cssclass="sta_labelbox"/>
+              <Edit id="edtDepartment" left="355" top="35" width="140" height="30"/>
+              <Static id="staNameBg" left="0" top="69" width="661" height="40" cssclass="sta_fieldbox"/>
+              <Static id="staNameLabel" left="0" top="69" width="100" height="40" text="성명" cssclass="sta_labelbox"/>
+              <Edit id="edtName" left="105" top="74" width="140" height="30"/>
+              <Static id="staPhoneLabel" left="250" top="69" width="100" height="40" text="전화번호" cssclass="sta_labelbox"/>
+              <Edit id="edtPhone" left="355" top="74" width="140" height="30"/>
+              <Static id="staEmailBg" left="0" top="108" width="661" height="40" cssclass="sta_fieldbox"/>
+              <Static id="staEmailLabel" left="0" top="108" width="100" height="40" text="이메일주소" cssclass="sta_labelbox"/>
+              <Edit id="edtEmail" left="105" top="113" width="140" height="30"/>
+              <Static id="staField0Bg" left="0" top="147" width="661" height="40" cssclass="sta_fieldbox"/>
+              <Static id="staField0Label" left="0" top="147" width="100" height="40" text="label0" cssclass="sta_labelbox"/>
+              <Edit id="edtField0" left="105" top="152" width="551" height="30"/>
+            </Layout>
+          </Layouts>
+          <Objects>
+            <Dataset id="viewdataset">
+              <ColumnInfo>
+                <Column id="Company" type="STRING" size="80"/>
+                <Column id="Department" type="STRING" size="80"/>
+                <Column id="Name" type="STRING" size="80"/>
+                <Column id="Phone" type="STRING" size="80"/>
+                <Column id="Email" type="STRING" size="80"/>
+                <Column id="field0" type="STRING" size="80"/>
+              </ColumnInfo>
+              <Rows>
+                <Row/>
+              </Rows>
+            </Dataset>
+          </Objects>
+          <Bind>
+            <BindItem id="bind_edtCompany" compid="edtCompany" propid="value" datasetid="viewdataset" columnid="Company"/>
+            <BindItem id="bind_edtDepartment" compid="edtDepartment" propid="value" datasetid="viewdataset" columnid="Department"/>
+            <BindItem id="bind_edtName" compid="edtName" propid="value" datasetid="viewdataset" columnid="Name"/>
+            <BindItem id="bind_edtPhone" compid="edtPhone" propid="value" datasetid="viewdataset" columnid="Phone"/>
+            <BindItem id="bind_edtEmail" compid="edtEmail" propid="value" datasetid="viewdataset" columnid="Email"/>
+            <BindItem id="bind_edtField0" compid="edtField0" propid="value" datasetid="viewdataset" columnid="field0"/>
+          </Bind>
+          <Script><![CDATA[this.lfn_Title_btnTitleOpenClose_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){if (obj.cssclass == 'btn_WF_title_open') {this.View01_00.form.lfn_Title_SetSearchOpenClose(obj,'open');} else {this.View01_00.form.lfn_Title_SetSearchOpenClose(obj,'close');}};this.lfn_Title_SetSearchOpenClose = function(obj,sStatus){var objForm = obj.parent;var objView = objForm.parent;if (sStatus == 'close') {objView.set_height('30');objView.set_formscrolltype('none');obj.set_cssclass('btn_WF_title_open');} else {objView.set_height(objView._openHeight);objView.set_formscrolltype(objView._formscrolltype);obj.set_cssclass('btn_WF_title_close');}objView['_openclose'] = sStatus;objView.parent.resetScroll();};this.lfn_Title_SetViewInit = function(obj,sStatus){var objView = obj.parent;this.alert(objView.name);objView._openclose = sStatus;objView._openHeight = objView.height;objView._formscrolltype = objView.formscrolltype;this.lfn_Title_SetSearchOpenClose(obj.btnExpand,sStatus);};this.lfn_Title_SetViewInit(this,'close');]]></Script>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="FreeFormModel001" filepath="sample\FreeForm.xmodel">
+            <Fields>
+              <Field id="Company" description="" comptype="edit" fieldwidth="150" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+              <Field id="Department" description="" comptype="edit" fieldwidth="150" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+              <Field id="Name" description="" comptype="edit" fieldwidth="150" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+              <Field id="Phone" description="" comptype="edit" fieldwidth="150" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+              <Field id="Email" description="" comptype="edit" fieldwidth="150" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+              <Field id="field0" description="" comptype="edit" fieldwidth="100%" fieldheight="40px" labelwidth="100" cssclass="" labelcssclass="sta_labelbox" usecomp="true"/>
+            </Fields>
+            <Components>
+              <Component id="staCompanyBg" fields="Company"/>
+              <Component id="staCompanyLabel" fields="Company"/>
+              <Component id="edtCompany" fields="Company"/>
+              <Component id="staDepartmentLabel" fields="Department"/>
+              <Component id="edtDepartment" fields="Department"/>
+              <Component id="staNameBg" fields="Name"/>
+              <Component id="staNameLabel" fields="Name"/>
+              <Component id="edtName" fields="Name"/>
+              <Component id="staPhoneLabel" fields="Phone"/>
+              <Component id="edtPhone" fields="Phone"/>
+              <Component id="staEmailBg" fields="Email"/>
+              <Component id="staEmailLabel" fields="Email"/>
+              <Component id="edtEmail" fields="Email"/>
+              <Component id="staField0Bg" fields="field0"/>
+              <Component id="staField0Label" fields="field0"/>
+              <Component id="edtField0" fields="field0"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="FreeformViewTemplate.xviewgen">
+            <Attribute id="direction" value="horizontal"/>
+            <Attribute id="halign" value="left"/>
+            <Attribute id="valign" value="top"/>
+            <Attribute id="titletext" value="상세내역"/>
+            <Attribute id="useexpandbutton" value="close"/>
+            <Attribute id="usefieldbox" value="true"/>
+          </ViewTemplateInfo>
+        </View>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	trace(this.View01_00._openclose);
+	trace(this.View01_00._openHeight);
+};
+]]></Script>
+  </Form>
+</FDL>

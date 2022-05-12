@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="searchAlignHorizontal" width="1280" height="720" titletext="리스트뷰 테스트">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Static id="Static00_00" taborder="1" text="horizontal" left="5" top="5" width="595" height="25" cssclass="sta_WF_title02"/>
+        <Static id="Static00_00_00" taborder="2" text="vertical | usefieldbox='false'" left="647" top="5" width="593" height="25" cssclass="sta_WF_title02"/>
+        <Static id="Static00_00_01" taborder="4" text="detail band only | bandexpandtype='accordion' | expandbartype='true'" left="5" top="285" width="595" height="25" cssclass="sta_WF_title02"/>
+        <Static id="Static00_00_01_00" taborder="6" text="expandbartype='true' | bandexpandtype='expand' | bodyformat | detailformat" left="647" top="285" width="595" height="25" cssclass="sta_WF_title02"/>
+        <View id="View00_00" taborder="0" text="View00" viewdataset="viewdataset" left="10" top="40" width="590" height="230" cssclass="viw_test_bg">
+          <Layouts>
+            <Layout>
+              <Static id="staTitle" left="0" top="0" height="30" width="80" text="타이틀" fittocontents="width" cssclass="sta_WF_subtitle"/>
+              <ListView id="livList" left="0" top="30" right="0" bottom="0" binddataset="viewdataset" bandexpandtype="none">
+                <Formats>
+                  <Format id="default">
+                    <Band id="body" width="100%" height="118">
+                      <Cell id="cellBgCompany" left="0" top="0" width="590" height="40" cssclass=""/>
+                      <Cell id="cellLabelCompany" left="0" top="0" width="100" height="40" text="회사명"/>
+                      <Cell id="cellCompany" left="105" top="5" width="140" height="30" text="bind:Company" displaytype="normal" edittype="none"/>
+                      <Cell id="cellLabelDepartment" left="250" top="0" width="100" height="40" text="부서명"/>
+                      <Cell id="cellDepartment" left="355" top="5" width="140" height="30" text="bind:Department" displaytype="normal" edittype="none"/>
+                      <Cell id="cellBgName" left="0" top="39" width="590" height="40" cssclass=""/>
+                      <Cell id="cellLabelName" left="0" top="39" width="100" height="40" text="성명"/>
+                      <Cell id="cellName" left="105" top="44" width="140" height="30" text="bind:Name" displaytype="normal" edittype="none"/>
+                      <Cell id="cellLabelPhone" left="250" top="39" width="100" height="40" text="전화번호"/>
+                      <Cell id="cellPhone" left="355" top="44" width="140" height="30" text="bind:Phone" displaytype="normal" edittype="none"/>
+                      <Cell id="cellBgEmail" left="0" top="78" width="590" height="40" cssclass=""/>
+                      <Cell id="cellLabelEmail" left="0" top="78" width="100" height="40" text="이메일주소"/>
+                      <Cell id="cellEmail" left="105" top="83" width="140" height="30" text="bind:Email" displaytype="normal" edittype="none"/>
+                      <Cell id="cellLabelField0" left="250" top="78" width="100" height="40" text="label0"/>
+                      <Cell id="cellField0" left="355" top="83" width="140" height="30" text="bind:field0" displaytype="normal" edittype="none"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </ListView>
+            </Layout>
+          </Layouts>
+          <Objects>
+            <Dataset id="viewdataset">
+              <ColumnInfo>
+                <Column id="Company" type="STRING" size="80"/>
+                <Column id="Department" type="STRING" size="80"/>
+                <Column id="Name" type="STRING" size="80"/>
+                <Column id="Phone" type="STRING" size="80"/>
+                <Column id="Email" type="STRING" size="80"/>
+                <Column id="field0" type="STRING" size="80"/>
+              </ColumnInfo>
+              <Rows>
+                <Row/>
+              </Rows>
+            </Dataset>
+          </Objects>
+          <Bind/>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="FreeFormModel001" filepath="sample\FreeForm.xmodel">
+            <Fields>
+              <Field id="Company" description="" band="body" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+              <Field id="Department" description="" band="body" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+              <Field id="Name" description="" band="body" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+              <Field id="Phone" description="" band="body" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+              <Field id="Email" description="" band="body" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+              <Field id="field0" description="" band="body" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+            </Fields>
+            <Components>
+              <Component id="livList" fields="Company,Department,Name,Phone,Email,field0"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="ListViewViewTemplate.xviewgen">
+            <Attribute id="titletext" value="타이틀"/>
+            <Attribute id="usetotalcount" value="false"/>
+            <Attribute id="direction" value="horizontal"/>
+            <Attribute id="usefieldbox" value="true"/>
+            <Attribute id="bandexpandtype" value="none"/>
+            <Attribute id="expandbartype" value="fasle"/>
+          </ViewTemplateInfo>
+        </View>
+        <View id="View00" taborder="3" text="View00" viewdataset="viewdataset" left="652" top="40" width="590" height="230" cssclass="viw_test_bg">
+          <Layouts>
+            <Layout>
+              <Static id="staTitle" left="0" top="0" height="30" width="80" text="타이틀" fittocontents="width" cssclass="sta_WF_subtitle"/>
+              <Static id="staTotCnt" left="staTitle:5" top="0" height="30" width="50" text="(총 &lt;b v='true'&gt;&lt;fc v='#da291c'&gt;0&lt;/fc&gt;&lt;/b&gt;건)" fittocontents="width" usedecorate="true" cssclass="sta_WF_totalCount"/>
+              <ListView id="livList" left="0" top="30" right="0" bottom="0" binddataset="viewdataset" bandexpandtype="none">
+                <Formats>
+                  <Format id="default">
+                    <Band id="body" width="100%" height="196">
+                      <Cell id="cellLabelCompany" left="0" top="0" width="100" height="40" text="회사명"/>
+                      <Cell id="cellCompany" left="105" top="5" width="140" height="30" text="bind:Company" displaytype="normal" edittype="none"/>
+                      <Cell id="cellLabelDepartment" left="0" top="39" width="100" height="40" text="부서명"/>
+                      <Cell id="cellDepartment" left="105" top="44" width="140" height="30" text="bind:Department" displaytype="normal" edittype="none"/>
+                      <Cell id="cellLabelName" left="0" top="78" width="100" height="40" text="성명"/>
+                      <Cell id="cellName" left="105" top="83" width="140" height="30" text="bind:Name" displaytype="normal" edittype="none"/>
+                      <Cell id="cellLabelPhone" left="0" top="117" width="100" height="40" text="전화번호"/>
+                      <Cell id="cellPhone" left="105" top="122" width="140" height="30" text="bind:Phone" displaytype="normal" edittype="none"/>
+                      <Cell id="cellLabelEmail" left="0" top="156" width="100" height="40" text="이메일주소"/>
+                      <Cell id="cellEmail" left="105" top="161" width="140" height="30" text="bind:Email" displaytype="normal" edittype="none"/>
+                      <Cell id="cellLabelField0" left="250" top="0" width="100" height="40" text="label0"/>
+                      <Cell id="cellField0" left="355" top="5" width="140" height="30" text="bind:field0" displaytype="normal" edittype="none"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </ListView>
+            </Layout>
+          </Layouts>
+          <Objects>
+            <Dataset id="viewdataset">
+              <ColumnInfo>
+                <Column id="Company" type="STRING" size="80"/>
+                <Column id="Department" type="STRING" size="80"/>
+                <Column id="Name" type="STRING" size="80"/>
+                <Column id="Phone" type="STRING" size="80"/>
+                <Column id="Email" type="STRING" size="80"/>
+                <Column id="field0" type="STRING" size="80"/>
+              </ColumnInfo>
+              <Rows>
+                <Row/>
+              </Rows>
+            </Dataset>
+          </Objects>
+          <Bind/>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="FreeFormModel001" filepath="sample\FreeForm.xmodel">
+            <Fields>
+              <Field id="Company" description="" band="body" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+              <Field id="Department" description="" band="body" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+              <Field id="Name" description="" band="body" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+              <Field id="Phone" description="" band="body" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+              <Field id="Email" description="" band="body" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+              <Field id="field0" description="" band="body" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+            </Fields>
+            <Components>
+              <Component id="livList" fields="Company,Department,Name,Phone,Email,field0"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="ListViewViewTemplate.xviewgen">
+            <Attribute id="titletext" value="타이틀"/>
+            <Attribute id="usetotalcount" value="true"/>
+            <Attribute id="direction" value="vertical"/>
+            <Attribute id="usefieldbox" value="false"/>
+            <Attribute id="bandexpandtype" value="none"/>
+            <Attribute id="expandbartype" value="fasle"/>
+          </ViewTemplateInfo>
+        </View>
+        <View id="View00_00_00" taborder="5" text="View00" viewdataset="viewdataset" left="10" top="320" width="590" height="230" cssclass="viw_test_bg">
+          <Layouts>
+            <Layout>
+              <Static id="staTitle" left="0" top="0" height="30" width="80" text="타이틀" fittocontents="width" cssclass="sta_WF_subtitle"/>
+              <Static id="staTotCnt" left="staTitle:5" top="0" height="30" width="50" text="(총 &lt;b v='true'&gt;&lt;fc v='#da291c'&gt;0&lt;/fc&gt;&lt;/b&gt;건)" fittocontents="width" usedecorate="true" cssclass="sta_WF_totalCount"/>
+              <ListView id="livList" left="0" top="30" right="0" bottom="0" binddataset="viewdataset" bandexpandtype="accordion">
+                <Formats>
+                  <Format id="default">
+                    <Band id="body" width="100%" height="40" expandbartype="true" expandbarsize="40 40"/>
+                    <Band id="detail" width="100%" height="118">
+                      <Cell id="cellBgCompany" left="0" top="0" width="590" height="40" cssclass=""/>
+                      <Cell id="cellLabelCompany" left="0" top="0" width="100" height="40" text="회사명"/>
+                      <Cell id="cellCompany" left="105" top="5" width="140" height="30" text="bind:Company" displaytype="normal" edittype="none"/>
+                      <Cell id="cellLabelDepartment" left="250" top="0" width="100" height="40" text="부서명"/>
+                      <Cell id="cellDepartment" left="355" top="5" width="140" height="30" text="bind:Department" displaytype="normal" edittype="none"/>
+                      <Cell id="cellBgName" left="0" top="39" width="590" height="40" cssclass=""/>
+                      <Cell id="cellLabelName" left="0" top="39" width="100" height="40" text="성명"/>
+                      <Cell id="cellName" left="105" top="44" width="140" height="30" text="bind:Name" displaytype="normal" edittype="none"/>
+                      <Cell id="cellLabelPhone" left="250" top="39" width="100" height="40" text="전화번호"/>
+                      <Cell id="cellPhone" left="355" top="44" width="140" height="30" text="bind:Phone" displaytype="normal" edittype="none"/>
+                      <Cell id="cellBgEmail" left="0" top="78" width="590" height="40" cssclass=""/>
+                      <Cell id="cellLabelEmail" left="0" top="78" width="100" height="40" text="이메일주소"/>
+                      <Cell id="cellEmail" left="105" top="83" width="140" height="30" text="bind:Email" displaytype="normal" edittype="none"/>
+                      <Cell id="cellLabelField0" left="250" top="78" width="100" height="40" text="label0"/>
+                      <Cell id="cellField0" left="355" top="83" width="140" height="30" text="bind:field0" displaytype="normal" edittype="none"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </ListView>
+            </Layout>
+          </Layouts>
+          <Objects>
+            <Dataset id="viewdataset">
+              <ColumnInfo>
+                <Column id="Company" type="STRING" size="80"/>
+                <Column id="Department" type="STRING" size="80"/>
+                <Column id="Name" type="STRING" size="80"/>
+                <Column id="Phone" type="STRING" size="80"/>
+                <Column id="Email" type="STRING" size="80"/>
+                <Column id="field0" type="STRING" size="80"/>
+              </ColumnInfo>
+              <Rows>
+                <Row/>
+              </Rows>
+            </Dataset>
+          </Objects>
+          <Bind/>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="FreeFormModel001" filepath="sample\FreeForm.xmodel">
+            <Fields>
+              <Field id="Company" description="" band="detail" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+              <Field id="Department" description="" band="detail" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+              <Field id="Name" description="" band="detail" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+              <Field id="Phone" description="" band="detail" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+              <Field id="Email" description="" band="detail" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+              <Field id="field0" description="" band="detail" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+            </Fields>
+            <Components>
+              <Component id="livList" fields="Company,Department,Name,Phone,Email,field0"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="ListViewViewTemplate.xviewgen">
+            <Attribute id="titletext" value="타이틀"/>
+            <Attribute id="usetotalcount" value="true"/>
+            <Attribute id="direction" value="horizontal"/>
+            <Attribute id="usefieldbox" value="true"/>
+            <Attribute id="bandexpandtype" value="accordion"/>
+            <Attribute id="expandbartype" value="true"/>
+          </ViewTemplateInfo>
+        </View>
+        <View id="View00_00_00_00" taborder="7" viewdataset="viewdataset" left="652" top="320" width="590" height="230" cssclass="viw_test_bg">
+          <Layouts>
+            <Layout>
+              <Static id="staTitle" left="0" top="0" height="30" width="80" text="타이틀" fittocontents="width" cssclass="sta_WF_subtitle"/>
+              <ListView id="livList" left="0" top="30" right="0" bottom="0" binddataset="viewdataset" bandexpandtype="expand">
+                <Formats>
+                  <Format id="default">
+                    <Band id="body" width="100%" height="60" expandbartype="true" expandbarsize="40 40">
+                      <Cell id="cellBgCompany" left="0" top="0" width="590" height="60" cssclass=""/>
+                      <Cell id="cellLabelCompany" left="0" top="0" width="100" height="60" text="회사명"/>
+                      <Cell id="cellCompany" left="105" top="15" width="140" height="30" text="bind:Company" displaytype="normal" edittype="none"/>
+                      <Cell id="cellDepartment" left="250" top="15" width="140" height="30" text="bind:Department" displaytype="normal" edittype="none"/>
+                      <Cell id="cellName" left="395" top="15" width="140" height="30" text="bind:Name" displaytype="normal" edittype="none"/>
+                    </Band>
+                    <Band id="detail" width="100%" height="118">
+                      <Cell id="cellBgCompany_1" left="0" top="0" width="590" height="40" cssclass=""/>
+                      <Cell id="cellLabelCompany_1" left="0" top="0" width="100" height="40" text="회사명"/>
+                      <Cell id="cellCompany_1" left="105" top="5" width="140" height="30" text="bind:Company" displaytype="normal" edittype="none"/>
+                      <Cell id="cellLabelDepartment" left="295" top="0" width="100" height="40" text="부서명"/>
+                      <Cell id="cellDepartment_1" left="400" top="5" width="140" height="30" text="bind:Department" displaytype="normal" edittype="none"/>
+                      <Cell id="cellBgName" left="0" top="39" width="590" height="40" cssclass=""/>
+                      <Cell id="cellLabelName" left="0" top="39" width="100" height="40" text="성명"/>
+                      <Cell id="cellName_1" left="105" top="44" width="140" height="30" text="bind:Name" displaytype="normal" edittype="none"/>
+                      <Cell id="cellLabelPhone" left="295" top="39" width="100" height="40" text="전화번호"/>
+                      <Cell id="cellPhone" left="400" top="44" width="140" height="30" text="bind:Phone" displaytype="normal" edittype="none"/>
+                      <Cell id="cellBgEmail" left="0" top="78" width="590" height="40" cssclass=""/>
+                      <Cell id="cellLabelEmail" left="0" top="78" width="100" height="40" text="이메일주소"/>
+                      <Cell id="cellEmail" left="105" top="83" width="140" height="30" text="bind:Email" displaytype="normal" edittype="none"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </ListView>
+            </Layout>
+          </Layouts>
+          <Objects>
+            <Dataset id="viewdataset">
+              <ColumnInfo>
+                <Column id="Company" type="STRING" size="80"/>
+                <Column id="Department" type="STRING" size="80"/>
+                <Column id="Name" type="STRING" size="80"/>
+                <Column id="Phone" type="STRING" size="80"/>
+                <Column id="Email" type="STRING" size="80"/>
+                <Column id="field0" type="STRING" size="80"/>
+              </ColumnInfo>
+              <Rows>
+                <Row/>
+              </Rows>
+            </Dataset>
+          </Objects>
+          <Bind/>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="FreeFormModel001" filepath="sample\FreeForm.xmodel">
+            <Fields>
+              <Field id="Company" description="" band="body" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+              <Field id="Department" description="" band="body" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+              <Field id="Name" description="" band="body" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+              <Field id="Phone" description="" band="body" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+              <Field id="Email" description="" band="body" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+              <Field id="field0" description="" band="body" displaytype="normal" edittype="none" fieldwidth="150px" fieldheight="40px" labelwidth="100" fieldcssclass="" labelcssclass="" usecomp="true"/>
+            </Fields>
+            <Components>
+              <Component id="livList" fields="Company,Department,Name,Phone,Email,field0"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="ListViewViewTemplate.xviewgen">
+            <Attribute id="titletext" value="타이틀"/>
+            <Attribute id="usetotalcount" value="false"/>
+            <Attribute id="direction" value="horizontal"/>
+            <Attribute id="usefieldbox" value="true"/>
+            <Attribute id="bandexpandtype" value="expand"/>
+            <Attribute id="expandbartype" value="true"/>
+            <Attribute id="bodyformat" value="{&quot;columnsize&quot;:[590],&quot;rowsize&quot;:[60],&quot;celllist&quot;:[{&quot;col&quot;:&quot;0&quot;,&quot;row&quot;:&quot;0&quot;,&quot;halign&quot;:&quot;left&quot;,&quot;valign&quot;:&quot;middle&quot;,&quot;direction&quot;:&quot;horizontal&quot;,&quot;fieldlist&quot;:[&quot;Company&quot;,&quot;Department&quot;,&quot;Name&quot;]}]}"/>
+            <Attribute id="detailformat" value="{&quot;columnsize&quot;:[295,295],&quot;rowsize&quot;:[40,40,40],&quot;celllist&quot;:[{&quot;col&quot;:&quot;0&quot;,&quot;row&quot;:&quot;0&quot;,&quot;halign&quot;:&quot;left&quot;,&quot;valign&quot;:&quot;middle&quot;,&quot;direction&quot;:&quot;horizontal&quot;,&quot;fieldlist&quot;:[&quot;Company&quot;]},{&quot;col&quot;:&quot;1&quot;,&quot;row&quot;:&quot;0&quot;,&quot;halign&quot;:&quot;left&quot;,&quot;valign&quot;:&quot;middle&quot;,&quot;direction&quot;:&quot;horizontal&quot;,&quot;fieldlist&quot;:[&quot;Department&quot;]},{&quot;col&quot;:&quot;0&quot;,&quot;row&quot;:&quot;1&quot;,&quot;halign&quot;:&quot;left&quot;,&quot;valign&quot;:&quot;middle&quot;,&quot;direction&quot;:&quot;horizontal&quot;,&quot;fieldlist&quot;:[&quot;Name&quot;]},{&quot;col&quot;:&quot;1&quot;,&quot;row&quot;:&quot;1&quot;,&quot;halign&quot;:&quot;left&quot;,&quot;valign&quot;:&quot;middle&quot;,&quot;direction&quot;:&quot;horizontal&quot;,&quot;fieldlist&quot;:[&quot;Phone&quot;]},{&quot;col&quot;:&quot;0&quot;,&quot;row&quot;:&quot;2&quot;,&quot;halign&quot;:&quot;left&quot;,&quot;valign&quot;:&quot;middle&quot;,&quot;direction&quot;:&quot;horizontal&quot;,&quot;fieldlist&quot;:[&quot;Email&quot;],&quot;colspan&quot;:&quot;2&quot;}]}"/>
+          </ViewTemplateInfo>
+        </View>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	trace(this.View00_00.form.livList.scrollbarsize);
+};
+
+this.View01_staDepartmentLabel_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	
+};
+]]></Script>
+    <Objects>
+      <Dataset id="viewdataset">
+        <ColumnInfo>
+          <Column id="Company" type="STRING" size="80"/>
+          <Column id="Department" type="STRING" size="80"/>
+          <Column id="Name" type="STRING" size="80"/>
+          <Column id="Phone" type="STRING" size="80"/>
+          <Column id="Email" type="STRING" size="80"/>
+          <Column id="field0" type="STRING" size="80"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

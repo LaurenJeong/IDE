@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModelInfo version="1.1">
+  <Models>
+    <Model id="TreeModel001" name="TreeModel001" iotype="output" description="">
+      <Field required="false" id="TREE_LVL" label="트리 LEVEL" fieldtype="FreeText" datatype="STRING" datasize="80"/>
+      <Field required="false" id="TREE_TXT" label="트리명" fieldtype="FreeText" datatype="STRING" datasize="80"/>
+      <Field required="false" id="TREE_CHK" label="트리체크" fieldtype="FreeText" datatype="STRING" datasize="1"/>
+    </Model>
+  </Models>
+  <Service id="" name="" url=""/>
+</ModelInfo>

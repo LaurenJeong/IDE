@@ -1,0 +1,558 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frmMain" width="1070" height="720" titletext="main화면(전체메뉴)">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1070">
+        <Static id="Static00" taborder="0" text="All Menu" left="0" top="10" height="34" cssclass="sta_WF_title01" right="20"/>
+        <Grid id="grdMenu00" taborder="1" left="10" top="59" autofittype="col" treeusecheckbox="false" treeinitstatus="expand,all" cssclass="grd_LF_treeMenu" useselcolor="false" scrollbarsize="10" binddataset="dsMenu00" height="170" width="189" oncellclick="grdMenu00_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="180"/>
+              </Columns>
+              <Rows>
+                <Row size="28"/>
+              </Rows>
+              <Band id="body">
+                <Cell text="bind:MENU_NM" displaytype="normal" treelevel="bind:MENU_LVL" cssclass="expr:MENU_LVL==&quot;0&quot;?&quot;cellMenu01&quot;:&quot;cellSubMenu01&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="grdMenu01" taborder="2" left="220" top="59" autofittype="col" treeusecheckbox="false" treeinitstatus="expand,all" cssclass="grd_LF_treeMenu" useselcolor="false" scrollbarsize="10" binddataset="dsMenu01" width="189" height="226" oncellclick="grdMenu01_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="180"/>
+              </Columns>
+              <Rows>
+                <Row size="28"/>
+              </Rows>
+              <Band id="body">
+                <Cell text="bind:MENU_NM" displaytype="normal" treelevel="bind:MENU_LVL" cssclass="expr:MENU_LVL==&quot;0&quot;?&quot;cellMenu01&quot;:&quot;cellSubMenu01&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="grdMenu02" taborder="3" left="430" top="59" autofittype="col" treeusecheckbox="false" treeinitstatus="expand,all" cssclass="grd_LF_treeMenu" useselcolor="false" scrollbarsize="10" binddataset="dsMenu02" width="189" height="314" oncellclick="grdMenu02_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="180"/>
+              </Columns>
+              <Rows>
+                <Row size="28"/>
+              </Rows>
+              <Band id="body">
+                <Cell text="bind:MENU_NM" displaytype="normal" treelevel="bind:MENU_LVL" cssclass="expr:MENU_LVL==&quot;0&quot;?&quot;cellMenu01&quot;:&quot;cellSubMenu01&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="grdMenu03" taborder="4" left="640" top="59" autofittype="col" treeusecheckbox="false" treeinitstatus="expand,all" cssclass="grd_LF_treeMenu" useselcolor="false" scrollbarsize="10" binddataset="dsMenu03" width="189" height="232" oncellclick="grdMenu03_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="180"/>
+              </Columns>
+              <Rows>
+                <Row size="28"/>
+              </Rows>
+              <Band id="body">
+                <Cell text="bind:MENU_NM" displaytype="normal" treelevel="bind:MENU_LVL" cssclass="expr:MENU_LVL==&quot;0&quot;?&quot;cellMenu01&quot;:&quot;cellSubMenu01&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="grdMenu04" taborder="5" left="850" top="59" autofittype="col" treeusecheckbox="false" treeinitstatus="expand,all" cssclass="grd_LF_treeMenu" useselcolor="false" scrollbarsize="10" binddataset="dsMenu04" width="189" height="254" oncellclick="grdMenu04_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="180"/>
+              </Columns>
+              <Rows>
+                <Row size="28"/>
+              </Rows>
+              <Band id="body">
+                <Cell text="bind:MENU_NM" displaytype="normal" treelevel="bind:MENU_LVL" cssclass="expr:MENU_LVL==&quot;0&quot;?&quot;cellMenu01&quot;:&quot;cellSubMenu01&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsMenu01">
+        <ColumnInfo>
+          <Column id="MENU_CD" type="STRING" size="256"/>
+          <Column id="UP_MENU_CD" type="STRING" size="256"/>
+          <Column id="MENU_NM" type="STRING" size="256"/>
+          <Column id="MENU_LVL" type="STRING" size="256"/>
+          <Column id="PGM_PATH" type="STRING" size="256"/>
+          <Column id="PGM_ID" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="MENU_CD">3000</Col>
+            <Col id="UP_MENU_CD">0</Col>
+            <Col id="MENU_NM">Property</Col>
+            <Col id="MENU_LVL">0</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">property_intro.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">3001</Col>
+            <Col id="UP_MENU_CD">3000</Col>
+            <Col id="MENU_NM">grandtotal</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">property_grandtotal.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">3002</Col>
+            <Col id="UP_MENU_CD">3000</Col>
+            <Col id="MENU_NM">total</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">property_total.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">3003</Col>
+            <Col id="UP_MENU_CD">3000</Col>
+            <Col id="MENU_NM">casesensitive</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">property_casesensitive.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">3004</Col>
+            <Col id="UP_MENU_CD">3000</Col>
+            <Col id="MENU_NM">roundfractiondigit</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">property_roundfractiondisit.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">3005</Col>
+            <Col id="UP_MENU_CD">3000</Col>
+            <Col id="MENU_NM">loadingimage</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">property_loadingimage.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">3006</Col>
+            <Col id="UP_MENU_CD">3000</Col>
+            <Col id="MENU_NM">useitems</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">property_useitems.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">3007</Col>
+            <Col id="UP_MENU_CD">3000</Col>
+            <Col id="MENU_NM">usetoolbar</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">property_usetoolbar.xfdl</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsMenu00">
+        <ColumnInfo>
+          <Column id="MENU_CD" type="STRING" size="256"/>
+          <Column id="UP_MENU_CD" type="STRING" size="256"/>
+          <Column id="MENU_NM" type="STRING" size="256"/>
+          <Column id="MENU_LVL" type="STRING" size="256"/>
+          <Column id="PGM_PATH" type="STRING" size="256"/>
+          <Column id="PGM_ID" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="MENU_CD">0</Col>
+            <Col id="UP_MENU_CD">0</Col>
+            <Col id="MENU_NM">Pivot 생성</Col>
+            <Col id="MENU_LVL">0</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">pivot_create.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">1000</Col>
+            <Col id="UP_MENU_CD">0</Col>
+            <Col id="MENU_NM">Config 설정</Col>
+            <Col id="MENU_LVL">0</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">config_intro.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="UP_MENU_CD">1000</Col>
+            <Col id="MENU_CD">1001</Col>
+            <Col id="MENU_NM">Config</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">config_config.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="UP_MENU_CD">1000</Col>
+            <Col id="MENU_CD">1002</Col>
+            <Col id="MENU_NM">Panel</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">config_panel.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">1003</Col>
+            <Col id="UP_MENU_CD">1000</Col>
+            <Col id="MENU_NM">SettingPopup</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">config_setttingPopup.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">2000</Col>
+            <Col id="UP_MENU_CD">0</Col>
+            <Col id="MENU_NM">Pivot 실행</Col>
+            <Col id="MENU_LVL">0</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">pivot_excute.xfdl</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsMenu02">
+        <ColumnInfo>
+          <Column id="MENU_CD" type="STRING" size="256"/>
+          <Column id="UP_MENU_CD" type="STRING" size="256"/>
+          <Column id="MENU_NM" type="STRING" size="256"/>
+          <Column id="MENU_LVL" type="STRING" size="256"/>
+          <Column id="PGM_PATH" type="STRING" size="256"/>
+          <Column id="PGM_ID" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="MENU_CD">5000</Col>
+            <Col id="UP_MENU_CD">0</Col>
+            <Col id="MENU_NM">Function</Col>
+            <Col id="MENU_LVL">0</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">function_intro.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">5001</Col>
+            <Col id="UP_MENU_CD">5000</Col>
+            <Col id="MENU_NM">enableToolbarButtons</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">function_enableToolbarButtons.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">5002</Col>
+            <Col id="UP_MENU_CD">5000</Col>
+            <Col id="MENU_NM">redraw</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">function_redraw.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">5003</Col>
+            <Col id="UP_MENU_CD">5000</Col>
+            <Col id="MENU_NM">render</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">function_render.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">5004</Col>
+            <Col id="UP_MENU_CD">5000</Col>
+            <Col id="MENU_NM">updateToDataset</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">function_updateToDataset.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">5005</Col>
+            <Col id="UP_MENU_CD">5000</Col>
+            <Col id="MENU_NM">get/set Config</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">function_getsetConfig.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">5006</Col>
+            <Col id="UP_MENU_CD">5000</Col>
+            <Col id="MENU_NM">get/set Panel</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">function_getsetPanel.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">5007</Col>
+            <Col id="UP_MENU_CD">5000</Col>
+            <Col id="MENU_NM">get/set SettingPopup</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">function_getsetSettingPopup.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">5008</Col>
+            <Col id="UP_MENU_CD">5000</Col>
+            <Col id="MENU_NM">getPivotGrid </Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">function_getPivotGrid.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_NM">getSelectedPivotData</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">function_getSelectedPivotData.xfdl</Col>
+            <Col id="MENU_CD">5009</Col>
+            <Col id="UP_MENU_CD">5000</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">5010</Col>
+            <Col id="UP_MENU_CD">5000</Col>
+            <Col id="MENU_NM">getSelectedPivotDetailData</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">function_getSelectedPivotDetailData.xfdl</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsMenu03">
+        <ColumnInfo>
+          <Column id="MENU_CD" type="STRING" size="256"/>
+          <Column id="UP_MENU_CD" type="STRING" size="256"/>
+          <Column id="MENU_NM" type="STRING" size="256"/>
+          <Column id="MENU_LVL" type="STRING" size="256"/>
+          <Column id="PGM_PATH" type="STRING" size="256"/>
+          <Column id="PGM_ID" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="MENU_CD">4000</Col>
+            <Col id="UP_MENU_CD">0</Col>
+            <Col id="MENU_NM">Event</Col>
+            <Col id="MENU_LVL">0</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">event_intro.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">4001</Col>
+            <Col id="UP_MENU_CD">4000</Col>
+            <Col id="MENU_NM">can/on create</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">event_create.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">4002</Col>
+            <Col id="UP_MENU_CD">4000</Col>
+            <Col id="MENU_NM">can/on render</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">event_render.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">4003</Col>
+            <Col id="UP_MENU_CD">4000</Col>
+            <Col id="MENU_NM">can/on toolbarbuttonclick</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">event_toolbarbuttonclick.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">4004</Col>
+            <Col id="UP_MENU_CD">4000</Col>
+            <Col id="MENU_NM">onerror</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">event_error.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">4005</Col>
+            <Col id="UP_MENU_CD">4000</Col>
+            <Col id="MENU_NM">ongridcellclick</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">event_ongridcellclick.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">4006</Col>
+            <Col id="UP_MENU_CD">4000</Col>
+            <Col id="MENU_NM">ongridcelldblclick</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">event_ongridcelldblclick.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">4007</Col>
+            <Col id="UP_MENU_CD">4000</Col>
+            <Col id="MENU_NM">ongridselectchanged</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">event_ongridselectchanged.xfdl</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsMenu04">
+        <ColumnInfo>
+          <Column id="MENU_CD" type="STRING" size="256"/>
+          <Column id="UP_MENU_CD" type="STRING" size="256"/>
+          <Column id="MENU_NM" type="STRING" size="256"/>
+          <Column id="MENU_LVL" type="STRING" size="256"/>
+          <Column id="PGM_PATH" type="STRING" size="256"/>
+          <Column id="PGM_ID" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="MENU_CD">6000</Col>
+            <Col id="UP_MENU_CD">0</Col>
+            <Col id="MENU_NM">활용</Col>
+            <Col id="MENU_LVL">0</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">uses_intro.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">6001</Col>
+            <Col id="UP_MENU_CD">6000</Col>
+            <Col id="MENU_NM">Sort 설정</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">uses_sort.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">6002</Col>
+            <Col id="UP_MENU_CD">6000</Col>
+            <Col id="MENU_NM">Filter 설정</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">uses_filter.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">6003</Col>
+            <Col id="UP_MENU_CD">6000</Col>
+            <Col id="MENU_NM">집계 설정</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">uses_aggregator.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">6004</Col>
+            <Col id="UP_MENU_CD">6000</Col>
+            <Col id="MENU_NM">사용자 집계 설정</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">uses_custom_aggregator.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">6005</Col>
+            <Col id="UP_MENU_CD">6000</Col>
+            <Col id="MENU_NM">cancreate Event 활용</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">uses_canCreate.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">6006</Col>
+            <Col id="UP_MENU_CD">6000</Col>
+            <Col id="MENU_NM">getPivotGrid 활용</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">uses_getPivotGrid.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">6007</Col>
+            <Col id="UP_MENU_CD">6000</Col>
+            <Col id="MENU_NM">nexacro chart연동</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">uses_getSelectPivotData.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">6008</Col>
+            <Col id="UP_MENU_CD">6000</Col>
+            <Col id="MENU_NM">대용량데이터 처리</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">gallery</Col>
+            <Col id="PGM_ID">uses_rawdata.xfdl</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.grdMenu00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var objBindDataset = obj.getBindDataset();
+	this.fn_openMenu(objBindDataset, e.row);
+};
+
+this.grdMenu01_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var objBindDataset = obj.getBindDataset();
+	this.fn_openMenu(objBindDataset, e.row);
+};
+
+this.grdMenu02_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var objBindDataset = obj.getBindDataset();
+	this.fn_openMenu(objBindDataset, e.row);
+};
+
+this.grdMenu03_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var objBindDataset = obj.getBindDataset();
+	this.fn_openMenu(objBindDataset, e.row);
+};
+
+this.grdMenu04_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var objBindDataset = obj.getBindDataset();
+	this.fn_openMenu(objBindDataset, e.row);
+};
+
+this.fn_openMenu = function(objDs, nRow)
+{
+	var nFRow;
+	var sMENU_CD;
+	
+	var objMenuDs = objDs;
+	
+	sMENU_CD 	= objMenuDs.getColumn(nRow, "MENU_CD");
+	
+	if(this.gfnIsNull(sMENU_CD)==true)
+	{
+		return;
+	}
+
+	this.parent.parent.fn_openMenu(sMENU_CD);
+}
+
+/*****************************************************************************
+함 수 명 칭 : gfnIsNull
+함 수 설 명 : 입력값 Null 체크 함수
+파 라 미 터 : pvVal – 입력값
+리 턴 내 용 : true/false 값이 Null일 경우 true
+*****************************************************************************/
+this.gfnIsNull = function (pvVal)
+{
+	if (new String(pvVal).valueOf() == "undefined") 
+	{
+		return true;
+	}
+	if (pvVal == null) 
+	{
+		return true;
+	}
+	if (("x" + pvVal == "xNaN") && (new String(pvVal.length).valueOf() == "undefined")) 
+	{
+		return true;
+	}
+	if (pvVal.length == 0) 
+	{
+		return true;
+	}
+
+	return false;
+}]]></Script>
+  </Form>
+</FDL>

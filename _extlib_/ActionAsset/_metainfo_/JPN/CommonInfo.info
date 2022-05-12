@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MetaInfo version="2.0">
+  <EnumInfo id="messagetype">
+    <Enum name="alert"/>
+    <Enum name="confirm"/>
+  </EnumInfo>
+  <EnumInfo id="popupstyle">
+    <Enum name="modal"/>
+    <Enum name="modeless"/>
+  </EnumInfo>
+  <EnumInfo id="ExportType">
+    <Enum name="excel" description="Worksheet 97 - 2003 Files (*.xls)"/>
+    <Enum name="excel2007" description="Worksheet Files (*.xlsx)"/>
+    <Enum name="hancell2010" description="Hancell 2010 Files (*.cell)"/>
+    <Enum name="hancell2014" description="Hancell Files (*.cell)"/>
+    <Enum name="csv" description="CSV (*.csv)"/>
+  </EnumInfo>
+  <EnumInfo id="ImportType">
+    <Enum name="excel" description="Worksheet 97 - 2003 Files (*.xls)"/>
+    <Enum name="excel2007" description="Worksheet Files (*.xlsx)"/>
+    <Enum name="hancell2014" description="Hancell Files (*.cell)"/>
+    <Enum name="csv" description="CSV (*.csv)"/>
+  </EnumInfo>
+  <EnumInfo id="PopupReturnType" description="">
+    <Enum name="none" description=""/>
+    <Enum name="currow" description=""/>
+    <Enum name="selectmulti" description=""/>
+    <Enum name="alldata" description=""/>
+  </EnumInfo>
+  <RefreshInfo id="targetview">
+    <Property name="targetcomp"/>
+  </RefreshInfo>
+</MetaInfo>

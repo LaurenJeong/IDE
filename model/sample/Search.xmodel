@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModelInfo version="1.1">
+  <Models>
+    <Model id="SearchModel001" name="SearchModel001" iotype="" description="">
+      <Field required="false" id="Company" label="회사명" fieldtype="FreeText" datatype="STRING" datasize="80"/>
+      <Field required="false" id="Department" label="부서명" fieldtype="FreeText" datatype="STRING" datasize="80"/>
+      <Field required="false" id="Name" label="성명" fieldtype="FreeText" datatype="STRING" datasize="80"/>
+      <Field required="false" id="Phone" label="전화번호" fieldtype="FreeText" datatype="STRING" datasize="80"/>
+      <Field required="false" id="Email" label="이메일주소" fieldtype="FreeText" datatype="STRING" datasize="80"/>
+    </Model>
+  </Models>
+  <Service id="" name="" url=""/>
+</ModelInfo>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MetaInfo version="2.0">
+  <Object id="TransactionAction">
+    <ObjectInfo inheritance="nexacro.Action" classname="nexacro.TransactionAction" shorttypename="TransactionAction" csstypename="TransactionAction" csscontrolname="TransactionActionControl" group="Action" subgroup="Action" csspseudo="" container="false" tabstop="false" cssstyle="false" defaultwidth="" defaultheight="" registration="allow" edittype="action" useinitvalue="false" popup="false" edittypecomponent="" dblclickevent="" requirement="IE10,IE11,Edge,Chrome,Safari,Firefox,Opera,Windows NRE,macOS NRE,Android NRE,iOS/iPadOS NRE,Android Default Web Browser,iOS/iPadOS Default Web Browser" description="" finalclass="false"/>
+    <PropertyInfo>
+      <Property name="service_id" readonly="false" initonly="false" hidden="false" control="false" expr="false" bind="false" unused="false" mandatory="true" group="Action" edittype="ModelServiceID" normalpropertyname="serviceid" refreshinfo="service_id" displayinfo="service_id"/>
+      <Property name="service_url" readonly="false" initonly="false" hidden="false" control="false" expr="false" bind="false" unused="false" mandatory="true" group="Action" edittype="ModelServiceURL" normalpropertyname="serviceurl" displayinfo=""/>
+      <Property name="input_datasets" readonly="false" initonly="false" hidden="false" control="false" expr="false" bind="false" unused="false" mandatory="true" group="Action" edittype="InputModelID" normalpropertyname="inputdatasets" displayinfo=""/>
+      <Property name="output_datasets" readonly="false" initonly="false" hidden="false" control="false" expr="false" bind="false" unused="false" mandatory="true" group="Action" edittype="OutputModelID" normalpropertyname="outputdatasets"/>
+      <Property name="argument" readonly="false" initonly="false" hidden="false" control="false" expr="false" bind="false" unused="false" mandatory="false" group="Misc." edittype="String" normalpropertyname="args"/>
+      <Property name="async" readonly="false" initonly="false" hidden="false" control="false" expr="false" bind="false" unused="false" mandatory="false" group="Misc." edittype="Boolean" defaultvalue="true" normalpropertyname="async"/>
+      <Property name="targetview" group="Action" subgroup="" refreshinfo="select_targetview" edittype="ViewObjList" readonly="false" initonly="false" hidden="false" control="false" expr="false" bind="false" deprecated="false" unused="false" mandatory="true" objectinfo="" enuminfo="" enuminfo2="" unitinfo="" delimiter="" requirement="IE10,IE11,Edge,Chrome,Safari,Firefox,Opera,Windows NRE,macOS NRE,Android NRE,iOS/iPadOS NRE,Android Default Web Browser,iOS/iPadOS Default Web Browser" description="" csspropertyname="" normalpropertyname="targetview" displayinfo="target_view"/>
+      <Property name="contents" edittype="Contents" readonly="false" initonly="false" hidden="true" control="false" expr="false" bind="false" unused="false" mandatory="false"/>
+      <Property name="target_object" readonly="false" initonly="false" hidden="false" control="false" expr="false" bind="false" unused="false" mandatory="false" group="Action" edittype="ViewChildObjList" normalpropertyname="targetobj"/>
+    </PropertyInfo>
+    <CSSInfo>
+      <PropertyInfo/>
+    </CSSInfo>
+    <StatusInfo/>
+    <MethodInfo/>
+    <EventHandlerInfo/>
+    <ContentsInfo contentsformat="json" contentseditor="auto" contentstype="contents" showpreview="false" showobjtree="false" showproperties="false"/>
+  </Object>
+</MetaInfo>

@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frmAll" width="1280" height="720" titletext="WorkFrame">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <Div id="divTop" taborder="0" left="0" top="0" height="65" right="0">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" left="0" top="0" height="24" right="0" cssclass="sta_top_bg01"/>
+              <Static id="Static01" taborder="1" left="0" top="24" height="41" right="0" cssclass="sta_top_bg02"/>
+              <Static id="stTitle" taborder="2" left="0" top="24" width="160" height="41" cssclass="sta_top_logo" onclick="divTop_stTitle_onclick"/>
+              <Static id="Static03" taborder="3" text="NexacroN QuickCode Sample" left="10" top="0" width="210" height="24" cssclass="sta_top_textWht"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="divLeft" taborder="1" text="Div01" left="0" top="65" width="190" bottom="30">
+          <Layouts>
+            <Layout>
+              <Static id="stTitle" taborder="0" text="QuickCode" left="0" top="0" height="40" cssclass="sta_LF_title01" right="1"/>
+              <Grid id="grdLeftMenu" taborder="1" left="0" top="39" binddataset="gdsMenu" autofittype="col" treeusecheckbox="false" bottom="0" treeinitstatus="expand,all" oncellclick="divLeft_grdLeftMenu_oncellclick" cssclass="grd_LF_treeMenu" right="1" useselcolor="false" scrollbarsize="10">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="180"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="28"/>
+                    </Rows>
+                    <Band id="body">
+                      <Cell text="bind:MENU_NM" displaytype="normal" treelevel="bind:MENU_LVL" cssclass="expr:MENU_LVL==&quot;0&quot;?&quot;cellMenu01&quot;:&quot;cellSubMenu01&quot;"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="divBottom" taborder="2" left="0" height="30" bottom="0" right="0">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" left="0" top="0" height="30" right="0" cssclass="sta_BT_bg01"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="divWork" taborder="3" left="200" top="65" bottom="30" right="10" url="frame::frmMain.xfdl"/>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Script type="xscript5.1"><![CDATA[
+this.divTop_stTitle_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	this.divWork.set_async(false);
+	this.divWork.set_url("frame::tempLayout.xfdl");
+	this.divWork.set_async(true);
+	this.divWork.set_url("frame::frmMain.xfdl");
+};
+
+this.divLeft_grdLeftMenu_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var sMenuId = this.dsLeftMenu.getColumn(e.row, "MENU_CD");
+	this.fn_openMenu(sMenuId);
+};
+
+this.fn_openMenu = function(sMenuId)
+{
+	var nFRow;
+	var sPGMPATH;
+	var sPGMID;
+	var sMenuNm;
+	
+	var objMenuDs = this.dsLeftMenu;
+	
+	nFRow 		= objMenuDs.findRow("MENU_CD", sMenuId);
+	sPGMPATH 	= objMenuDs.getColumn(nFRow, "PGM_PATH");
+	sPGMID 		= objMenuDs.getColumn(nFRow, "PGM_ID")
+	sMenuNm 	= objMenuDs.getColumn(nFRow, "MENU_NM");
+	
+	if(this.gfnIsNull(sPGMPATH)==true)
+	{
+		return;
+	}
+
+	this.divWork.set_url(sPGMPATH+"::"+sPGMID);
+}
+
+/*****************************************************************************
+함 수 명 칭 : gfnIsNull
+함 수 설 명 : 입력값 Null 체크 함수
+파 라 미 터 : pvVal – 입력값
+리 턴 내 용 : true/false 값이 Null일 경우 true
+*****************************************************************************/
+this.gfnIsNull = function (pvVal)
+{
+	if (new String(pvVal).valueOf() == "undefined") 
+	{
+		return true;
+	}
+	if (pvVal == null) 
+	{
+		return true;
+	}
+	if (("x" + pvVal == "xNaN") && (new String(pvVal.length).valueOf() == "undefined")) 
+	{
+		return true;
+	}
+	if (pvVal.length == 0) 
+	{
+		return true;
+	}
+
+	return false;
+}
+
+]]></Script>
+  </Form>
+</FDL>

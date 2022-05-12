@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="test_action_popup" width="1280" height="720" titletext="팝업 테스트">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Button id="btnPopup" taborder="0" text="팝업(단건선택)" left="10" top="10" width="100" height="30"/>
+        <TextArea id="txaOutput" taborder="1" left="10" top="50" width="440" bottom="10" wordWrap="english"/>
+        <Grid id="grdRetPop" taborder="2" left="460" top="80" height="235" right="10" binddataset="dsRetPop">
+          <Formats>
+            <Format id="default"/>
+          </Formats>
+        </Grid>
+        <Static id="Static00" taborder="3" text="팝업결과 데이터" left="460" top="50" height="30" cssclass="sta_WF_title02" right="410"/>
+        <Button id="btnPopup2" taborder="4" text="팝업(전체데이터반환)" left="120" top="10" width="140" height="30"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsRetPop"/>
+      <PopupAction id="PopupAction00" formurl="test::test_action_popupsub.xfdl" popupstyle="modal" popupid="popup" title="팝업테스트" popupleft="-1" popuptop="-1" popupwidth="-1" popupheight="-1" onsuccess="PopupAction00_onsuccess" onerror="PopupAction00_onerror" args="{&quot;returntype&quot; : &quot;currow&quot;}">
+        <Contents><![CDATA[{
+    "extra":
+    [
+        {
+            "name":"test",
+            "value":1111
+        }
+    ]
+}]]></Contents>
+      </PopupAction>
+      <PopupAction id="PopupAction01" formurl="test::test_action_popupsub.xfdl" popupstyle="modal" popupid="popup" title="팝업테스트" popupleft="-1" popuptop="-1" popupwidth="-1" popupheight="-1" onsuccess="PopupAction00_onsuccess" onerror="PopupAction00_onerror" args="{&quot;returntype&quot; : &quot;alldata&quot;}">
+        <Contents><![CDATA[{
+    "extra":
+    [
+        {
+            "name":"test",
+            "value":1111
+        }
+    ]
+}]]></Contents>
+      </PopupAction>
+    </Objects>
+    <Trigger>
+      <TriggerItem id="item0" triggertype="Click" triggerview="test_action_popup" triggerobj="btnPopup" targetaction="PopupAction00" condition=""/>
+      <TriggerItem id="item1" triggertype="Click" triggerview="test_action_popup" triggerobj="btnPopup2" targetaction="PopupAction01" condition=""/>
+    </Trigger>
+    <Script type="xscript5.1"><![CDATA[include "view_lib::util.xjs";
+
+this.PopupAction00_onerror = function(obj:nexacro.PopupAction, e:nexacro.ActionErrorEventInfo)
+{
+	//trace("PopupAction00_onerror" + e.userdata);
+	this.txaOutput.insertText("\n" + "PopupAction00_onerror");
+	this.txaOutput.insertText("\n - userdata : " + e.userdata);
+};
+
+this.PopupAction00_onsuccess = function(obj:nexacro.PopupAction, e:nexacro.ActionSuccessEventInfo)
+{
+	//trace("PopupAction00_onsuccess" + e.userdata);
+	this.txaOutput.insertText("\n" + "PopupAction00_onsuccess");
+	this.txaOutput.insertText("\n - userdata : " + e.userdata);
+	
+	if (this.lfn_IsNull(e.userdata) == false) {
+		var objRet = JSON.parse(e.userdata);
+		this.dsRetPop.loadXML(objRet.dataset);
+		this.grdRetPop.createFormat();
+	}
+};]]></Script>
+  </Form>
+</FDL>

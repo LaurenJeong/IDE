@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="test_action_data" width="1280" height="720" titletext="Dataset관련 Action">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <View id="viwList" taborder="0" viewdataset="viewdataset" left="0" top="152" right="0" bottom="0">
+          <Layouts>
+            <Layout>
+              <Grid id="grdList" left="0" top="0" right="0" bottom="0" binddataset="viewdataset" autofittype="col">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="30" band="head"/>
+                      <Row size="30"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell id="cell_TEXT" text="TEXT"/>
+                      <Cell col="1" id="cell_TEXTAREA" text="TEXTAREA"/>
+                      <Cell col="2" id="cell_CHECK" text="CHECK"/>
+                      <Cell col="3" id="cell_COMBO" text="COMBO"/>
+                      <Cell col="4" id="cell_DATE" text="DATE"/>
+                      <Cell col="5" id="cell_DECOTEXT" text="DECOTEXT"/>
+                      <Cell col="6" id="cell_NUMBER" text="NUMBER"/>
+                      <Cell col="7" id="cell_CURRENCY" text="CURRENCY"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell id="cell_TEXT" text="bind:TEXT" displaytype="normal" edittype="normal"/>
+                      <Cell col="1" id="cell_TEXTAREA" text="bind:TEXTAREA" displaytype="normal" edittype="textarea"/>
+                      <Cell col="2" id="cell_CHECK" text="bind:CHECK" displaytype="checkboxcontrol" edittype="checkbox"/>
+                      <Cell col="3" id="cell_COMBO" text="bind:COMBO" displaytype="combotext" edittype="combo" combodataset="dsCombo" combocodecol="code" combodatacol="data"/>
+                      <Cell col="4" id="cell_DATE" text="bind:DATE" displaytype="calendarcontrol" edittype="date"/>
+                      <Cell col="5" id="cell_DECOTEXT" text="bind:DECOTEXT" displaytype="normal" edittype="normal"/>
+                      <Cell col="6" id="cell_NUMBER" text="bind:NUMBER" displaytype="number" edittype="mask"/>
+                      <Cell col="7" id="cell_CURRENCY" text="bind:CURRENCY" displaytype="currency" edittype="normal"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+            <Layout/>
+          </Layouts>
+          <Objects>
+            <Dataset id="viewdataset">
+              <ColumnInfo>
+                <Column id="TEXT" type="STRING" size="80"/>
+                <Column id="TEXTAREA" type="STRING" size="80"/>
+                <Column id="CHECK" type="STRING" size="80"/>
+                <Column id="COMBO" type="STRING" size="80"/>
+                <Column id="DATE" type="DATE" size="80"/>
+                <Column id="DECOTEXT" type="STRING" size="80"/>
+                <Column id="NUMBER" type="BIGDECIMAL" size="80"/>
+                <Column id="CURRENCY" type="BIGDECIMAL" size="80"/>
+              </ColumnInfo>
+            </Dataset>
+          </Objects>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="excel" filepath="sample\excelModelService.xmodel">
+            <Fields>
+              <Field id="TEXT" description="" displaytype="normal" edittype="normal" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="TEXTAREA" description="" displaytype="normal" edittype="textarea" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="CHECK" description="" displaytype="checkboxcontrol" edittype="checkbox" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="COMBO" description="" displaytype="combotext" edittype="combo" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="DATE" description="" displaytype="calendarcontrol" edittype="date" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="DECOTEXT" description="" displaytype="normal" edittype="normal" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="NUMBER" description="" displaytype="number" edittype="mask" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="CURRENCY" description="" displaytype="currency" edittype="normal" fieldwidth="80" cssclass="" summprop="none"/>
+            </Fields>
+            <Components>
+              <Component id="grdList" fields="TEXT,TEXTAREA,CHECK,COMBO,DATE,DECOTEXT,NUMBER,CURRENCY"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="GridViewTemplate.xviewgen">
+            <Attribute id="headbandsize" value="30"/>
+            <Attribute id="bodybandsize" value="30"/>
+            <Attribute id="summbandsize" value="-1"/>
+          </ViewTemplateInfo>
+        </View>
+        <View id="viwButton" taborder="1" viewdataset="viewdataset" top="116" width="500" height="30" right="0">
+          <Layouts>
+            <Layout type="horizontal" horizontalgap="5" flexmainaxisalign="end">
+              <Button id="btnInsert" taborder="0" text="Insert" left="390" top="7" width="80" height="30" onclick="viwButton_btnInsert_onclick"/>
+              <Button id="btnDelete" taborder="1" text="Delete" left="249" top="16" width="80" height="30" onclick="viwButton_btnDelete_onclick"/>
+              <Button id="btnCheckData" taborder="2" text="CheckData" left="250" top="0" width="80" height="30"/>
+            </Layout>
+          </Layouts>
+        </View>
+        <Button id="Button00" taborder="2" text="Button00" left="138" top="21" width="100" height="30" onclick="Button00_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsCombo">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">01</Col>
+            <Col id="data">서울특별시</Col>
+          </Row>
+          <Row>
+            <Col id="code">02</Col>
+            <Col id="data">인천광역시</Col>
+          </Row>
+          <Row>
+            <Col id="code">03</Col>
+            <Col id="data">대전광역시</Col>
+          </Row>
+          <Row>
+            <Col id="code">04</Col>
+            <Col id="data">대구광역시</Col>
+          </Row>
+          <Row>
+            <Col id="code">05</Col>
+            <Col id="data">울산광역시</Col>
+          </Row>
+          <Row>
+            <Col id="data">부산광역시</Col>
+            <Col id="code">06</Col>
+          </Row>
+          <Row>
+            <Col id="data">광주광역시</Col>
+            <Col id="code">07</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <DsIsUpdatedAction id="DsIsUpdatedAction00" targetview="viwList" checkfilter="false" onsuccess="DsIsUpdatedAction00_onsuccess" onerror="DsIsUpdatedAction00_onerror">
+        <Contents/>
+      </DsIsUpdatedAction>
+      <MessageAction id="MessageAction00" message="변경되었습니다." messagetype="alert">
+        <Contents/>
+      </MessageAction>
+      <MessageAction id="MessageAction01" message="변경된 데이터가 없습니다." messagetype="alert">
+        <Contents/>
+      </MessageAction>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.viwButton_btnInsert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.viwList.form.viewdataset.addRow();
+};
+
+this.viwButton_btnDelete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.viwList.form.viewdataset.deleteRow(this.viwList.form.viewdataset.rowposition);
+};
+
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.DsIsUpdatedAction00.set_checkfilter(false);
+	trace(this.DsIsUpdatedAction00.checkfilter);
+};
+
+this.DsIsUpdatedAction00_onerror = function(obj:nexacro.Action, e:nexacro.ActionErrorEventInfo)
+{
+	trace("DsIsUpdatedAction00_onerror" + e.userdata);
+};
+
+this.DsIsUpdatedAction00_onsuccess = function(obj:nexacro.Action, e:nexacro.ActionSuccessEventInfo)
+{
+	trace("DsIsUpdatedAction00_onsuccess" + e.userdata);
+};
+]]></Script>
+    <Trigger>
+      <TriggerItem id="item0" triggertype="Click" triggerview="viwButton" triggerobj="btnCheckData" targetaction="DsIsUpdatedAction00" condition=""/>
+      <TriggerItem id="item1" triggertype="Action Success" triggerview="test_action_data" triggerobj="DsIsUpdatedAction00" targetaction="MessageAction00" condition=""/>
+      <TriggerItem id="item2" triggertype="Action Fail" triggerview="test_action_data" triggerobj="DsIsUpdatedAction00" targetaction="MessageAction01" condition=""/>
+    </Trigger>
+  </Form>
+</FDL>

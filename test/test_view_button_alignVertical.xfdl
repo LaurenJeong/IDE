@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="button001" width="1280" height="720" titletext="버튼 수직정렬 테스트">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Static id="Static00_00" taborder="1" text="vertical | left | top" left="5" top="5" width="295" height="25" cssclass="sta_WF_title02"/>
+        <Static id="Static00_00_00" taborder="3" text="vertical | center | top" left="345" top="5" width="295" height="25" cssclass="sta_WF_title02"/>
+        <Static id="Static00_00_00_00" taborder="5" text="vertical | right | top" left="755" top="5" width="295" height="25" cssclass="sta_WF_title02"/>
+        <Static id="Static00_00_01" taborder="7" text="vertical | left | middle" left="5" top="195" width="295" height="25" cssclass="sta_WF_title02"/>
+        <Static id="Static00_00_00_01" taborder="9" text="vertical | center | middle" left="345" top="195" width="295" height="25" cssclass="sta_WF_title02"/>
+        <Static id="Static00_00_00_00_00" taborder="11" text="vertical | right | middle" left="755" top="195" width="295" height="25" cssclass="sta_WF_title02"/>
+        <Static id="Static00_00_01_00" taborder="13" text="vertical | left | bottom" left="5" top="365" width="295" height="25" cssclass="sta_WF_title02"/>
+        <Static id="Static00_00_00_01_00" taborder="15" text="vertical | center | bottom" left="345" top="365" width="295" height="25" cssclass="sta_WF_title02"/>
+        <Static id="Static00_00_00_00_00_00" taborder="17" text="vertical | right | bottom" left="755" top="365" width="295" height="25" cssclass="sta_WF_title02"/>
+        <View id="View00_00_00" taborder="2" text="View00" viewdataset="viewdataset" left="350" top="40" width="320" height="130" cssclass="viw_test_bg">
+          <Layouts>
+            <Layout>
+              <Button id="btnAdd" left="17.5" top="0" width="80" height="30" text="신규"/>
+              <Button id="btnDel" left="17.5" top="35" width="80" height="30" text="삭제"/>
+              <Button id="btnSave" left="17.5" top="70" width="200" height="30" text="저장"/>
+              <Button id="btnPrint" left="222.5" top="0" width="80" height="30" text="출력"/>
+              <Button id="btnOk" left="222.5" top="35" width="80" height="30" text="확인"/>
+              <Button id="btnCancel" left="222.5" top="70" width="80" height="30" text="취소"/>
+            </Layout>
+            <Layout/>
+          </Layouts>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="CommBtn" filepath="sample\Button.xmodel">
+            <Fields>
+              <Field id="Add" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Del" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Save" description="" fieldwidth="200" fieldheight="30px" cssclass=""/>
+              <Field id="Print" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Ok" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Cancel" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+            </Fields>
+            <Components>
+              <Component id="btnAdd" fields="Add"/>
+              <Component id="btnDel" fields="Del"/>
+              <Component id="btnSave" fields="Save"/>
+              <Component id="btnPrint" fields="Print"/>
+              <Component id="btnOk" fields="Ok"/>
+              <Component id="btnCancel" fields="Cancel"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="ButtonViewTemplate.xviewgen">
+            <Attribute id="direction" value="vertical"/>
+            <Attribute id="halign" value="center"/>
+            <Attribute id="valign" value="top"/>
+          </ViewTemplateInfo>
+        </View>
+        <View id="View00_00_00_00" taborder="4" text="View00" viewdataset="viewdataset" left="760" top="40" width="320" height="130" cssclass="viw_test_bg">
+          <Layouts>
+            <Layout>
+              <Button id="btnAdd" left="35" top="0" width="80" height="30" text="신규"/>
+              <Button id="btnDel" left="35" top="35" width="80" height="30" text="삭제"/>
+              <Button id="btnSave" left="35" top="70" width="200" height="30" text="저장"/>
+              <Button id="btnPrint" left="240" top="0" width="80" height="30" text="출력"/>
+              <Button id="btnOk" left="240" top="35" width="80" height="30" text="확인"/>
+              <Button id="btnCancel" left="240" top="70" width="80" height="30" text="취소"/>
+            </Layout>
+            <Layout/>
+          </Layouts>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="CommBtn" filepath="sample\Button.xmodel">
+            <Fields>
+              <Field id="Add" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Del" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Save" description="" fieldwidth="200" fieldheight="30px" cssclass=""/>
+              <Field id="Print" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Ok" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Cancel" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+            </Fields>
+            <Components>
+              <Component id="btnAdd" fields="Add"/>
+              <Component id="btnDel" fields="Del"/>
+              <Component id="btnSave" fields="Save"/>
+              <Component id="btnPrint" fields="Print"/>
+              <Component id="btnOk" fields="Ok"/>
+              <Component id="btnCancel" fields="Cancel"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="ButtonViewTemplate.xviewgen">
+            <Attribute id="direction" value="vertical"/>
+            <Attribute id="halign" value="right"/>
+            <Attribute id="valign" value="top"/>
+          </ViewTemplateInfo>
+        </View>
+        <View id="View00_00_01" taborder="6" text="View00" viewdataset="viewdataset" left="10" top="230" width="320" height="130" cssclass="viw_test_bg">
+          <Layouts>
+            <Layout>
+              <Button id="btnAdd" left="0" top="15" width="80" height="30" text="신규"/>
+              <Button id="btnDel" left="0" top="50" width="80" height="30" text="삭제"/>
+              <Button id="btnSave" left="0" top="85" width="200" height="30" text="저장"/>
+              <Button id="btnPrint" left="205" top="15" width="80" height="30" text="출력"/>
+              <Button id="btnOk" left="205" top="50" width="80" height="30" text="확인"/>
+              <Button id="btnCancel" left="205" top="85" width="80" height="30" text="취소"/>
+            </Layout>
+            <Layout/>
+          </Layouts>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="CommBtn" filepath="sample\Button.xmodel">
+            <Fields>
+              <Field id="Add" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Del" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Save" description="" fieldwidth="200" fieldheight="30px" cssclass=""/>
+              <Field id="Print" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Ok" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Cancel" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+            </Fields>
+            <Components>
+              <Component id="btnAdd" fields="Add"/>
+              <Component id="btnDel" fields="Del"/>
+              <Component id="btnSave" fields="Save"/>
+              <Component id="btnPrint" fields="Print"/>
+              <Component id="btnOk" fields="Ok"/>
+              <Component id="btnCancel" fields="Cancel"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="ButtonViewTemplate.xviewgen">
+            <Attribute id="direction" value="vertical"/>
+            <Attribute id="halign" value="left"/>
+            <Attribute id="valign" value="middle"/>
+          </ViewTemplateInfo>
+        </View>
+        <View id="View00_00_00_01" taborder="8" text="View00" viewdataset="viewdataset" left="350" top="230" width="320" height="130" cssclass="viw_test_bg">
+          <Layouts>
+            <Layout>
+              <Button id="btnAdd" left="17.5" top="15" width="80" height="30" text="신규"/>
+              <Button id="btnDel" left="17.5" top="50" width="80" height="30" text="삭제"/>
+              <Button id="btnSave" left="17.5" top="85" width="200" height="30" text="저장"/>
+              <Button id="btnPrint" left="222.5" top="15" width="80" height="30" text="출력"/>
+              <Button id="btnOk" left="222.5" top="50" width="80" height="30" text="확인"/>
+              <Button id="btnCancel" left="222.5" top="85" width="80" height="30" text="취소"/>
+            </Layout>
+            <Layout/>
+          </Layouts>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="CommBtn" filepath="sample\Button.xmodel">
+            <Fields>
+              <Field id="Add" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Del" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Save" description="" fieldwidth="200" fieldheight="30px" cssclass=""/>
+              <Field id="Print" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Ok" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Cancel" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+            </Fields>
+            <Components>
+              <Component id="btnAdd" fields="Add"/>
+              <Component id="btnDel" fields="Del"/>
+              <Component id="btnSave" fields="Save"/>
+              <Component id="btnPrint" fields="Print"/>
+              <Component id="btnOk" fields="Ok"/>
+              <Component id="btnCancel" fields="Cancel"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="ButtonViewTemplate.xviewgen">
+            <Attribute id="direction" value="vertical"/>
+            <Attribute id="halign" value="center"/>
+            <Attribute id="valign" value="middle"/>
+          </ViewTemplateInfo>
+        </View>
+        <View id="View00_00_00_00_00" taborder="10" text="View00" viewdataset="viewdataset" left="760" top="230" width="320" height="130" cssclass="viw_test_bg">
+          <Layouts>
+            <Layout>
+              <Button id="btnAdd" left="35" top="15" width="80" height="30" text="신규"/>
+              <Button id="btnDel" left="35" top="50" width="80" height="30" text="삭제"/>
+              <Button id="btnSave" left="35" top="85" width="200" height="30" text="저장"/>
+              <Button id="btnPrint" left="240" top="15" width="80" height="30" text="출력"/>
+              <Button id="btnOk" left="240" top="50" width="80" height="30" text="확인"/>
+              <Button id="btnCancel" left="240" top="85" width="80" height="30" text="취소"/>
+            </Layout>
+            <Layout/>
+          </Layouts>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="CommBtn" filepath="sample\Button.xmodel">
+            <Fields>
+              <Field id="Add" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Del" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Save" description="" fieldwidth="200" fieldheight="30px" cssclass=""/>
+              <Field id="Print" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Ok" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Cancel" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+            </Fields>
+            <Components>
+              <Component id="btnAdd" fields="Add"/>
+              <Component id="btnDel" fields="Del"/>
+              <Component id="btnSave" fields="Save"/>
+              <Component id="btnPrint" fields="Print"/>
+              <Component id="btnOk" fields="Ok"/>
+              <Component id="btnCancel" fields="Cancel"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="ButtonViewTemplate.xviewgen">
+            <Attribute id="direction" value="vertical"/>
+            <Attribute id="halign" value="right"/>
+            <Attribute id="valign" value="middle"/>
+          </ViewTemplateInfo>
+        </View>
+        <View id="View00_00_01_00" taborder="12" text="View00" viewdataset="viewdataset" left="10" top="400" width="320" height="130" cssclass="viw_test_bg">
+          <Layouts>
+            <Layout>
+              <Button id="btnAdd" left="0" top="30" width="80" height="30" text="신규"/>
+              <Button id="btnDel" left="0" top="65" width="80" height="30" text="삭제"/>
+              <Button id="btnSave" left="0" top="100" width="200" height="30" text="저장"/>
+              <Button id="btnPrint" left="205" top="30" width="80" height="30" text="출력"/>
+              <Button id="btnOk" left="205" top="65" width="80" height="30" text="확인"/>
+              <Button id="btnCancel" left="205" top="100" width="80" height="30" text="취소"/>
+            </Layout>
+            <Layout/>
+          </Layouts>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="CommBtn" filepath="sample\Button.xmodel">
+            <Fields>
+              <Field id="Add" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Del" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Save" description="" fieldwidth="200" fieldheight="30px" cssclass=""/>
+              <Field id="Print" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Ok" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Cancel" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+            </Fields>
+            <Components>
+              <Component id="btnAdd" fields="Add"/>
+              <Component id="btnDel" fields="Del"/>
+              <Component id="btnSave" fields="Save"/>
+              <Component id="btnPrint" fields="Print"/>
+              <Component id="btnOk" fields="Ok"/>
+              <Component id="btnCancel" fields="Cancel"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="ButtonViewTemplate.xviewgen">
+            <Attribute id="direction" value="vertical"/>
+            <Attribute id="halign" value="left"/>
+            <Attribute id="valign" value="bottom"/>
+          </ViewTemplateInfo>
+        </View>
+        <View id="View00_00_00_01_00" taborder="14" text="View00" viewdataset="viewdataset" left="350" top="400" width="320" height="130" cssclass="viw_test_bg">
+          <Layouts>
+            <Layout>
+              <Button id="btnAdd" left="17.5" top="30" width="80" height="30" text="신규"/>
+              <Button id="btnDel" left="17.5" top="65" width="80" height="30" text="삭제"/>
+              <Button id="btnSave" left="17.5" top="100" width="200" height="30" text="저장"/>
+              <Button id="btnPrint" left="222.5" top="30" width="80" height="30" text="출력"/>
+              <Button id="btnOk" left="222.5" top="65" width="80" height="30" text="확인"/>
+              <Button id="btnCancel" left="222.5" top="100" width="80" height="30" text="취소"/>
+            </Layout>
+            <Layout/>
+          </Layouts>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="CommBtn" filepath="sample\Button.xmodel">
+            <Fields>
+              <Field id="Add" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Del" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Save" description="" fieldwidth="200" fieldheight="30px" cssclass=""/>
+              <Field id="Print" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Ok" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Cancel" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+            </Fields>
+            <Components>
+              <Component id="btnAdd" fields="Add"/>
+              <Component id="btnDel" fields="Del"/>
+              <Component id="btnSave" fields="Save"/>
+              <Component id="btnPrint" fields="Print"/>
+              <Component id="btnOk" fields="Ok"/>
+              <Component id="btnCancel" fields="Cancel"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="ButtonViewTemplate.xviewgen">
+            <Attribute id="direction" value="vertical"/>
+            <Attribute id="halign" value="center"/>
+            <Attribute id="valign" value="bottom"/>
+          </ViewTemplateInfo>
+        </View>
+        <View id="View00_00_00_00_00_00" taborder="16" text="View00" viewdataset="viewdataset" left="760" top="400" width="320" height="130" cssclass="viw_test_bg">
+          <Layouts>
+            <Layout>
+              <Button id="btnAdd" left="35" top="30" width="80" height="30" text="신규"/>
+              <Button id="btnDel" left="35" top="65" width="80" height="30" text="삭제"/>
+              <Button id="btnSave" left="35" top="100" width="200" height="30" text="저장"/>
+              <Button id="btnPrint" left="240" top="30" width="80" height="30" text="출력"/>
+              <Button id="btnOk" left="240" top="65" width="80" height="30" text="확인"/>
+              <Button id="btnCancel" left="240" top="100" width="80" height="30" text="취소"/>
+            </Layout>
+            <Layout/>
+          </Layouts>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="CommBtn" filepath="sample\Button.xmodel">
+            <Fields>
+              <Field id="Add" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Del" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Save" description="" fieldwidth="200" fieldheight="30px" cssclass=""/>
+              <Field id="Print" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Ok" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Cancel" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+            </Fields>
+            <Components>
+              <Component id="btnAdd" fields="Add"/>
+              <Component id="btnDel" fields="Del"/>
+              <Component id="btnSave" fields="Save"/>
+              <Component id="btnPrint" fields="Print"/>
+              <Component id="btnOk" fields="Ok"/>
+              <Component id="btnCancel" fields="Cancel"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="ButtonViewTemplate.xviewgen">
+            <Attribute id="direction" value="vertical"/>
+            <Attribute id="halign" value="right"/>
+            <Attribute id="valign" value="bottom"/>
+          </ViewTemplateInfo>
+        </View>
+        <View id="View00_00" taborder="0" text="View00" viewdataset="viewdataset" left="10" top="40" width="320" height="130" cssclass="viw_test_bg">
+          <Layouts>
+            <Layout>
+              <Button id="btnAdd" left="0" top="0" width="80" height="30" text="신규"/>
+              <Button id="btnDel" left="0" top="35" width="80" height="30" text="삭제"/>
+              <Button id="btnSave" left="0" top="70" width="200" height="30" text="저장"/>
+              <Button id="btnPrint" left="205" top="0" width="80" height="30" text="출력"/>
+              <Button id="btnOk" left="205" top="35" width="80" height="30" text="확인"/>
+              <Button id="btnCancel" left="205" top="70" width="80" height="30" text="취소"/>
+            </Layout>
+            <Layout/>
+          </Layouts>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="CommBtn" filepath="sample\Button.xmodel">
+            <Fields>
+              <Field id="Add" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Del" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Save" description="" fieldwidth="200" fieldheight="30px" cssclass=""/>
+              <Field id="Print" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Ok" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+              <Field id="Cancel" description="" fieldwidth="80px" fieldheight="30px" cssclass=""/>
+            </Fields>
+            <Components>
+              <Component id="btnAdd" fields="Add"/>
+              <Component id="btnDel" fields="Del"/>
+              <Component id="btnSave" fields="Save"/>
+              <Component id="btnPrint" fields="Print"/>
+              <Component id="btnOk" fields="Ok"/>
+              <Component id="btnCancel" fields="Cancel"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="ButtonViewTemplate.xviewgen">
+            <Attribute id="direction" value="vertical"/>
+            <Attribute id="halign" value="left"/>
+            <Attribute id="valign" value="top"/>
+          </ViewTemplateInfo>
+        </View>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

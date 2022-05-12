@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="test_action_excelexport" width="1280" height="720" titletext="엑셀 Export / Import 테스트">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <View id="viwExcelExport" taborder="0" viewdataset="viewdataset" left="0" top="68" height="200" right="0">
+          <Layouts>
+            <Layout>
+              <Grid id="grdList" left="0" top="0" right="0" bottom="0" binddataset="viewdataset" autofittype="col">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="30" band="head"/>
+                      <Row size="30"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell id="cell_TEXT" text="TEXT"/>
+                      <Cell col="1" id="cell_TEXTAREA" text="TEXTAREA"/>
+                      <Cell col="2" id="cell_CHECK" text="CHECK"/>
+                      <Cell col="3" id="cell_COMBO" text="COMBO"/>
+                      <Cell col="4" id="cell_DATE" text="DATE"/>
+                      <Cell col="5" id="cell_DECOTEXT" text="DECOTEXT"/>
+                      <Cell col="6" id="cell_NUMBER" text="NUMBER"/>
+                      <Cell col="7" id="cell_CURRENCY" text="CURRENCY"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell id="cell_TEXT" text="bind:TEXT" displaytype="normal" edittype="none"/>
+                      <Cell col="1" id="cell_TEXTAREA" text="bind:TEXTAREA" displaytype="text" edittype="none"/>
+                      <Cell col="2" id="cell_CHECK" text="bind:CHECK" displaytype="checkboxcontrol" edittype="none"/>
+                      <Cell col="3" id="cell_COMBO" text="bind:COMBO" displaytype="combotext" edittype="none" combodataset="dsCombo" combocodecol="code" combodatacol="data"/>
+                      <Cell col="4" id="cell_DATE" text="bind:DATE" displaytype="calendarcontrol" edittype="none"/>
+                      <Cell col="5" id="cell_DECOTEXT" text="bind:DECOTEXT" displaytype="decoratetext" edittype="none"/>
+                      <Cell col="6" id="cell_NUMBER" text="bind:NUMBER" displaytype="number" edittype="none"/>
+                      <Cell col="7" id="cell_CURRENCY" text="bind:CURRENCY" displaytype="currency" edittype="none"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+            <Layout/>
+          </Layouts>
+          <Objects>
+            <Dataset id="viewdataset">
+              <ColumnInfo>
+                <Column id="TEXT" type="STRING" size="80"/>
+                <Column id="TEXTAREA" type="STRING" size="80"/>
+                <Column id="CHECK" type="STRING" size="80"/>
+                <Column id="COMBO" type="STRING" size="80"/>
+                <Column id="DATE" type="DATE" size="80"/>
+                <Column id="DECOTEXT" type="STRING" size="80"/>
+                <Column id="NUMBER" type="BIGDECIMAL" size="80"/>
+                <Column id="CURRENCY" type="BIGDECIMAL" size="80"/>
+              </ColumnInfo>
+              <Rows>
+                <Row>
+                  <Col id="TEXT">혁신적인 Quick-Code 기반의</Col>
+                  <Col id="TEXTAREA">디지털전환으로 급변하는 비즈니스 환경에 넥사크로 N은 Low-Code기반의 'Quick-Code'기능으로 개발기간을 획기적으로 낮추고, 쉽고 빠른 애플리케이션 구축을 가능하게 합니다.
+- 코드 개발 단축
+- 높은 개발 생산성
+- 쉽고 빠른 활용성
+- 코드 재 가공 용이</Col>
+                  <Col id="CHECK">0</Col>
+                  <Col id="COMBO">04</Col>
+                  <Col id="DATE">19890912</Col>
+                  <Col id="DECOTEXT">&lt;fs v='16'&gt;TEST&lt;/fs&gt;</Col>
+                  <Col id="NUMBER">9999999999999</Col>
+                  <Col id="CURRENCY">1000</Col>
+                </Row>
+                <Row>
+                  <Col id="TEXT">초연결 비즈니스를 위한 UI/UX 솔루션</Col>
+                  <Col id="TEXTAREA">초연결 비즈니스 환경에 필수적인 다양한 장치(Equipment) &amp; 산업(Industry)의 시스템 연결 시 넥사크로 N은 개별입력 정보를 단일화된 메시지 포맷으로 변환해 빠르고 안정적인 환경을 제공합니다.
+- 다양한 입력 정보 포맷 단일화
+- Input Command(Voice/Motion 등)
+- 장치 &amp; 산업 시스템 연결 지원
+- Output Command(Display/Factory 등)</Col>
+                  <Col id="CHECK">1</Col>
+                  <Col id="COMBO">02</Col>
+                  <Col id="DATE">19890810</Col>
+                  <Col id="DECOTEXT">&lt;fc v='red'&gt;T&lt;/fc&gt;&lt;fc v='orange'&gt;E&lt;/fc&gt;&lt;fc v='purple'&gt;S&lt;/fc&gt;&lt;fc v='green'&gt;E&lt;/fc&gt;</Col>
+                  <Col id="NUMBER">8888888888</Col>
+                  <Col id="CURRENCY">2000</Col>
+                </Row>
+                <Row>
+                  <Col id="TEXT">개발에서 App 배포까지 원스톱 통합개발환경</Col>
+                  <Col id="TEXTAREA">넥사크로 N은 폭넓은 개발 tool과 Multi–OS &amp; Device및 App 배포까지 가능한 통합개발환경으로, 잦은 수정/배포가 필요한 기업의 비지니스 Issue에 빠른 대응이 가능합니다.
+	- UI/CSS/디버깅 등 통합개발환경 제공
+- 넥사크로 전용 Native 실행 환경 제공
+- Multi OS/Device/Web Browser 환경 지원
+- Hybrid App과 WebApp 방식 지원</Col>
+                  <Col id="CHECK">0</Col>
+                  <Col id="COMBO">05</Col>
+                  <Col id="DATE">19880826</Col>
+                  <Col id="DECOTEXT">&lt;ff v='굴림'&gt;TEST&lt;/ff&gt;</Col>
+                  <Col id="NUMBER">7777777777</Col>
+                  <Col id="CURRENCY">3000</Col>
+                </Row>
+                <Row>
+                  <Col id="TEXT">높은 호환성과 폭넓은 시스템 확장성</Col>
+                  <Col id="TEXTAREA">빠르게 변화가 요구되는 ICT 환경에 기존 시스템과의 높은 호환성과 폭넓은 시스템 확장성으로 최적의 개발과 운영 환경을 제공합니다.
+- 넥사크로17의 폭넓은 호환성 제공
+- 외부 모듈 및 기기 연동 X-Agent
+- 다양한 Web Server/WAS 연동 지원
+- 3rd party 제품 연동 지원</Col>
+                  <Col id="CHECK">1</Col>
+                  <Col id="COMBO">03</Col>
+                  <Col id="DATE">19890912</Col>
+                  <Col id="DECOTEXT">&lt;b v='true'&gt;TE&lt;/b&gt;&lt;b v='false'&gt;ST&lt;/b&gt;</Col>
+                  <Col id="NUMBER">88888888888</Col>
+                  <Col id="CURRENCY">100</Col>
+                </Row>
+                <Row>
+                  <Col id="TEXT">국내 1위, 비즈니스 플랫폼 전문기업</Col>
+                  <Col id="CHECK">1</Col>
+                  <Col id="COMBO">01</Col>
+                  <Col id="DATE">19890810</Col>
+                  <Col id="DECOTEXT">&lt;i v='true'&gt;TE&lt;/i&gt;&lt;i v='false'&gt;ST&lt;/i&gt;</Col>
+                  <Col id="NUMBER">9999999999</Col>
+                  <Col id="CURRENCY">200</Col>
+                  <Col id="TEXTAREA">시스템을 컨트롤하기 위해서는 사용자 인터페이스(UI)가 꼭 필요합니다. 
+	또한 보다 원활하고 효율적으로 시스템을 운용하기 위해서는 사용자 경험(UX)에 대한 고려가 반드시 수반되어야 합니다. 
+	투비소프트는 개인과 기업 모두를 생각한, 국내 비즈니스 플랫폼 1위 기업 입니다.
+</Col>
+                </Row>
+                <Row>
+                  <Col id="TEXT">IT 신기술을 선도하는 최상의 연구진 및 사업확장</Col>
+                  <Col id="CHECK">0</Col>
+                  <Col id="COMBO">07</Col>
+                  <Col id="DATE">19890826</Col>
+                  <Col id="DECOTEXT">&lt;u v='true'&gt;TE&lt;/u&gt;&lt;u v='false'&gt;ST&lt;/u&gt;</Col>
+                  <Col id="NUMBER">8888888888</Col>
+                  <Col id="CURRENCY">500</Col>
+                  <Col id="TEXTAREA">빠르게 변화하는 IT시장 환경에서도 기존 사업 분야에 대한 꾸준한 연구개발 투자와 신성장 동력 발굴을 지속해오고 있습니다. 
+전체 직원의 대다수를 차지하는 연구진을 바탕으로 혁신적인 기술융합과 사업영역(핀테크, 사물인터넷, 블록체인 등) 확장을 통해 다양한 비즈니스 플랫폼과 서비스를 제공하고 있습니다.</Col>
+                </Row>
+                <Row>
+                  <Col id="TEXT">동반 성장, 개인과 기업 그리고 사회를 위한 든든한 동반자</Col>
+                  <Col id="CHECK">0</Col>
+                  <Col id="COMBO">06</Col>
+                  <Col id="DATE">19880826</Col>
+                  <Col id="DECOTEXT">&lt;s v='true'&gt;TE&lt;/s&gt;&lt;s v='false'&gt;ST&lt;/s&gt;</Col>
+                  <Col id="NUMBER">4444444444</Col>
+                  <Col id="CURRENCY">1000</Col>
+                  <Col id="TEXTAREA">삼성, LG, 현대, 포스코 등 약 4,000여 개 이상의 많은 레퍼런스 사례를 이어나가고 있습니다. 
+	또한 개발 시스템 구축과 관리에 드는 많은 부담에 있어 비용 절감 뿐만 아니라 데이터 통합을 통한 효율적인 업무가 가능하도록 강소기업의 든든한 동반자가 되어주고 있습니다. 
+	제품&amp;재능 맞춤형 기부, 소프트웨어 꿈나무 후원, 오랜 전통 연탄 나르기, 자율형 임직원 봉사활동 등 다채로운 사회공헌 활동으로 투비소프트는 책임있는 기업시민으로서의 역할과 책임을 소중히 여길 것입니다.</Col>
+                </Row>
+                <Row>
+                  <Col id="TEXT">서울특별시</Col>
+                  <Col id="CHECK">0</Col>
+                  <Col id="COMBO">04</Col>
+                  <Col id="DATE">19880810</Col>
+                  <Col id="DECOTEXT">&lt;fc v='red'&gt;T&lt;/fc&gt;&lt;fc v='orange'&gt;E&lt;/fc&gt;&lt;fc v='purple'&gt;S&lt;/fc&gt;&lt;fc v='green'&gt;E&lt;/fc&gt;</Col>
+                  <Col id="NUMBER">11111111111</Col>
+                  <Col id="CURRENCY">3000</Col>
+                  <Col id="TEXTAREA">동해물과 백두산이 마르고 닳도록
+하느님이 보우하사 우리나라 만세.
+무궁화 삼천리 화려강산
+대한 사람, 대한으로 길이 보전하세
+</Col>
+                </Row>
+                <Row>
+                  <Col id="TEXT">경기도</Col>
+                  <Col id="CHECK">1</Col>
+                  <Col id="COMBO">02</Col>
+                  <Col id="DATE">19890912</Col>
+                  <Col id="DECOTEXT">&lt;ff v='굴림'&gt;TEST&lt;/ff&gt;</Col>
+                  <Col id="CURRENCY">100</Col>
+                  <Col id="TEXTAREA">TEST
+TEST2
+TEST3
+TEST4
+TEST5
+TEST6
+TEST7
+TEST8
+TEST9</Col>
+                  <Col id="NUMBER">1234511</Col>
+                </Row>
+              </Rows>
+            </Dataset>
+          </Objects>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="ExcelModel001" filepath="sample\Excel.xmodel">
+            <Fields>
+              <Field id="TEXT" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="TEXTAREA" description="" displaytype="text" edittype="none" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="CHECK" description="" displaytype="checkboxcontrol" edittype="none" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="COMBO" description="" displaytype="combotext" edittype="none" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="DATE" description="" displaytype="calendarcontrol" edittype="none" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="DECOTEXT" description="" displaytype="decoratetext" edittype="none" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="NUMBER" description="" displaytype="number" edittype="none" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="CURRENCY" description="" displaytype="currency" edittype="none" fieldwidth="80" cssclass="" summprop="none"/>
+            </Fields>
+            <Components>
+              <Component id="grdList" fields="TEXT,TEXTAREA,CHECK,COMBO,DATE,DECOTEXT,NUMBER,CURRENCY"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="GridViewTemplate.xviewgen">
+            <Attribute id="headbandsize" value="30"/>
+            <Attribute id="bodybandsize" value="30"/>
+            <Attribute id="summbandsize" value="-1"/>
+          </ViewTemplateInfo>
+        </View>
+        <Button id="btnExcelExport" taborder="1" text="ExcelExport" onclick="btnExcelExport_onclick" left="0" top="28" width="103" height="30"/>
+        <View id="viwExcelImport" taborder="2" viewdataset="viewdataset" left="0" top="346" height="200" right="0">
+          <Layouts>
+            <Layout>
+              <Grid id="grdList" left="0" top="0" right="0" bottom="0" binddataset="viewdataset" autofittype="col">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="30" band="head"/>
+                      <Row size="30" band="body"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell id="cell_TEXT" col="0" row="0" text="TEXT"/>
+                      <Cell id="cell_TEXTAREA" col="1" row="0" text="TEXTAREA"/>
+                      <Cell id="cell_CHECK" col="2" row="0" text="CHECK"/>
+                      <Cell id="cell_COMBO" col="3" row="0" text="COMBO"/>
+                      <Cell id="cell_DATE" col="4" row="0" text="DATE"/>
+                      <Cell id="cell_DECOTEXT" col="5" row="0" text="DECOTEXT"/>
+                      <Cell id="cell_NUMBER" col="6" row="0" text="NUMBER"/>
+                      <Cell id="cell_CURRENCY" col="7" row="0" text="CURRENCY"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell id="cell_TEXT" col="0" row="0" text="bind:TEXT" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_TEXTAREA" col="1" row="0" text="bind:TEXTAREA" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_CHECK" col="2" row="0" text="bind:CHECK" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_COMBO" col="3" row="0" text="bind:COMBO" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_DATE" col="4" row="0" text="bind:DATE" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_DECOTEXT" col="5" row="0" text="bind:DECOTEXT" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_NUMBER" col="6" row="0" text="bind:NUMBER" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_CURRENCY" col="7" row="0" text="bind:CURRENCY" displaytype="normal" edittype="none"/>
+                    </Band>
+                    <Band id="summary"/>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+            <Layout/>
+          </Layouts>
+          <Objects>
+            <Dataset id="viewdataset">
+              <ColumnInfo>
+                <Column id="TEXT" type="STRING" size="80"/>
+                <Column id="TEXTAREA" type="STRING" size="80"/>
+                <Column id="CHECK" type="STRING" size="80"/>
+                <Column id="COMBO" type="STRING" size="80"/>
+                <Column id="DATE" type="DATE" size="80"/>
+                <Column id="DECOTEXT" type="STRING" size="80"/>
+                <Column id="NUMBER" type="BIGDECIMAL" size="80"/>
+                <Column id="CURRENCY" type="BIGDECIMAL" size="80"/>
+              </ColumnInfo>
+              <Rows>
+                <Row/>
+              </Rows>
+            </Dataset>
+          </Objects>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="ExcelModel001" filepath="sample\Excel.xmodel">
+            <Fields>
+              <Field id="TEXT" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="TEXTAREA" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="CHECK" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="COMBO" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="DATE" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="DECOTEXT" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="NUMBER" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none"/>
+              <Field id="CURRENCY" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none"/>
+            </Fields>
+            <Components>
+              <Component id="grdList" fields="TEXT,TEXTAREA,CHECK,COMBO,DATE,DECOTEXT,NUMBER,CURRENCY"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="GridViewTemplate.xviewgen">
+            <Attribute id="headbandsize" value="30"/>
+            <Attribute id="bodybandsize" value="30"/>
+            <Attribute id="summbandsize" value="-1"/>
+          </ViewTemplateInfo>
+        </View>
+        <Button id="btnExcelImport" taborder="3" text="ExcelImport" left="0" top="306" width="103" height="30"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <ExcelExportAction id="ExcelExportAction00" targetview="viwExcelExport" sheetname="Sheet1" exporttype="excel" onerror="ExcelExportAction00_onerror" onsuccess="ExcelExportAction00_onsuccess">
+        <Contents/>
+      </ExcelExportAction>
+      <Dataset id="dsCombo">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">01</Col>
+            <Col id="data">서울특별시</Col>
+          </Row>
+          <Row>
+            <Col id="code">02</Col>
+            <Col id="data">인천광역시</Col>
+          </Row>
+          <Row>
+            <Col id="code">03</Col>
+            <Col id="data">대전광역시</Col>
+          </Row>
+          <Row>
+            <Col id="code">04</Col>
+            <Col id="data">대구광역시</Col>
+          </Row>
+          <Row>
+            <Col id="code">05</Col>
+            <Col id="data">울산광역시</Col>
+          </Row>
+          <Row>
+            <Col id="data">부산광역시</Col>
+            <Col id="code">06</Col>
+          </Row>
+          <Row>
+            <Col id="data">광주광역시</Col>
+            <Col id="code">07</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <ExcelImportAction id="ExcelImportAction00" targetview="viwExcelImport" sheetname="Sheet1" startcell="A2" importtype="excel" targetdataset="dsData" onerror="ExcelImportAction00_onerror" onsuccess="ExcelImportAction00_onsuccess">
+        <Contents/>
+      </ExcelImportAction>
+    </Objects>
+    <Trigger>
+      <TriggerItem id="item0" triggertype="Click" triggerview="test_action_excelexport" triggerobj="btnExcelExport" targetaction="ExcelExportAction00" condition=""/>
+      <TriggerItem id="item1" triggertype="Click" triggerview="test_action_excelexport" triggerobj="btnExcelImport" targetaction="ExcelImportAction00" condition=""/>
+    </Trigger>
+    <Script type="xscript5.1"><![CDATA[
+this.ExcelExportAction00_onerror = function(obj:nexacro.Action, e:nexacro.ActionErrorEventInfo)
+{
+	trace("ExcelExportAction00_onerror" + e.userdata);
+};
+
+this.ExcelExportAction00_onsuccess = function(obj:nexacro.Action, e:nexacro.ActionSuccessEventInfo)
+{
+	trace("ExcelExportAction00_onsuccess" + e.userdata);
+};
+
+this.ExcelImportAction00_onerror = function(obj:nexacro.Action, e:nexacro.ActionErrorEventInfo)
+{
+	trace("ExcelImportAction00_onerror" + e.userdata);
+};
+
+this.ExcelImportAction00_onsuccess = function(obj:nexacro.Action, e:nexacro.ActionSuccessEventInfo)
+{
+	trace("ExcelImportAction00_onsuccess" + e.userdata);
+};
+]]></Script>
+  </Form>
+</FDL>

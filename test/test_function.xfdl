@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="test_form" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Button id="Button00" taborder="0" text="Button00" left="270" top="67" width="120" height="50" onclick="Button00_onclick"/>
+        <Edit id="Edit00" taborder="1" left="52" top="76" width="140" height="20" value="background color" text="background color"/>
+        <Radio id="Radio00" taborder="2" left="57" top="23" width="383" height="50" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="Radio00_onitemchanged" index="0" text="camelCase" value="C" rowcount="1">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">C</Col>
+                <Col id="datacolumn">camelCase</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">S</Col>
+                <Col id="datacolumn">snakeCase</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">LS</Col>
+                <Col id="datacolumn">lower snakeCase</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.fn_ToCamelCase = function(sValue){
+  return sValue.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase());
+}
+
+this.fn_ToSnakeCase = function(sValue){
+	var result = sValue.replace( /([A-Z])/g, " $1" );
+	return result.split(' ').join('_').toLowerCase();
+}
+
+this.fn_ToLowerSnakeCase = function(sValue){
+	var result = sValue.toLowerCase().replace( /([A-Z])/g, " $1" );
+	return result.split(' ').join('_');
+}
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var sCompId = this.Edit00.value;
+	
+	if (this.Radio00.value == "C") {
+		sNewCompId = this.fn_ToCamelCase(sCompId);
+	} else if (this.Radio00.value == "S") {
+		sNewCompId = this.fn_ToSnakeCase(sCompId);
+	} else if (this.Radio00.value == "LS") {
+		sNewCompId = this.fn_ToLowerSnakeCase(sCompId);
+	} else {
+		sNewCompId = sCompId;
+	}
+	
+	trace(sCompId + " -> " + sNewCompId);
+};]]></Script>
+  </Form>
+</FDL>

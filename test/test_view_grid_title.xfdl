@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="test_view_grid" width="1280" height="720" titletext="그리드 테스트">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Static id="Static00_00" taborder="1" text="기본" left="5" top="5" width="295" height="25" cssclass="sta_WF_title02"/>
+        <Static id="Static00_00_00" taborder="2" text="기본2" left="575" top="5" width="295" height="25" cssclass="sta_WF_title02"/>
+        <Static id="Static00_00_01" taborder="5" text="headformat" left="5" top="305" width="295" height="25" cssclass="sta_WF_title02"/>
+        <View id="View00" taborder="0" text="View00" viewdataset="viewdataset" left="14" top="36" width="500" height="257" cssclass="viw_test_bg">
+          <Layouts>
+            <Layout>
+              <Static id="staTitle" left="0" top="0" height="30" width="80" text="타이틀" fittocontents="width" cssclass="sta_WF_subtitle"/>
+              <Grid id="grdList" left="0" top="30" right="0" bottom="0" binddataset="viewdataset">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="30" band="head"/>
+                      <Row size="30" band="body"/>
+                      <Row size="30" band="summ"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell id="cell_Company" col="0" row="0" text="회사명"/>
+                      <Cell id="cell_Department" col="1" row="0" text="부서명"/>
+                      <Cell id="cell_Name" col="2" row="0" text="성명"/>
+                      <Cell id="cell_Phone" col="3" row="0" text="전화번호"/>
+                      <Cell id="cell_Email" col="4" row="0" text="이메일주소"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell id="cell_Company" col="0" row="0" text="bind:Company" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_Department" col="1" row="0" text="bind:Department" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_Name" col="2" row="0" text="bind:Name" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_Phone" col="3" row="0" text="bind:Phone" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_Email" col="4" row="0" text="bind:Email" displaytype="normal" edittype="none"/>
+                    </Band>
+                    <Band id="summary">
+                      <Cell id="cell_Company" col="0" row="0" text=""/>
+                      <Cell id="cell_Department" col="1" row="0" text=""/>
+                      <Cell id="cell_Name" col="2" row="0" text=""/>
+                      <Cell id="cell_Phone" col="3" row="0" text=""/>
+                      <Cell id="cell_Email" col="4" row="0" text=""/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+          <Objects>
+            <Dataset id="viewdataset">
+              <ColumnInfo>
+                <Column id="Company" type="STRING" size="80"/>
+                <Column id="Department" type="STRING" size="80"/>
+                <Column id="Name" type="STRING" size="80"/>
+                <Column id="Phone" type="STRING" size="80"/>
+                <Column id="Email" type="STRING" size="80"/>
+              </ColumnInfo>
+              <Rows>
+                <Row/>
+              </Rows>
+            </Dataset>
+          </Objects>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="FreeFormModel001" filepath="sample\FreeForm.xmodel">
+            <Fields>
+              <Field id="Company" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="Department" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="Name" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="Phone" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="Email" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+            </Fields>
+            <Components>
+              <Component id="grdList" fields="Company,Department,Name,Phone,Email"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="GridViewTemplate.xviewgen">
+            <Attribute id="titletext" value="타이틀"/>
+            <Attribute id="usetotalcount" value="false"/>
+            <Attribute id="headbandsize" value="30"/>
+            <Attribute id="bodybandsize" value="30"/>
+            <Attribute id="summbandsize" value="30"/>
+          </ViewTemplateInfo>
+        </View>
+        <View id="View01" taborder="3" text="View01" viewdataset="viewdataset" left="579" top="36" width="500" height="257" cssclass="viw_test_bg">
+          <Layouts>
+            <Layout>
+              <Static id="staTitle" left="0" top="0" height="30" width="80" text="타이틀" fittocontents="width" cssclass="sta_WF_subtitle"/>
+              <Static id="staTotCnt" left="staTitle:5" top="0" height="30" width="50" text="(총 &lt;b v='true'&gt;&lt;fc v='#da291c'&gt;0&lt;/fc&gt;&lt;/b&gt;건)" fittocontents="width" usedecorate="true" cssclass="sta_WF_totalCount"/>
+              <Grid id="grdList" left="0" top="30" right="0" bottom="0" binddataset="viewdataset">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                      <Column size="80" band="body"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="30" band="head"/>
+                      <Row size="30" band="body"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell id="cell_Company" col="0" row="0" text="회사명"/>
+                      <Cell id="cell_Department" col="1" row="0" text="부서명"/>
+                      <Cell id="cell_Name" col="2" row="0" text="성명"/>
+                      <Cell id="cell_Phone" col="3" row="0" text="전화번호"/>
+                      <Cell id="cell_Email" col="4" row="0" text="이메일주소"/>
+                      <Cell id="cell_field0" col="5" row="0" text="label0"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell id="cell_Company" col="0" row="0" text="bind:Company" displaytype="combocontrol" edittype="combo"/>
+                      <Cell id="cell_Department" col="1" row="0" text="bind:Department" displaytype="editcontrol" edittype="normal"/>
+                      <Cell id="cell_Name" col="2" row="0" text="bind:Name" displaytype="textareacontrol" edittype="textarea"/>
+                      <Cell id="cell_Phone" col="3" row="0" text="bind:Phone" displaytype="maskeditcontrol" edittype="mask"/>
+                      <Cell id="cell_Email" col="4" row="0" text="bind:Email" displaytype="buttoncontrol" edittype="button"/>
+                      <Cell id="cell_field0" col="5" row="0" text="bind:field0" displaytype="normal" edittype="none"/>
+                    </Band>
+                    <Band id="summary"/>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+          <Objects>
+            <Dataset id="viewdataset">
+              <ColumnInfo>
+                <Column id="Company" type="STRING" size="80"/>
+                <Column id="Department" type="STRING" size="80"/>
+                <Column id="Name" type="STRING" size="80"/>
+                <Column id="Phone" type="STRING" size="80"/>
+                <Column id="Email" type="STRING" size="80"/>
+                <Column id="field0" type="STRING" size="80"/>
+              </ColumnInfo>
+              <Rows>
+                <Row/>
+              </Rows>
+            </Dataset>
+          </Objects>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="FreeFormModel001" filepath="sample\FreeForm.xmodel">
+            <Fields>
+              <Field id="Company" description="" displaytype="combocontrol" edittype="combo" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="Department" description="" displaytype="editcontrol" edittype="normal" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="Name" description="" displaytype="textareacontrol" edittype="textarea" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="Phone" description="" displaytype="maskeditcontrol" edittype="mask" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="Email" description="" displaytype="buttoncontrol" edittype="button" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="field0" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+            </Fields>
+            <Components>
+              <Component id="grdList" fields="Company,Department,Name,Phone,Email,field0"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="GridViewTemplate.xviewgen">
+            <Attribute id="titletext" value="타이틀"/>
+            <Attribute id="usetotalcount" value="true"/>
+            <Attribute id="headbandsize" value="30"/>
+            <Attribute id="bodybandsize" value="30"/>
+            <Attribute id="summbandsize" value="-1"/>
+          </ViewTemplateInfo>
+        </View>
+        <View id="View00_00" taborder="4" text="View00" viewdataset="viewdataset" left="14" top="336" width="500" height="257" cssclass="viw_test_bg">
+          <Layouts>
+            <Layout>
+              <Static id="staTitle" left="0" top="0" height="30" width="80" text="타이틀" fittocontents="width" cssclass="sta_WF_subtitle"/>
+              <Static id="staTotCnt" left="staTitle:5" top="0" height="30" width="50" text="(총 &lt;b v='true'&gt;&lt;fc v='#da291c'&gt;0&lt;/fc&gt;&lt;/b&gt;건)" fittocontents="width" usedecorate="true" cssclass="sta_WF_totalCount"/>
+              <Grid id="grdList" left="0" top="30" right="0" bottom="0" binddataset="viewdataset">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="166" band="body"/>
+                      <Column size="166" band="body"/>
+                      <Column size="166" band="body"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="30" band="head"/>
+                      <Row size="30" band="head"/>
+                      <Row size="30" band="body"/>
+                      <Row size="30" band="body"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell id="cell_0_0_Company" col="0" row="0" colspan="1" rowspan="1" text="회사명"/>
+                      <Cell id="cell_1_0_Department" col="1" row="0" colspan="1" rowspan="1" text="부서명"/>
+                      <Cell id="cell_2_0_Name" col="2" row="0" colspan="1" rowspan="1" text="성명"/>
+                      <Cell id="cell_0_1_Phone" col="0" row="1" colspan="1" rowspan="1" text="전화번호"/>
+                      <Cell id="cell_1_1_Email" col="1" row="1" colspan="2" rowspan="1" text="이메일주소"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell id="cell_0_0_Company" col="0" row="0" colspan="1" rowspan="1" text="bind:Company" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_1_0_Department" col="1" row="0" colspan="1" rowspan="1" text="bind:Department" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_2_0_Name" col="2" row="0" colspan="1" rowspan="1" text="bind:Name" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_0_1_Phone" col="0" row="1" colspan="1" rowspan="1" text="bind:Phone" displaytype="normal" edittype="none"/>
+                      <Cell id="cell_1_1_Email" col="1" row="1" colspan="2" rowspan="1" text="bind:Email" displaytype="normal" edittype="none"/>
+                    </Band>
+                    <Band id="summary"/>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+          <Objects>
+            <Dataset id="viewdataset">
+              <ColumnInfo>
+                <Column id="Company" type="STRING" size="80"/>
+                <Column id="Department" type="STRING" size="80"/>
+                <Column id="Name" type="STRING" size="80"/>
+                <Column id="Phone" type="STRING" size="80"/>
+                <Column id="Email" type="STRING" size="80"/>
+              </ColumnInfo>
+              <Rows>
+                <Row/>
+              </Rows>
+            </Dataset>
+          </Objects>
+          <ModelInfo modelserviceid="model" serviceid="" modelid="FreeFormModel001" filepath="sample\FreeForm.xmodel">
+            <Fields>
+              <Field id="Company" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="Department" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="Name" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="Phone" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+              <Field id="Email" description="" displaytype="normal" edittype="none" fieldwidth="80" cssclass="" summprop="none" usecomp="true"/>
+            </Fields>
+            <Components>
+              <Component id="grdList" fields="Company,Department,Name,Phone,Email"/>
+            </Components>
+          </ModelInfo>
+          <ViewTemplateInfo filepath="GridViewTemplate.xviewgen">
+            <Attribute id="titletext" value="타이틀"/>
+            <Attribute id="usetotalcount" value="true"/>
+            <Attribute id="headbandsize" value="30"/>
+            <Attribute id="bodybandsize" value="30"/>
+            <Attribute id="summbandsize" value="30"/>
+            <Attribute id="headformat" value="{&quot;columnsize&quot;:[166,166,166],&quot;rowsize&quot;:[30,30],&quot;celllist&quot;:[{&quot;col&quot;:&quot;0&quot;,&quot;row&quot;:&quot;0&quot;,&quot;halign&quot;:&quot;left&quot;,&quot;valign&quot;:&quot;middle&quot;,&quot;direction&quot;:&quot;horizontal&quot;,&quot;fieldlist&quot;:[&quot;Company&quot;]},{&quot;col&quot;:&quot;1&quot;,&quot;row&quot;:&quot;0&quot;,&quot;halign&quot;:&quot;left&quot;,&quot;valign&quot;:&quot;middle&quot;,&quot;direction&quot;:&quot;horizontal&quot;,&quot;fieldlist&quot;:[&quot;Department&quot;]},{&quot;col&quot;:&quot;2&quot;,&quot;row&quot;:&quot;0&quot;,&quot;halign&quot;:&quot;left&quot;,&quot;valign&quot;:&quot;middle&quot;,&quot;direction&quot;:&quot;horizontal&quot;,&quot;fieldlist&quot;:[&quot;Name&quot;]},{&quot;col&quot;:&quot;0&quot;,&quot;row&quot;:&quot;1&quot;,&quot;halign&quot;:&quot;left&quot;,&quot;valign&quot;:&quot;middle&quot;,&quot;direction&quot;:&quot;horizontal&quot;,&quot;fieldlist&quot;:[&quot;Phone&quot;]},{&quot;col&quot;:&quot;1&quot;,&quot;row&quot;:&quot;1&quot;,&quot;halign&quot;:&quot;left&quot;,&quot;valign&quot;:&quot;middle&quot;,&quot;direction&quot;:&quot;horizontal&quot;,&quot;fieldlist&quot;:[&quot;Email&quot;],&quot;colspan&quot;:&quot;2&quot;}]}"/>
+          </ViewTemplateInfo>
+        </View>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

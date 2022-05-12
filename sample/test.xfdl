@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="sample_SingleDetail" width="600" height="450" titletext="Sing Detail Sample">
+    <Layouts>
+      <Layout width="600" height="450">
+        <View id="view_search" taborder="0" viewtype="FreeForm" viewdataset="viewdataset" text="view_search" left="0" top="0" width="600" height="100"/>
+        <View id="view_master" taborder="1" viewtype="GridView" viewdataset="viewdataset" text="view_master" left="0" top="100" width="600" height="350"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

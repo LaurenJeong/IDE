@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MetaInfo version="2.0">
+  <EnumInfo id="messagetype">
+    <Enum name="alert"/>
+    <Enum name="confirm"/>
+  </EnumInfo>
+  <EnumInfo id="userenum00">
+    <Enum name="modal"/>
+    <Enum name="modeless"/>
+  </EnumInfo>
+  <EnumInfo id="popupstyle">
+    <Enum name="modal"/>
+    <Enum name="modeless"/>
+  </EnumInfo>
+  <RefreshInfo id="service_id">
+    <Property name="service_url"/>
+    <Property name="input_datasets"/>
+    <Property name="output_datasets"/>
+  </RefreshInfo>
+  <RefreshInfo id="select_targetview">
+    <Property name="target_object"/>
+  </RefreshInfo>
+  <DisplayInfo id="service_id">
+    <Value compare="@empty">
+      <Property name="input_datasets" readonly="true"/>
+      <Property name="output_datasets" readonly="true"/>
+      <Property name="service_url" readonly="true"/>
+    </Value>
+  </DisplayInfo>
+  <DisplayInfo id="target_view">
+    <Value compare="@empty">
+      <Property name="target_object" readonly="true"/>
+    </Value>
+  </DisplayInfo>
+</MetaInfo>

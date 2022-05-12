@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Snippets version="2.0">
+  <Script>
+    <Group name="view_lib">
+      <Group name="chart">
+        <Snippet name="lfn_GetChartColor" shortcut="lfn_GetChartColor" description="색상배열에서 Index에 해당하는 Chart 색상을 반환&#13;&#10;&#13;&#10;lfn_GetChartColor(nIdx,arrColor)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{number} nIdx&#13;&#10; - 색상 Index&#13;&#10;{array} arrColor&#13;&#10; - 16진 색상코드 배열&#13;&#10;&#13;&#10;Returns:&#13;&#10;{string} 16진 색상코드&#13;&#10;&#13;&#10;ex)&#13;&#10;var sColor = this.lfn_GetChartColor(0);&#9;// &quot;#1f77b4&quot;&#13;&#10; var sColor2 = this.lfn_GetChartColor(0,this.arrColorTableau10);&#9;// &quot;#4e79a7&quot;">this.lfn_GetChartColor(nIdx,arrColor)</Snippet>
+        <Snippet name="lfn_GetDataTypeMask" shortcut="lfn_GetDataTypeMask" description="데이터 타입에 따른 Mask값 반환&#13;&#10;&#13;&#10;lfn_GetDataTypeMask(sDataType)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{string} sDataType&#13;&#10;- 데이터타입&#13;&#10;&#13;&#10;Returns:&#13;&#10;{string} 데이터 타입에 따른 Mask값&#13;&#10;&#13;&#10;ex)&#13;&#10;var sMask = this.lfn_GetDataTypeMask(&quot;INT&quot;);&#9;// &quot;#,###&quot;">this.lfn_GetDataTypeMask(sDataType)</Snippet>
+      </Group>
+      <Group name="common">
+        <Snippet name="lfn_GetCompId" shortcut="lfn_GetCompId" description="컴포넌트 ID 생성 함수&#13;&#10;&#13;&#10;lfn_GetCompId(sCompId)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{string} sCompId - 생성할 컴포넌트 아이디&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} 컴포넌트 ID"></Snippet>
+        <Snippet name="lfn_Log" shortcut="log" description="메시지 로그를 출력하는  메소드&#13;&#10;&#13;&#10;lfn_Log(sMsg, sType)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{string} sMsg - 출력할 문자열&#13;&#10;{string} sType - 메시지 레벨 (debug,info,warn,error,fatal)&#13;&#10;&#13;&#10;Returns:&#13;&#10;N/A">this.lfn_Log($end$);</Snippet>
+      </Group>
+      <Group name="util">
+        <Snippet name="lfn_10To16" shortcut="lfn_10To16" description="입력된 10진수를 16진수로 변환하는 함수.&#13;&#10;&#13;&#10;lfn_10To16(nVal)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Number} nVal&#13;&#10;- 10진수&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} 16진수 문자열">this.lfn_10To16(nVal)</Snippet>
+        <Snippet name="lfn_16To10" shortcut="lfn_16To10" description="입력된 16진수를 10진수로 변환하는 함수.&#13;&#10;&#13;&#10;lfn_16To10(strVal)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} strVal&#13;&#10;- 16진수 문자열&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Number} 10진수 숫자">this.lfn_16To10(strVal)</Snippet>
+        <Snippet name="lfn_AddDate" shortcut="lfn_AddDate" description="입력된 날짜에 OffSet 으로 지정된 만큼의 날짜를 더함&#13;&#10;&#13;&#10;lfn_AddDate(strDate, nOffSet)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} strDate&#13;&#10;- 'yyyyMMdd' 형태로 표현된 날짜.&#13;&#10;{Number} nOffSet&#13;&#10;- 날짜로부터 증가 감소값.&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} date의 문자열 (ex. 20080821)">this.lfn_AddDate(strDate, nOffSet)</Snippet>
+        <Snippet name="lfn_AddMonth" shortcut="lfn_AddMonth" description="입력된 월에 OffSet 으로 지정된 만큼의 월을 더함 &#13;&#10;&#13;&#10;lfn_AddMonth(strDate, OffSet)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} strDate&#13;&#10;- String Date Format&#13;&#10;{Number} OffSet&#13;&#10;- Integer Format&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} date">this.lfn_AddMonth(strDate, OffSet)</Snippet>
+        <Snippet name="lfn_AllTrim" shortcut="lfn_AllTrim" description="정규식을 이용한 trim 구현 - 문자열 전체의 공백 제거&#13;&#10;&#13;&#10;lfn_AllTrim(sValue)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} sValue&#13;&#10;- 변경하려는 값&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} 문자열">this.lfn_AllTrim($end$)</Snippet>
+        <Snippet name="lfn_AppendComma" shortcut="lfn_AppendComma" description="입력받은 Number에 컴마를 추가한다. &#13;&#10;&#13;&#10;lfn_AppendComma(nNumber, nDetail)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Number} nNumber&#13;&#10;- 숫자&#13;&#10;{Number} nDetail Optional&#13;&#10;- 반올림할 소숫점 이하의 자릿수.&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} Comma 가 포함하고 있는 숫자">this.lfn_AppendComma(nNumber, nDetail)</Snippet>
+        <Snippet name="lfn_CloneObject" shortcut="lfn_CloneObject" description="Object 속성값을 복사해주는 함수&#13;&#10;&#13;&#10;lfn_CloneObject(obj)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{object} obj&#13;&#10;- 복사할 대상 object&#13;&#10;&#13;&#10;Returns:&#13;&#10;{object} 복사된 object&#13;&#10;">this.fn_CloneObject($end$);</Snippet>
+        <Snippet name="lfn_Contains" shortcut="lfn_Contains" description="지정된 항목이 배열에 포함되어 있는지 확인한다. &#13;&#10;&#13;&#10;lfn_Contains(array, item, strict)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Array} array&#13;&#10;검색 대상 Array.&#13;&#10;{Object} item&#13;&#10;찾고자 하는 Item.&#13;&#10;{Boolean} strict&#13;&#10;true: 형변환 없이 비교('==='), false: 형변환 후 비교('==') (default: false).&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Boolean} 포함되어 있다면 true, 없다면 false를 리턴.">this.lfn_Contains(array, item, strict)</Snippet>
+        <Snippet name="lfn_ConvertXY" shortcut="lfn_ConvertXY" description="Component 기준의 XY좌표를 XCompA 기준의 XY좌표로 변환.&#13;&#10;&#13;&#10;lfn_ConvertXY(XCompA, xy, XCompB)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Object} Component.&#13;&#10;{Array} xy&#13;&#10;XCompB기준의 XY좌표.&#13;&#10;{Object} XCompB&#13;&#10;XComponent.&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Array} XCompA기준의 좌표. [ x좌표, y좌표]&#13;&#10;&#13;&#10;ex) &#13;&#10;Form에 아래와 같이 Button00이 존재 할 경우&#13;&#10;&#13;&#10;|---------------------------------------------------------|  ^&#13;&#10;|  Form                                                   |  |&#13;&#10;|                                                         |  |&#13;&#10;|                                                         | 300&#13;&#10;|                                                         |  |&#13;&#10;|                                     //(0,0)             |  v&#13;&#10;|                                       *-----------      | &#13;&#10;|                                       | Button00 |      | &#13;&#10;|                                       ------------      | &#13;&#10;|                                                         | &#13;&#10;|---------------------------------------------------------| &#13;&#10;&lt;--------------- 900 ------------------&gt;&#9;&#13;&#10;&#9;&#9; &#13;&#10;trace(this.lfn_ConvertXY(this,[0,0], Button00)); //output: [900,300]&#13;&#10;//Button00을 기준으로 한 0,0 좌표는&#13;&#10;//form 기준으로 했을 때 900, 300이 된다.">this.lfn_ConvertXY(XCompA, xy, XCompB)</Snippet>
+        <Snippet name="lfn_CopyProperties" shortcut="lfn_CopyProperties" description="object에 argument로 주어진 object의 모든 속성값을 복사한다.&#13;&#10;object, function, date, array Type은 reference가 복사된다. &#13;&#10;&#13;&#10;lfn_CopyProperties(tarobject, srcobject)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Object} tarobject&#13;&#10;target 객체.&#13;&#10;{Object} srcobject&#13;&#10;source 객체.&#13;&#10;&#13;&#10;ex)&#13;&#10;var target = {};&#13;&#10;this.lfn_CopyProperties(target, {a: 1, b: &quot;2&quot;, c: {&quot;A&quot;: &quot;3&quot;, &quot;B&quot;: 4}});&#13;&#10;for(var p in target)&#13;&#10;{&#13;&#10;&#9;trace(p + &quot;:&quot; + target[p]);&#13;&#10;&#9;// output : a:1&#13;&#10;&#9;// output : b:2&#13;&#10;&#9;// output : c:[object Object]&#13;&#10;}">this.lfn_CopyProperties(tarobject, srcobject)</Snippet>
+        <Snippet name="lfn_DatasetToObj" shortcut="lfn_DatasetToObj" description="object에 속성들(name, value) 를 dataset로 부터 구성한다.&#13;&#10;dataset의 Column들의 id를 속성 명칭, Column에 nRow번째 row 값을 value로 object 속성으로 구성된다.&#13;&#10;&#13;&#10;lfn_DatasetToObj(object, ds, nRow)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{object} object &#13;&#10;- Dataset값을 참조해서 새로 구성되는 객체&#13;&#10;{dataset} ds&#13;&#10;- 객체구성시 참조되는 Dataset&#13;&#10;{int} nRow&#13;&#10;- 대상 Row 위치&#13;&#10;&#13;&#10;Returns:&#13;&#10;N/A">this.lfn_DatasetToObj(object, ds, nRow)</Snippet>
+        <Snippet name="lfn_DatasetToPram" shortcut="lfn_DatasetToPram" description="object에 속성들(name, value) 를 dataset로 부터 구성한다.&#13;&#10;dataset의 Column들의 id를 속성 명칭.&#13;&#10;Column에 nRow번째 row 값을 value로 object 속성으로 구성된다.&#13;&#10;&#13;&#10;lfn_DatasetToPram(object, ds, nRow)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{object} object Dataset값을 참조해서 새로 구성되는 객체&#13;&#10;{dataset} ds 객체구성시 참조되는 Dataset&#13;&#10;{int} 대상 Row 위치&#13;&#10;&#13;&#10;Returns:&#13;&#10;{dataset}">this.lfn_DatasetToPram($end$object, ds, nRow)</Snippet>
+        <Snippet name="lfn_DateToStr" shortcut="lfn_DateToStr" description="Date Type을 String으로 변환 &#13;&#10;&#13;&#10;lfn_DateToStr(date)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Date} date&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} 'yyyyMMdd' 형태로 표현된 날짜">this.lfn_DateToStr(date)</Snippet>
+        <Snippet name="lfn_Decode" shortcut="lfn_Decode" description="Grid에서 expression으로 표현할때 decode 문처럼 사용할 수 있는 기능 &#13;&#10;&#13;&#10;lfn_Decode(expr, value1, result1, value2, result2, …… , default_result)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} varRtnValue - 반환된 문자열">this.lfn_Decode(expr, value1, result1, default_result)</Snippet>
+        <Snippet name="lfn_DsIsUpdated" shortcut="lfn_DsIsUpdated" description="dataSet의 Row 중에서 변경된 내용이 있는지 여부 &#13;&#10;&#13;&#10;lfn_DsIsUpdated(objDs)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Object} objDs&#13;&#10;- 확인 대상 Dataset&#13;&#10;&#13;&#10;Returns:&#13;&#10;{boolean}">this.lfn_DsIsUpdated(objDs)</Snippet>
+        <Snippet name="lfn_Each" shortcut="lfn_Each" description="object 속성값들을 주어진 함수로 처리한다.&#13;&#10;주어진 함수에서 return false를 하면 반복이 멈춘다. &#13;&#10;&#13;&#10;lfn_Each(object, func, scope)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Object} object&#13;&#10;대상 object.&#13;&#10;{Function} func&#13;&#10;callback 함수.&#13;&#10;{String} func.prop&#13;&#10;object property name.&#13;&#10;{Object} func.val&#13;&#10;object property value.&#13;&#10;{Object} func.object&#13;&#10;object 그 자체.&#13;&#10;{Object} scope&#13;&#10;callback 함수에 대한 수행 scope.&#13;&#10;&#13;&#10;ex)&#13;&#10;var datas = {code: &quot;001&quot;, userId: &quot;&quot;, name: &quot;pete&quot;};&#13;&#10;this.lfn_Each(datas, function(prop, val, object) {&#13;&#10;&#9;var result = &quot;&quot;;&#13;&#10;&#9;if ( !val )&#13;&#10;&#9;{&#13;&#10;&#9;&#9;result = prop + &quot; must have not a non-empty value!&quot;&#13;&#10;&#9;&#9;st_result03.text += result;&#13;&#10;&#9;&#9;trace(result);&#9;// output : userId must have not a non-empty value!&#13;&#10;&#9;&#9;return false;&#13;&#10;&#9;}&#13;&#10;&#9;result = prop + &quot;:&quot; + val;&#13;&#10;&#9;st_result03.text += result + &quot;  &quot;;&#13;&#10;&#9;trace(result);&#9;// output : code:001&#13;&#10;}, this);">this.lfn_Each(object, func, scope)</Snippet>
+        <Snippet name="lfn_GetAge" shortcut="lfn_GetAge" description="기준년월일 기준으로 만나이를 구한다. &#13;&#10;&#13;&#10;lfn_GetAge(brtYmd, stdYmd)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} brtYmd&#13;&#10;- 생년월일&#13;&#10;{String} stdYmd&#13;&#10;- 기준일자[생략시 현재일자]&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Number} 숫자형 나이">this.lfn_GetAge(brtYmd, stdYmd)</Snippet>
+        <Snippet name="lfn_GetBirthDateBySSN" shortcut="lfn_GetBirthDateBySSN" description="주민등록번호로 생년월일을 구한다.&#13;&#10;&#13;&#10;lfn_GetBirthDateBySSN(ssn)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} ssn&#13;&#10;- 주민등록번호/외국인등록번호 13자리중 최소 7자 입력&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} 8자리 날짜(YYYYMMMDD)문자열">this.lfn_GetBirthDateBySSN(ssn)</Snippet>
+        <Snippet name="lfn_GetBirthYear" shortcut="lfn_GetBirthYear" description="주민번호 뒷 첫번째 자리로 년대를 return 한다. &#13;&#10;&#13;&#10;lfn_GetBirthYear(sJuminNo)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} sJuminNo&#13;&#10;생년 월일 또는 주민 번호&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} 주민번호 뒷 첫번째 자리로 년대를 return 한다.">this.lfn_GetBirthYear(sJuminNo)</Snippet>
+        <Snippet name="lfn_GetDate" shortcut="lfn_GetDate" description="현재일자를 구한다. &#13;&#10;&#13;&#10;lfn_GetDate(sGubn)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} sGubn Optional&#13;&#10;- date/null : 일자, time : 일자+시간, milli : Milliseconds&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} 8자리 날짜(YYYYMMMDD)문자열">this.lfn_GetDate(sGubn)</Snippet>
+        <Snippet name="lfn_GetDay" shortcut="lfn_GetDay" description="lfn_GetDay(strDate)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} strDate&#13;&#10;- 'yyyyMMdd' 형태로 표현된 날짜.&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Number} 0 = 일요일 ~ 6 = 토요일. 오류가 발생할 경우 -1 Return.">this.lfn_GetDay(strDate)</Snippet>
+        <Snippet name="lfn_GetDiffDate" shortcut="lfn_GetDiffDate" description="두 일자간의 차이 일수 계산 &#13;&#10;&#13;&#10;lfn_GetDiffDate(sStartDate, sEndDate)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} sStartDate&#13;&#10;- yyyyMMdd형태의 From 일자 ( 예 : &quot;20121122&quot; )&#13;&#10;{String} sEndDate&#13;&#10;- yyyyMMdd형태의 To 일자 ( 예 : &quot;20121202&quot; )&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Number} 숫자 형태의 차이일수( 예 : 10 ) 단, sEndDate &lt; sStartDate이면 음수가 return된다.">this.lfn_GetDiffDate(sStartDate, sEndDate)</Snippet>
+        <Snippet name="lfn_GetDiffMonth" shortcut="lfn_GetDiffMonth" description="두 일자간의 차이 일수 계산. 단, sStartDate, sEndDate의 일은 포함하지 않고 계산된다.&#13;&#10;&#13;&#10;lfn_GetDiffMonth(sStartDate, sEndDate)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} sStartDate&#13;&#10;- yyyyMMdd형태의 From 일자 ( 예 : &quot;20121122&quot; )&#13;&#10;{String} sEndDate&#13;&#10;- yyyyMMdd형태의 To 일자 ( 예 : &quot;20121202&quot; )&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Number} 숫자 형태의 차이월수 ( 예 : 10 ) 단, sEndDate &lt; sStartDate이면 음수가 return된다.">this.lfn_GetDiffMonth(sStartDate, sEndDate)</Snippet>
+        <Snippet name="lfn_GetDigit" shortcut="lfn_GetDigit" description="입력 문자열중 숫자값만 남긴다. &#13;&#10;&#13;&#10;lfn_GetDigit(strValue)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} strValue&#13;&#10;- 입력문자열&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} 숫자문자열&#13;&#10;&#13;&#10;">this.lfn_GetDigit(strValue)</Snippet>
+        <Snippet name="lfn_GetFirstDate" shortcut="lfn_GetFirstDate" description="현재월 1일 만들기.&#13;&#10;&#13;&#10;lfn_GetFirstDate(strDate)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} strDate&#13;&#10;- Date Format YYYYMM / YYYYMMDD&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} date">this.lfn_GetFirstDate(strDate)</Snippet>
+        <Snippet name="lfn_GetHolidays" shortcut="lfn_GetHolidays" description="법정공휴일 구하기 &#13;&#10;&#13;&#10;lfn_GetHolidays(nYear)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Number} nYear&#13;&#10;- yyyy&#13;&#10;Returns:&#13;&#10;{Array} 휴일정보">this.lfn_GetHolidays(nYear)</Snippet>
+        <Snippet name="lfn_GetLastDate" shortcut="lfn_GetLastDate" description="년월을 입력받아 마지막 일를 반환한다(년월)&#13;&#10;&#13;&#10;lfn_GetLastDate(strDate)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} strDate&#13;&#10;- 6 / 8 자리의 숫자로 된 날짜(YYYYMM)&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} 해당월의 마지막날 8자리">this.lfn_GetLastDate(strDate)</Snippet>
+        <Snippet name="lfn_GetMaskFormatString" shortcut="lfn_GetMaskFormatString" description="주어진 날짜 객체의 Mask Format 처리된 문자열을 반환.&#13;&#10;&#13;&#10;lfn_GetMaskFormatString(dt, strMask)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{date} dt&#13;&#10;- Date 개체.&#13;&#10;{string} strMask&#13;&#10;- mask할 format 문자열.&#13;&#10;&#13;&#10;Returns:&#13;&#10;{string} 변환된 문자열.&#13;&#10;&#13;&#10;ex)&#13;&#10;var dt = this.lfn_StrToDate(&quot;20130430123412&quot;); // convert Date type from &quot;20130430123412&quot;.&#13;&#10;trace(this.lfn_GetMaskFormatString(dt, &quot;yyyy년 MM월 dd일 tt hh시 mm분 ss초&quot;)); // output : 2013년 04월 30일 오후 12시 34분 12초&#13;&#10;trace(this.lfn_GetMaskFormatString(dt, &quot;yyyy-MM-dd&quot;)); // output : 2013-04-30&#13;&#10;trace(this.lfn_GetMaskFormatString(dt, &quot;yy MM.dd&quot;)); // output : 13 04.30&#13;&#10;trace(this.lfn_GetMaskFormatString(dt, &quot;yyyy-MM-dd W \\Week&quot;)); // output : 2013-04-30 18 Week&#13;&#10;trace(this.lfn_GetMaskFormatString(dt, &quot;MMMM dddd&quot;)); // output : 4월 화요일">this.lfn_GetMaskFormatString(dt, strMask)</Snippet>
+        <Snippet name="lfn_GetRowDataToArray" shortcut="lfn_GetRowDataToArray" description="dataSet의 Row 값들을 array로 반환&#13;&#10;&#13;&#10;lfn_GetRowDataToArray(oData, nRow)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{object} oData - Dataset Object&#13;&#10;{integer} nRow - Dataset rowposition&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Array} Dataset값">this.lfn_GetRowDataToArray($end$oData, nRow);</Snippet>
+        <Snippet name="lfn_GetRowDataToString" shortcut="lfn_GetRowDataToString" description="dataSet의 Row 값들을 String으로 반환&#13;&#10;&#13;&#10;lfn_GetRowDataToString(oData, nRow, sGubn)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{object} oData - Dataset Object&#13;&#10;{integer} nRow - Dataset rowposition&#13;&#10;{string} sGubn - 값간의 구분자(기본값:&quot;|&quot;)&#13;&#10;&#13;&#10;Returns:&#13;&#10;{string} Dataset값">this.lfn_GetRowDataToString($end$oData, nRow, sGubn)</Snippet>
+        <Snippet name="lfn_GetScrollLeft" shortcut="lfn_GetScrollLeft" description="수평스크롤바의 trackbar 위치를 반환한다. &#13;&#10;&#13;&#10;lfn_GetScrollLeft(XComp)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Object} Component.&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Number} 수평스크롤바의 trackbar 위치(수평스크롤바가 없을때는 0).">this.lfn_GetScrollLeft(XComp)</Snippet>
+        <Snippet name="lfn_GetScrollTop" shortcut="lfn_GetScrollTop" description="수직스크롤바의 trackbar 위치를 반환한다.&#13;&#10;&#13;&#10;lfn_GetScrollTop(XComp)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Object} Component.&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Number} 수직스크롤바의 trackbar 위치(수직스크롤바가 없을때는 0).&#13;&#10;">this.lfn_GetScrollTop(XComp)</Snippet>
+        <Snippet name="lfn_GetSequenceId" shortcut="lfn_GetSequenceId" description="Form 내에서 지정된 접두문자열에 순번이 붙여진 ID 를 반환 &#13;&#10;&#13;&#10;lfn_GetSequenceId(prefix, prefix)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Object} prefix&#13;&#10;순번 앞에 붙일 문자열&#13;&#10;{String} prefix&#13;&#10;순번 앞에 붙일 문자열&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} id&#13;&#10;&#13;&#10;ex)&#13;&#10;// this = Form&#13;&#10;trace(this.lfn_GetSequenceId(this, &quot;Button&quot;)); // output : Button0&#13;&#10;trace(this.lfn_GetSequenceId(this, &quot;Button&quot;)); // output : Button1&#13;&#10;// this = Form&#13;&#10;trace(this.lfn_GetSequenceId(this, &quot;chk_&quot;)); // output : chk_0&#13;&#10;trace(this.lfn_GetSequenceId(this, &quot;chk_&quot;)); // output : chk_1">this.lfn_GetSequenceId(prefix, prefix)</Snippet>
+        <Snippet name="lfn_GetTopLevelForm" shortcut="lfn_GetTopLevelForm" description="주어진 Form 을 포함하는 최상위 Form을 찾는다. &#13;&#10;&#13;&#10;lfn_GetTopLevelForm(curForm)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Object} curForm&#13;&#10;검색 시작 Form.&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Object} 최상위 Form.">this.lfn_GetTopLevelForm(curForm)</Snippet>
+        <Snippet name="lfn_GetUniqueId" shortcut="lfn_GetUniqueId" description="유일한 ID 를 반환 &#13;&#10;&#13;&#10;lfn_GetUniqueId(prefix, separator)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} prefix&#13;&#10;id 앞에 붙일 문자열&#13;&#10;{String} separator&#13;&#10;id 생성시 구분용 문자(default: '-' ).&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} id&#13;&#10;&#13;&#10;ex)&#13;&#10;trace(this.lfn_GetUniqueI()); &#13;&#10;// output : 3e52d1f6-f0d2-4970-a590-ba7656b07859&#13;&#10;&#13;&#10;trace(this.lfn_GetUniqueI(&quot;Button_&quot;)); &#13;&#10;// output : Button_4e601da1-63f4-4cfa-849b-01b8a7f14d40&#13;&#10;&#13;&#10;trace(this.lfn_GetUniqueI(&quot;&quot;, &quot;_&quot;)); &#13;&#10;// output : 4e601da1_63f4_4cfa_849b_01b8a7f14d40&#13;&#10;&#13;&#10;trace(this.lfn_GetUniqueId(&quot;Button_&quot;, &quot;_&quot;)); &#13;&#10;// output : Button_4e601da1_63f4_4cfa_849b_01b8a7f14d40">this.lfn_GetUniqueId(prefix, separator)</Snippet>
+        <Snippet name="lfn_GetWeek" shortcut="lfn_GetWeek" description="년월일(yyyyMMdd)을 입력하면 해당 주차를 리턴한다. &#13;&#10;&#13;&#10;lfn_GetWeek(strDate)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} strDate&#13;&#10;- 8자리 년월일(yyyyMMdd)&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} 6자리 년도주차(yyyyWW)">this.lfn_GetWeek(strDate)</Snippet>
+        <Snippet name="lfn_IndexOf" shortcut="lfn_IndexOf" description="지정된 항목이 처음 나오는 배열 위치를 반환한다. &#13;&#10;&#13;&#10;lfn_IndexOf(array, item, from, strict)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Array} array&#13;&#10;검색 대상 Array.&#13;&#10;{Object} item&#13;&#10;찾고자 하는 Item.&#13;&#10;{Number} from&#13;&#10;검색의 시작 위치 (default: 0).&#13;&#10;{Booleans} strict&#13;&#10;true: 형변환 없이 비교('==='), false: 형변환 후 비교('==') (default: false).&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Number} 검색된 배열 위치. 없다면 -1 리턴.">this.lfn_IndexOf(array, item, from, strict)</Snippet>
+        <Snippet name="lfn_IsBoolean" shortcut="lfn_IsBoolean" description="입력값이 Boolean 값인지 여부를 판별한다. &#13;&#10;&#13;&#10;lfn_IsBoolean(oVal)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{object} oVal&#13;&#10;판별대상 Object&#13;&#10;&#13;&#10;Returns:&#13;&#10;{boolean} boolean 이면 true 아니면 false 를 리턴한다.">this.lfn_IsBoolean(oVal)</Snippet>
+        <Snippet name="lfn_IsDate" shortcut="lfn_IsDate" description="날짜 여부를 확인한다.(년월 or 년월일) &#13;&#10;&#13;&#10;lfn_IsDate(strDate)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} strDate&#13;&#10;- 입력스트링(YYYYMM or YYYYMMDD)&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Boolean}&#13;&#10;&#13;&#10;">this.lfn_IsDate(strDate)</Snippet>
+        <Snippet name="lfn_IsExistInArray" shortcut="lfn_IsExistInArray" description="배열에 해당 값이 존재하는지 확인한다. &#13;&#10;&#13;&#10;lfn_IsExistInArray(arrVal, varVal)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Array} arrVal&#13;&#10;{String} varVal&#13;&#10;- 값&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Boolean} 배열에 존재여부">this.lfn_IsExistInArray(arrVal, varVal)</Snippet>
+        <Snippet name="lfn_IsNexaComponent" shortcut="lfn_IsNexaComponent" description="nexacro Component 여부 Check&#13;&#10;&#13;&#10;lfn_IsNexaComponent(value)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Object} value&#13;&#10;- 체크할 Object&#13;&#10;&#13;&#10;Returns:&#13;&#10;{boolean}">this.lfn_IsNexaComponent(value)</Snippet>
+        <Snippet name="lfn_IsNotNull" shortcut="lfn_IsNotNull" description="값이 존재하는지 여부 체크&#13;&#10;&#13;&#10;lfn_IsNotNull(sValue)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} sValue&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Boolean} true/false">this.lfn_IsNotNull($end$)</Snippet>
+        <Snippet name="lfn_IsNull" shortcut="lfn_IsNull" description="값이 존재하는지 여부 체크&#13;&#10;&#13;&#10;lfn_IsNull(sValue)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} sValue&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Boolean} true/false">this.lfn_IsNull($end$)</Snippet>
+        <Snippet name="lfn_IsNullEmpty" shortcut="lfn_IsNullEmpty" description="값이 Null일 경우에 &quot;&quot;(Empty-공백)을 반환&#13;&#10;&#13;&#10;lfn_IsNullEmpty(sValue)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} sValue&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Boolean} true/false">this.lfn_IsNullEmpty($end$)</Snippet>
+        <Snippet name="lfn_IsString" shortcut="lfn_IsString" description="입력값이 문자열인지 여부를 판별한다.&#13;&#10;&#13;&#10;lfn_IsString(value)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{object}  value&#13;&#10;- 판별대상 Object&#13;&#10;&#13;&#10;Returns:&#13;&#10;{boolean} 문자열 이면 true 아니면 false 를 리턴">this.lfn_IsString($end$)</Snippet>
+        <Snippet name="lfn_IsTime" shortcut="lfn_IsTime" description="시간 형식에 맞는지 Check 한다. &#13;&#10;&#13;&#10;lfn_IsTime(strTime)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} strTime&#13;&#10;- 6자리의 숫자로 된 내부시간형식(HHMMSS)&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Boolean}">this.lfn_IsTime(strTime)</Snippet>
+        <Snippet name="lfn_IsUpdateColumn" shortcut="lfn_IsUpdateColumn" description="dataSet의 Row 에서 해당 칼럼이 변경되었는지 판단하는 함수&#13;&#10;&#13;&#10;lfn_IsUpdateColumn(ObjDs, nRow, Column)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Object} ObjDs&#13;&#10;- 대상 dataset&#13;&#10;{Number} nRow&#13;&#10;- row값&#13;&#10;{String || Number} Column&#13;&#10;- 칼럼명 or 칼럼index&#13;&#10;&#13;&#10;Returns:&#13;&#10;{boolean}">this.lfn_IsUpdateColumn(ObjDs, nRow, Column)</Snippet>
+        <Snippet name="lfn_IsUpdatedRow" shortcut="lfn_IsUpdatedRow" description="dataSet의 Row가 변경되었는지 판단하는 함수&#13;&#10;&#13;&#10;lfn_IsUpdatedRow(ObjDs, nRow)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Object} ObjDs&#13;&#10;- 대상 dataset&#13;&#10;{Number} nRow&#13;&#10;- row값&#13;&#10;&#13;&#10;Returns:&#13;&#10;{boolean}">this.lfn_IsUpdatedRow(ObjDs, nRow)</Snippet>
+        <Snippet name="lfn_IsYM" shortcut="lfn_IsYM" description="날짜 여부를 확인한다. &#13;&#10;&#13;&#10;lfn_IsYM(strDate)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} strDate&#13;&#10;- 6자리의 숫자로 된 날짜(YYYYMM)&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Boolean}">this.lfn_IsYM(strDate)</Snippet>
+        <Snippet name="lfn_IsYMD" shortcut="lfn_IsYMD" description="날짜 여부를 확인한다.&#13;&#10;&#13;&#10;lfn_IsYMD(strDate)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} strDate&#13;&#10;- 8자리의 숫자로 된 날짜(YYYYMMDD)&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Boolean}">this.lfn_IsYMD(strDate)</Snippet>
+        <Snippet name="lfn_LastIndexOfProp" shortcut="lfn_LastIndexOfProp" description="지정된 속성의 값이 처음으로 일치하는 객체의 배열 위치를 뒤에서부터 찾아 반환한다.&#13;&#10;배열의 각 항목은 하나 이상의 속성을 가진 객체이다.&#13;&#10;&#13;&#10;lfn_LastIndexOfProp(array, prop, item, from, strict)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Array} array&#13;&#10;대상 Array.&#13;&#10;{String} prop&#13;&#10;기준 속성.&#13;&#10;{String} item&#13;&#10;기준 값.&#13;&#10;{Number} from&#13;&#10;검색 시작 위치(default: 0).&#13;&#10;{Boolean} strict&#13;&#10;true: 형변환 없이 비교('==='), false: 형변환 후 비교('==') (default: false).&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Number} 검색된 배열 위치. 없다면 -1 리턴&#13;&#10;&#13;&#10;ex) &#13;&#10;var users = [];&#13;&#10;users[0] = {id:&quot;milk&quot;, name:&quot;park&quot;, age:33};&#13;&#10;users[1] = {id:&quot;apple&quot;, name:&quot;kim&quot;};&#13;&#10;users[2] = {id:&quot;oops&quot;, name:&quot;joo&quot;, age:44};&#13;&#10;users[3] = {id:&quot;beans&quot;, name:&quot;lee&quot;, age:50};&#13;&#10;users[4] = {id:&quot;zoo&quot;, age:65};&#13;&#10;users[5] = {id:&quot;milk&quot;, name:&quot;&quot;, age:33};&#13;&#10;users[6] = {id:&quot;milk&quot;, name:&quot;lee&quot;, age:33};&#13;&#10;var index = this.lfn_LastIndexOfProp(users, &quot;name&quot;, &quot;lee&quot;);&#13;&#10;trace(&quot;index==&gt;&quot; + index);&#9;// output : index==&gt;6&#13;&#10;var index = this.lfn_LastIndexOfProp(users, &quot;name&quot;, &quot;lee&quot;, 5);&#13;&#10;trace(&quot;index==&gt;&quot; + index);&#9;// output : index==&gt;3">this.lfn_LastIndexOfProp(array, prop, item, from, strict)</Snippet>
+        <Snippet name="lfn_Left" shortcut="lfn_Left" description="문자열의 좌측부터 지정한 길이만큼 가져오는 함수&#13;&#10;&#13;&#10;lfn_Left(sOrg, nSize)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} sOrg&#13;&#10;- 원본 문자열&#13;&#10;{Number} nSize&#13;&#10;- 얻어올 크기. [Default Value = 0]&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} 문자열">this.lfn_Left(sOrg, nSize)</Snippet>
+        <Snippet name="lfn_LengthByte" shortcut="lfn_LengthByte" description="문자 전체 길이를 계산&#13;&#10;&#13;&#10;lfn_LengthByte(sVal)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} sVal&#13;&#10;- 문자열 - 문자, 숫자, 특수문자 : 1 로 Count - 그외 한글/한자 : 2 로 count 되어 합산&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Integer} Type에 따라 구해진 길이">this.lfn_LengthByte(sVal)</Snippet>
+        <Snippet name="lfn_Lookup" shortcut="lfn_Lookup" description="대상에서 오브젝트 반환 &#13;&#10;&#13;&#10;lfn_Lookup(p, name)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Object} p&#13;&#10;- 오브젝트를 찾을 대상&#13;&#10;{String} name&#13;&#10;- 오브젝트네임&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Object} 오브젝트">this.lfn_Lookup(this, sCompNm)</Snippet>
+        <Snippet name="lfn_LunarToSolar" shortcut="lfn_LunarToSolar" description="음력을 양력으로 변환. &#13;&#10;&#13;&#10;lfn_LunarToSolar(value, leapMonth)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String | Date} value&#13;&#10;- yyyyMMdd형태의 음력일자 ( 예 : &quot;20121122&quot; ).&#13;&#10;{Boolean} leapMonth&#13;&#10;- 윤달 여부.&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} 'yyyyMMdd'형태의 양력일자">this.lfn_LunarToSolar(value, leapMonth)</Snippet>
+        <Snippet name="lfn_Nvl" shortcut="lfn_Nvl" description="입력값을 체크하여 Null인경우 지정한 값을 리턴 &#13;&#10;&#13;&#10;lfn_Nvl(inVal, nullVal)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} inVal&#13;&#10;{String} nullVal&#13;&#10;- Null인경우 대치값&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} 입력값이 Null인경우 지정한값, Null이 아닌경우 입력값">this.lfn_Nvl(inVal, nullVal)</Snippet>
+        <Snippet name="lfn_ObjView" shortcut="lfn_ObjView" description="object의 내용을 trace로 출력&#13;&#10;&#13;&#10;lfn_ObjView(objArg, sName)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Object} objArg&#13;&#10;- 대상 Object&#13;&#10;{String} sName Optional&#13;&#10;- key 값&#13;&#10;&#13;&#10;Returns:&#13;&#10;N/A">this.lfn_ObjView(objArg, sName)</Snippet>
+        <Snippet name="lfn_PosReverse" shortcut="lfn_PosReverse" description="문자열의 위치를 대소문자 구별하여 거꾸로 부터 찾아 첫번째 나온 index 반환&#13;&#10;&#13;&#10;lfn_PosReverse(sOrg, sFind, nStart)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} sOrg&#13;&#10;- 원래 문자열( 예 : &quot;aaBBbbccBB&quot; )&#13;&#10;{String} sFind&#13;&#10;- 찾고자 하는 문자열( 예 : &quot;BB&quot; )&#13;&#10;{Number} nStart&#13;&#10;- 검색 시작위치 (옵션 : Default=문자열의 끝 )&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Number}&#13;&#10;성공 = 찾고자 하는 문자열의 시작위치&#13;&#10;실패 = -1 ">this.lfn_PosReverse(sOrg, sFind, nStart)</Snippet>
+        <Snippet name="lfn_PramToDataset" shortcut="lfn_PramToDataset" description="object에 속성들(name, value)를 dataset에 구성한다.&#13;&#10;&#13;&#10;lfn_PramToDataset(object, ds, nRow, bAdd)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{object} object Dataset의 구성에 참조되는 객체&#13;&#10;{dataset} ds 객체 속성,값을 참조해서 구성되는 Dataset&#13;&#10;{int} 대상 Row 위치&#13;&#10;{blean} 대상 Row 위치&#13;&#10;&#13;&#10;Returns:&#13;&#10;{object}">this.lfn_PramToDataset($end$object, ds, nRow, bAdd)</Snippet>
+        <Snippet name="lfn_RemoveAt" shortcut="lfn_RemoveAt" description="원하는 위치의 항목을 배열에서 삭제 처리한다. &#13;&#10;&#13;&#10;lfn_RemoveAt(array, index)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{Array} array&#13;&#10;remove 대상 Array.&#13;&#10;{Number} index&#13;&#10;remove하고자 하는 item index.&#13;&#10;&#13;&#10;ex)&#13;&#10;var mon = [&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;];&#13;&#10;this.lfn_RemoveAt(mon,1);&#13;&#10;trace(&quot;mon==&gt;&quot; + mon);&#9;// output : mon==&gt;[&quot;Jan&quot;,&quot;Mar&quot;,&quot;Apr&quot;]">this.lfn_RemoveAt(array, index)</Snippet>
+        <Snippet name="lfn_RemoveComma" shortcut="lfn_RemoveComma" description="컴마를 제거한다. &#13;&#10;&#13;&#10;lfn_RemoveComma(strValue)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} strValue&#13;&#10;- 컴마가 포함된 스트링&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} 컴마가 제거된 스트링이 반환된다.">this.lfn_RemoveComma(strValue)</Snippet>
+        <Snippet name="lfn_RemoveHtmlTag" shortcut="lfn_RemoveHtmlTag" description="HTML TAG 제거 함수&#13;&#10;&#13;&#10;lfn_RemoveHtmlTag(sHtml, sTag)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} sHtml&#13;&#10;- 제거대상 문자열&#13;&#10;{String} sTag&#13;&#10;- 제거할 tag(없으면 전체 tag제거)&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String}">this.lfn_RemoveHtmlTag(sHtml, sTag)</Snippet>
+        <Snippet name="lfn_RemoveSpecialChar" shortcut="lfn_RemoveSpecialChar" description="특수문자를 제거한다 &#13;&#10;&#13;&#10;lfn_RemoveSpecialChar(strValue)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} strValue&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} 특수문자를 제거한 문자열">this.lfn_RemoveSpecialChar(strValue)</Snippet>
+        <Snippet name="lfn_Right" shortcut="lfn_Right" description="문자열의 우측부터 지정한 길이만큼 가져오는 함수 &#13;&#10;&#13;&#10;lfn_Right(sOrg, nSize)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} sOrg&#13;&#10;- 원본 문자열&#13;&#10;{Number} nSize&#13;&#10;- 출력될 문자열의 길이&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} 결과값">this.lfn_Right(sOrg, nSize)</Snippet>
+        <Snippet name="lfn_SolarToLunar" shortcut="lfn_SolarToLunar" description="양력을 음력으로 변환해주는 함수.&#13;&#10;[주의사항]&#13;&#10;1. return값이 8자리가 아니고 9자리임에 주의&#13;&#10;2. 처리가능 기간 1841 - 2043년 &#13;&#10;&#13;&#10;lfn_SolarToLunar(value)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String | Date} value&#13;&#10;- yyyyMMdd형태의 양력일자 ( 예 : &quot;20121122&quot; )&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} Flag(평달 = &quot;0&quot;, 윤달 = &quot;1&quot;) + 'yyyyMMdd'형태의 음력일자&#13;&#10;&#13;&#10;ex)&#13;&#10;var dt = this.lfn_Str2Date(&quot;20130331&quot;);&#13;&#10;var str = this.solarToLunar(dt);&#13;&#10;trace(str); // output : 020130220&#13;&#10;var str1 = &quot;20130331&quot;;&#13;&#10;var str = this.solarToLunar(str1);&#13;&#10;trace(str); // output : 020130220">this.lfn_SolarToLunar(value)</Snippet>
+        <Snippet name="lfn_StrToDate" shortcut="lfn_StrToDate" description="문자를 날짜로 변환.&#13;&#10;&#13;&#10;lfn_StrToDate(strDate)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} strDate&#13;&#10;- String Date Format&#13;&#10;&#13;&#10;Returns:&#13;&#10;{Date} date">this.lfn_StrToDate(strDate)</Snippet>
+        <Snippet name="lfn_Trim" shortcut="lfn_Trim" description="정규식을 이용한 trim 구현 - 문자열 양 옆의 공백 제거&#13;&#10;&#13;&#10;lfn_Trim(sValue)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{String} sValue&#13;&#10;- 변경하려는 값&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} 문자열">this.lfn_Trim(sValue)</Snippet>
+        <Snippet name="lfn_TypeOf" shortcut="lfn_TypeOf" description="주어진 nexacro 개체의 type 을 반환 &#13;&#10;&#13;&#10;lfn_TypeOf(obj)&#13;&#10;&#13;&#10;Parameters:&#13;&#10;{*} obj&#13;&#10;Object, Component, Frame, .. 등 nexacro 모든 개체&#13;&#10;&#13;&#10;Returns:&#13;&#10;{String} 개체의 type">this.lfn_TypeOf(obj)</Snippet>
+        <Snippet name="lfn_UpdateToDataset" shortcut="lfn_UpdateToDataset" description="컨트롤이 Dataset에 bind되어 있을 경우 즉시 value를 Dataset에 적용시킨다.&#13;&#10;&#13;&#10;lfn_UpdateToDataset()&#13;&#10;&#13;&#10;Returns:&#13;&#10;N/A">this.lfn_UpdateToDataset();</Snippet>
+      </Group>
+      <Snippet name="viewComments" shortcut="viewcmt" description="ViewTemplate Comments">/**&#13;
+*  View Template&#13;
+*  @FileName 	$FILE_BASE$.$FILE_EXT$&#13;
+*  @Creator 	&#13;
+*  @CreateDate 	$YEAR$.$MONTH_02$.$DAY_02$&#13;
+*  @Desction    &#13;
+************** 소스 수정 이력 ***********************************************&#13;
+*  date          		Modifier                Description&#13;
+*******************************************************************************&#13;
+*  $YEAR$.$MONTH_02$.$DAY_02$     		       	      	최초 생성&#13;
+*******************************************************************************&#13;
+*/&#13;
+/************************************************************************************************&#13;
+ * include 선언부&#13;
+ ************************************************************************************************/&#13;
+/************************************************************************************************&#13;
+ * 변수 선언 영역&#13;
+ ************************************************************************************************/&#13;
+/************************************************************************************************&#13;
+ * Nexacro Studio 호출 필수 FUNCTION 영역&#13;
+ ************************************************************************************************/&#13;
+/*---------------------------------------------------------------------------------------------*&#13;
+ * Function    : fn_GetViewGenerationResult&#13;
+ * Parameter   : &#13;
+ *               - fieldarray     : model field list&#13;
+ *               - contents       : old contents (include &lt;View&gt;)&#13;
+ *               - generationattr : attributes for view generation&#13;
+ * Return      : View contents (source + script) (JSON format)&#13;
+                 ex) {&#13;
+                        "View": {&#13;
+                            "tag": "View",&#13;
+                            "attribute": {&#13;
+                                "id": "View00",&#13;
+                                "viewtype": "FreeForm",&#13;
+                                "taborder": "2",&#13;
+                                "text": "search view",&#13;
+                                "left": "0",&#13;
+                                ...&#13;
+                            },&#13;
+                            "Model": [&#13;
+                                {   // with field&#13;
+                                    "fieldid": "department",&#13;
+                                    "Components": [&#13;
+                                    ...&#13;
+                                    ]&#13;
+                                },&#13;
+                                {   // without field&#13;
+                                    "fieldid": "",&#13;
+                                    "Components": [&#13;
+                                    ...&#13;
+                                    ]&#13;
+                                }&#13;
+                            ],&#13;
+                            "InitValue": [&#13;
+                            ],&#13;
+                            "Objects": [&#13;
+                            ],&#13;
+                            "Bind": [&#13;
+                            ],&#13;
+                            "Script": {&#13;
+                                "tag": "Script",&#13;
+                                "attribute": {&#13;
+                                },&#13;
+                                "value": ""&#13;
+                            }&#13;
+                        }&#13;
+                    }&#13;
+ * Description : Generate the view based on the model field and return the results.&#13;
+ *---------------------------------------------------------------------------------------------*&#13;
+ *                            !!! This is a required function. !!!                             *&#13;
+ *                            !!! Do not delete it. !!!                                        *&#13;
+ *---------------------------------------------------------------------------------------------*/&#13;
+fn_GetViewGenerationResult = function(fieldarray, contents, generationattr) {&#13;
+&#13;
+    var vResult = "";&#13;
+    &#13;
+    // TODO : Based on model information, generate the view and write the code that returns it.&#13;
+    &#13;
+&#13;
+    return vResult;&#13;
+};&#13;
+&#13;
+&#13;
+/*---------------------------------------------------------------------------------------------*&#13;
+ * Function     : fn_GetViewAttributeList&#13;
+ * Return       : View generation attribute list (JSON format)&#13;
+                  ex)   {&#13;
+                        "attributecount": "2",&#13;
+                        "attributes": [&#13;
+                           {&#13;
+                                "id": "use_triggerbutton",&#13;
+                                "edittype": "Boolean",              // edittype : Boolean/String/Number/Enum/ViewObjList&#13;
+                                "defaultvalue": "true",&#13;
+                                "description": "Specifies whether trigger button is auto-created or not"&#13;
+                            },&#13;
+                            {&#13;
+                                "id": "grid_type",&#13;
+                                "edittype": "Enum",                 // edittype : Boolean/String/Number/Enum/ViewObjList&#13;
+                                "enumlist" : ["singleline","multiline"],&#13;
+                                "defaultvalue": "singleline",&#13;
+                                "description": "Select display type"&#13;
+                            }&#13;
+                        ]&#13;
+                    }&#13;
+ * Description : Obtain a list of custom attributes required for view generation&#13;
+ *---------------------------------------------------------------------------------------------*/&#13;
+fn_GetViewAttributeList = function() {&#13;
+&#13;
+    var strJson = "";&#13;
+    &#13;
+    // TODO : In addition to the model information, write a code that defines the attributes you want to receive.&#13;
+&#13;
+    return strJson;&#13;
+};&#13;
+&#13;
+/*---------------------------------------------------------------------------------------------*&#13;
+ * Function     : fn_GetFieldUserAttributeList&#13;
+ * Return       : user attribute list from model field(JSON format)&#13;
+                  ex)   {&#13;
+                        "attributecount": "2",&#13;
+                        "attributes": [&#13;
+                           {&#13;
+                                "id": "use_triggerbutton",&#13;
+                                "edittype": "Boolean",              // edittype : Boolean/String/Number/Enum&#13;
+                                "defaultvalue": "true",&#13;
+                                "description": "Specifies whether trigger button is auto-created or not"&#13;
+                            },&#13;
+                            {&#13;
+                                "id": "triggerbuttontext",&#13;
+                                "edittype": "String",               // edittype : Boolean/String/Number/Enum&#13;
+                                "defaultvalue": "Search",&#13;
+                                "description": "Enter text for trigger button"&#13;
+                            }&#13;
+                        ]&#13;
+                    }&#13;
+ * Description  : Obtain a list of user attributes to register in model field&#13;
+ *---------------------------------------------------------------------------------------------*/&#13;
+fn_GetFieldUserAttributeList = function ()&#13;
+{&#13;
+    var strJson = "";&#13;
+    &#13;
+    // TODO : Write a code that predefines the list of user attributes for adding to the model field.&#13;
+    &#13;
+    return strJson;&#13;
+}&#13;
+&#13;
+/************************************************************************************************&#13;
+ * 사용자 FUNCTION 영역&#13;
+ ************************************************************************************************/</Snippet>
+    </Group>
+    <Snippet name="/*" shortcut="" description="">/*
+ *	$end$
+ */
+ </Snippet>
+    <Snippet name="/**" shortcut="" description="">/************************************************************************
+ * $end$
+ ************************************************************************/
+</Snippet>
+    <Snippet name="///" shortcut="" description="">//////////////////////////////////////////////////////////////////////////</Snippet>
+    <Snippet name="alert();" shortcut="al" description="">alert($end$);</Snippet>
+    <Snippet name="do { } while();" shortcut="do" description="">do {
+$tab$$end$
+} while();</Snippet>
+    <Snippet name="File header" shortcut="" description="">/********************************************************************
+    created:	  $DATE$
+    filename: 	$FILE$
+    file path:	$FILE_PATH$
+    file base: 	$FILE_BASE$
+    file ext:	  $FILE_EXT$
+    author:		  
+
+    purpose:	  $end$
+*********************************************************************/
+</Snippet>
+    <Snippet name="function() {}" shortcut="func" description="">function ($end$)
+{
+$tab$
+};</Snippet>
+    <Snippet name="if () {}" shortcut="if" description="">if ($end$)
+{
+$tab$
+}</Snippet>
+    <Snippet name="if () {} else {}" shortcut="ifel" description="">if ($end$)
+{
+$tab$
+}
+else
+{
+$tab$
+}</Snippet>
+    <Snippet name="switch() { case : break..." shortcut="switch" description="">switch($end$) {
+case :
+$tab$break;
+case :
+$tab$break;
+default:
+}</Snippet>
+    <Snippet name="while () {}" shortcut="while" description="">while ($end$)
+{
+$tab$
+}</Snippet>
+  </Script>
+  <Xcss>
+    <Group name="Attribute">
+      <Snippet name="-nexa-background-odd" shortcut="-nexa-background-odd" description="">$tab$-nexa-background-odd : #ffffaa;</Snippet>
+      <Snippet name="-nexa-border" shortcut="-nexa-border" description="">$tab$-nexa-border : 1px solid #999999;</Snippet>
+      <Snippet name="-nexa-color-odd" shortcut="-nexa-color-odd" description="">$tab$-nexa-color-odd : red;</Snippet>
+      <Snippet name="-nexa-edge" shortcut="-nexa-edge" description="">$tab$-nexa-edge : url("theme://images/Titlebar_bg.png") 5px 5px;</Snippet>
+      <Snippet name="-nexa-edge-odd" shortcut="-nexa-edge-odd" description="">$tab$-nexa-edge-odd : url("theme://images/Titlebar_bg.png") 5px 5px;</Snippet>
+      <Snippet name="-nexa-icon" shortcut="-nexa-icon" description="">$tab$-nexa-icon : url("theme://images/Titlebar_bg.png");</Snippet>
+      <Snippet name="-nexa-icon-position" shortcut="-nexa-icon-position" description="">$tab$-nexa-icon-position : left;</Snippet>
+      <Snippet name="-nexa-padding" shortcut="-nexa-padding" description="">$tab$-nexa-padding : 5px 5px 5px 5px;</Snippet>
+      <Snippet name="-nexa-text-align" shortcut="-nexa-text-align" description="">$tab$-nexa-text-align : left;</Snippet>
+      <Snippet name="-nexa-text-padding" shortcut="-nexa-text-padding" description="">$tab$-nexa-text-padding : 5px 5px 5px 5px;</Snippet>
+      <Snippet name="-nexa-vertical-align" shortcut="-nexa-vertical-align" description="">$tab$-nexa-vertical-align : top;</Snippet>
+      <Snippet name="-nexa-word-wrap" shortcut="-nexa-word-wrap" description="">$tab$-nexa-word-wrap : char;</Snippet>
+      <Snippet name="background" shortcut="background" description="">$tab$background : #ffffaa;</Snippet>
+      <Snippet name="border-radius" shortcut="border-radius" description="">$tab$border-radius : 5px 5px 5px 5px;</Snippet>
+      <Snippet name="box-shadow" shortcut="box-shadow" description="">$tab$box-shadow : 5px 5px 3px #ffffff;</Snippet>
+      <Snippet name="color" shortcut="color" description="">$tab$color : transparent;</Snippet>
+      <Snippet name="cursor" shortcut="cursor" description="">$tab$cursor : default;</Snippet>
+      <Snippet name="font" shortcut="font" description="">$tab$font : 9pt "Tahoma";</Snippet>
+      <Snippet name="letter-spacing" shortcut="letter-spacing" description="">$tab$letter-spacing : normal;</Snippet>
+      <Snippet name="opacity" shortcut="opacity" description="">$tab$opacity : 0.8;</Snippet>
+      <Snippet name="text-decoration" shortcut="text-decoration" description="">$tab$text-decoration : underline;</Snippet>
+      <Snippet name="word-spacing" shortcut="word-spacing" description="">$tab$word-spacing : 30px;</Snippet>
+    </Group>
+    <Group name="Selector">
+      <Snippet name="Band" shortcut=".Band" description="">.Band
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="Button" shortcut=".Button" description="">.Button
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="Calendar" shortcut=".Calendar" description="">.Calendar
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="Cell" shortcut=".Cell" description="">.Cell
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="CheckBox" shortcut=".CheckBox" description="">.CheckBox
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="Combo" shortcut=".Combo" description="">.Combo
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="ComboControl" shortcut=".ComboControl" description="">.ComboControl
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="DatePicker" shortcut=".DatePicker" description="">.DatePicker
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="Div" shortcut=".Div" description="">.Div
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="Edit" shortcut=".Edit" description="">.Edit
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="FileDownload" shortcut=".FileDownload" description="">.FileDownload
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="FileUpload" shortcut=".FileUpload" description="">.FileUpload
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="FlashPlayer" shortcut=".FlashPlayer" description="">.FlashPlayer
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="Grid" shortcut=".Grid" description="">.Grid
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="GroupBox" shortcut=".GroupBox" description="">.GroupBox
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="ImageViewer" shortcut=".ImageViewer" description="">.ImageViewer
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="ListBox" shortcut=".ListBox" description="">.ListBox
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="Menu" shortcut=".Menu" description="">.FlashPlayer
+{
+$tab$$end$
+}
+</Snippet>
+      <Snippet name="Radio" shortcut=".Radio" description="">.Radio
+{
+$tab$$end$
+}
+</Snippet>
+    </Group>
+    <Group name="Status">
+      <Snippet name="deactivate" shortcut="deactivate" description="">[status=deactivate]</Snippet>
+      <Snippet name="disabled" shortcut="disabled" description="">[status=disabled]</Snippet>
+      <Snippet name="focused" shortcut="focused" description="">[status=focused]</Snippet>
+      <Snippet name="mouseover" shortcut="mouseover" description="">[status=mouseover]</Snippet>
+      <Snippet name="readonly" shortcut="readonly" description="">[status=readonly]</Snippet>
+    </Group>
+    <Snippet name="/*" shortcut="" description="">/***** $end$ *****/
+</Snippet>
+    <Snippet name="/**" shortcut="" description="">/************************************************************************
+ * $end$
+ ************************************************************************/
+</Snippet>
+    <Snippet name="File header" shortcut="" description="">/*******************************************************
+  PROJECT NAME : $end$
+  CREATION DATES : $YEAR$.$MONTH$.$DAY$
+  DRAFTER :
+  DISTRIBUTION DATE :
+  AMENDER :
+  MODIIFICATION DATES :
+*******************************************************/
+</Snippet>
+  </Xcss>
+</Snippets>

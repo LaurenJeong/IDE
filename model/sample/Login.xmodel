@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModelInfo version="1.1">
+  <Models>
+    <Model id="LoginModel001" name="LoginModel001" iotype="input" description="">
+      <Field required="false" id="ID" label="아이디" fieldtype="FreeText" datatype="STRING" datasize="80"/>
+      <Field required="false" id="PW" label="패스워드" fieldtype="FreeText" datatype="STRING" datasize="80"/>
+    </Model>
+  </Models>
+  <Service id="" name="" url=""/>
+</ModelInfo>
