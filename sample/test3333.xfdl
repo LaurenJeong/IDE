@@ -3,7 +3,7 @@
   <Form id="test3333" width="1280" height="1024" titletext="New Form">
     <Layouts>
       <Layout height="1024" width="1280">
-        <View id="View00" taborder="0" text="View00" viewdataset="viewdataset" left="46" top="21" width="444" height="396">
+        <View id="View00" taborder="0" text="View00" viewdataset="viewdataset" left="46" top="21" width="444" height="396" border="2px solid darkgreen">
           <Layouts>
             <Layout>
               <Grid id="grdList" left="0" top="0" right="170" bottom="107" binddataset="viewdataset">
@@ -165,13 +165,19 @@
 //ｓｋ
 
 
-//はわい
+//はわいｼﾊﾊﾊﾄｼﾄﾁﾁﾁﾁ
+// hjhg
 
 //わだしわ　かんこくじんです。
 
 かはほㄴㄴㄴｼｼｼｼｼｼﾄｼﾊﾁﾄｼﾊﾁﾄｼﾊﾄｓだｆｄさｆｓｄｆさｄｆｄｆｓｄｆｓｄｆｓｄふぁｓｄｆｓｄｆｓｄｆｓだｓｄふぁわわわｗwawawawa
 ﾃﾁﾃﾁﾃﾁｽﾉﾄﾉｲﾉﾊﾉﾁﾉﾀﾉｶﾉ
-ｽﾉﾄﾉｲﾉﾊﾉﾁﾉﾀﾉｶﾉｼﾉﾃﾉｻﾉﾂﾉｻﾉﾀﾉﾋﾉ
+ｽﾉﾄﾉｲﾉﾊﾉﾁﾉﾀﾉｶﾉｼﾉﾃﾉｻﾉﾂﾉｻﾉﾀﾉﾋﾉﾄｼﾁﾊｼﾊﾁﾄｼﾊﾄｼﾊﾄｼﾊﾄﾄｼﾊ
+目目鳥居らに寺井豆
+// abcdefg
+//めこそしいはき。
+
+
 ]]></Script>
   </Form>
 </FDL>
